@@ -19,7 +19,7 @@ Upon navigating to our landing page, users see the available movies.
 <details>
 <summary>Home page example</summary>
 <br>
- <img width="450" alt="all movies" src=https://user-images.githubusercontent.com/13261139/107981339-1b087180-6f7f-11eb-9c9e-dfed4921059c.png>
+ <img width="450" alt="all movies" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
 </details>
 
 #### Feature one
@@ -37,7 +37,7 @@ When a user does something, something happens.
 <details>
 <summary>Summary</summary>
 <br>
-<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+<img width="450" alt="description of image" src="https://media.giphy.com/media/cW64pEEZe0YZa/giphy.gif">
 </details>
 
 #### Feature three
@@ -46,7 +46,7 @@ When a user does something, something happens.
 <details>
 <summary>Summary</summary>
 <br>
-<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+<img width="450" alt="description of image" src="https://media.giphy.com/media/d6UbuwWVKJHXO/giphy.gif">
 </details>
 
 ## Technologies
