@@ -1,70 +1,89 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+To view please:
+- please visit [here](www.example.com) to interact and view
 
-In the project directory, you can run:
+### Categories:
+- [Home Page](#Home-Page)
 
-### `npm start`
+- [Selecting a Movie](#Selecting-a-movie)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Error Message](#Error-Message)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Cypress User Flow Testing](#Cypress-User-Flow-Testing)
 
-### `npm test`
+#### Home Page
+Upon navigating to our landing page, users see the available movies.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+<summary>Home page example</summary>
+<br>
+ <img width="450" alt="all movies" src=https://user-images.githubusercontent.com/13261139/107981339-1b087180-6f7f-11eb-9c9e-dfed4921059c.png>
+</details>
 
-### `npm run build`
+#### Feature one
+When a user does something, something happens.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<details>
+<summary>Summary</summary>
+<br>
+<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+</details>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Feature two
+When a user does something, something happens.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<details>
+<summary>Summary</summary>
+<br>
+<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+</details>
 
-### `npm run eject`
+#### Feature three
+When a user does something, something happens.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<details>
+<summary>Summary</summary>
+<br>
+<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+</details>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
+- React
+- Router
+- Cypress for Testing
+- CSS / SASS
+- HTML
+- Lighthouse for accessibility auditing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Iterations
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+More specifics about future work or refactoring can be found in this projects [GH issues](https://github.com/orgs/Curatour/projects/1).
 
-## Learn More
+## Contributions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Thank you <a href="https://github.com/person">PERSON</a>, <a href="https://github.com/person2">PERSON2</a>, and <a href="https://github.com/person3/">PERSON3</a> for your guidance and advice.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### To Contribute
+If you'd like to contribute to the code, please complete the following steps:
+- explanation of how to install this app
+Thank you.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+<table>
+    <tr>
+        <td> Kristen Bair <a href="https://github.com/kristenmb">GH</td>
+        <td> Drew Bradley <a href="https://github.com/DrewBradley">GH</td>
+        <td> Kevin Hartmann <a href="https://github.com/kevinhartmann23">GH</td>
+        <td> Richard Tyler <a href="https://github.com/richardltyler">GH</td>
+    </tr>
+ <td><img src="https://avatars.githubusercontent.com/u/69478485?v=4" alt="Kristen Bair"
+ width="150" height="auto" /></td>
+ <td><img src="https://avatars.githubusercontent.com/u/64617435?v=4" alt="Drew Bradley"
+ width="150" height="auto" /></td>
+ <td><img src="https://avatars.githubusercontent.com/u/68248071?v=4" alt="Kevin Hartmann"
+ width="150" height="auto" /></td>
+ <td><img src="https://avatars.githubusercontent.com/u/70095063?v=4" alt="Richard Tyler"
+ width="150" height="auto" /></td>
+</table>
