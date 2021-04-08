@@ -9,6 +9,7 @@ import NavBar from './navbar/NavBar'
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <Switch>
         <Route path="/" component={App.js}/>
       </Switch>
