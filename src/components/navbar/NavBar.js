@@ -1,12 +1,14 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import './NavBar.css';
 import logo from '../logo.svg'
 
 const NavBar = () => {
   return (
     <div className="NavBar">
-      <h1>THIS IS THE NavBar</h1>
-      <img src={logo} />
+      <Link to="/calendar"></Link>
+      <Link to="/form"></Link>
+      <Link to="/contacts"></Link>
     </div>
   );
 }
