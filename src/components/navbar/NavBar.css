@@ -1,9 +1,7 @@
 .NavBar {
+  margin-top: auto;
+  bottom: 0;
   height: 20%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
-
-FontAwesomeIcon {
-  height: 100px;
 }
