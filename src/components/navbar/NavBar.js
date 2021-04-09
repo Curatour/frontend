@@ -1,12 +1,16 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './NavBar.css';
-import logo from '../logo.svg'
+import NavIcon from '../common/NavIcon'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCalendarAlt, faCalendarPlus, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
   return (
     <div className="NavBar">
-      <h1>THIS IS THE NavBar</h1>
-      <img src={logo} />
+      <Link to="/calendar"><FontAwesomeIcon icon={faCalendarAlt} size="4x"/></Link>
+      <Link to="/form"><FontAwesomeIcon icon={faCalendarPlus} size="4x" /></Link>
+      <Link to="/contacts"><FontAwesomeIcon icon={faAddressBook} size="4x" /></Link>
     </div>
   );
 }
