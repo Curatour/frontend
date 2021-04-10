@@ -1,5 +1,6 @@
 .NavBar {
-  margin-top: auto;
+  margin: 2% auto;
+  width: 24em;
   bottom: 0;
   height: 20%;
   display: grid;

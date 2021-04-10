@@ -1,6 +1,6 @@
 .EventCarousel {
   width: 24em;
-  height: 11em;
+  max-height: 11em;
   padding: 0;
   margin: 100px auto 0;
   border: 10px solid #fff;
