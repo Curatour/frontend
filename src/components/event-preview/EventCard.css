@@ -1,24 +1,31 @@
 .EventCarousel {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  width: 24em;
+  height: 12em;
+  padding: 0;
+  margin: 100px auto 0;
+  border: 10px solid #fff;
+  box-shadow: 0px 2px 3px #eaeaea;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: mandatory;
+  /* scroll-snap-points-7: repeat(10em); */
 }
 
 .EventCard {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  padding: 0 12px;
-  opacity: 0;
-  filter: drop-shadow(0 2px 2px #555);
-  will-change: transform, opacity;
-  animation: carousel-animate-vertical $animation-timing linear infinite;
+  background: #f7f7f7;
+  color: #black;
+  list-style-type: none;
+  padding: 1em;
+  margin: 0;
+  transition: background-color 0.5s;
 }
 
-.EventCard:last-child {
-  animation-delay: calc(-#{$animation-delay-fraction} * 2);
+.EventCard:focus {
+  color: #fff;
+  background: rgb(115, 180, 174);
+}
+
+.EventCard:hover {
+  color: #fff;
+  background: orange;
 }

@@ -5,10 +5,12 @@ import './App.css';
 // import Header from './Header'
 import Calendar from './calendar/Calendar'
 import NavBar from './navbar/NavBar'
+import EventCarousel from './event-preview/EventCarousel'
 
 function App() {
   return (
     <div className="App">
+      <EventCarousel />
       <NavBar/>
       <Switch>
         <Route path="/" component={App.js}/>

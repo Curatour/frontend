@@ -1,18 +1,14 @@
 import React from 'react'
 import './EventCard.css';
+import EventCard from './EventCard'
+import {events} from '../../events-dataset'
 
 const EventCarousel = () => {
-  const [name, setName] = useState("Name");
+  const eventCards = events.map(event => <EventCard key={event.id} location={event.location} date={event.date} />);
 
   return (
     <div className="EventCarousel">
-      <h1>THIS IS THE EventCarousel</h1>
-      <form>
-        <input
-          type="text"
-          name="eventName"
-          />
-      </form>
+      { eventCards }
     </div>
   );
 }
