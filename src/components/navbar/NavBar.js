@@ -28,7 +28,7 @@ const NavBar = () => {
       <Link 
         className={addEventButton}
         onClick={() => toggleButtons(selectAddEvent, selectCalendar, selectContacts)} 
-        to="/form"
+        to="/new-event"
       >
         <FontAwesomeIcon icon={faCalendarPlus} size="4x" />
       </Link>
