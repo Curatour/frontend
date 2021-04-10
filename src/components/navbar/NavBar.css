@@ -9,3 +9,7 @@
   margin-bottom: 1.5rem;
   box-shadow: 0px -2px 3px -1px #b3b3b3;
 }
+
+.active {
+  color: #e2992f;
+}

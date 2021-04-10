@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import './NavBar.css';
 import NavIcon from '../common/NavIcon'
@@ -6,11 +6,39 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCalendarAlt, faCalendarPlus, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = () => {
+  const [calendarButton, selectCalendar] = useState('')
+  const [addEventButton, selectAddEvent] = useState('')
+  const [contactsButton, selectContacts] = useState('')
+  
+  const toggleButtons = (active, inactive1, inactive2) => {
+    active('active')
+    inactive1('')
+    inactive2('')
+  }
+  
   return (
     <div className="NavBar">
-      <Link to="/calendar"><FontAwesomeIcon icon={faCalendarAlt} size="4x"/></Link>
-      <Link to="/form"><FontAwesomeIcon icon={faCalendarPlus} size="4x" /></Link>
-      <Link to="/contacts"><FontAwesomeIcon icon={faAddressBook} size="4x" /></Link>
+      <Link 
+        className={calendarButton}
+        onClick={() => toggleButtons(selectCalendar, selectContacts, selectAddEvent)} 
+        to="/calendar"
+      >
+        <FontAwesomeIcon icon={faCalendarAlt} size="4x"/>
+      </Link>
+      <Link 
+        className={addEventButton}
+        onClick={() => toggleButtons(selectAddEvent, selectCalendar, selectContacts)} 
+        to="/form"
+      >
+        <FontAwesomeIcon icon={faCalendarPlus} size="4x" />
+      </Link>
+      <Link 
+        className={contactsButton}
+        onClick={() => toggleButtons(selectContacts, selectAddEvent, selectCalendar)} 
+        to="/contacts"
+      >
+        <FontAwesomeIcon icon={faAddressBook} size="4x" />
+      </Link>
     </div>
   );
 }
