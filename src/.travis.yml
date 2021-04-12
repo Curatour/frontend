@@ -20,4 +20,4 @@ install:
 script:
   - npm start &
   - npm run start:ci &
-  # - npm run cy:run -- --record --key SET THIS UP IN CYPRESS
+  - cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
