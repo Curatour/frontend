@@ -2,25 +2,19 @@ import React, {useState} from 'react'
 import './Form.css';
 
 const Form = () => {
-  const [venueName, setVenueName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
+  const [venueName, setVenueName] = useState('');
   const [date, setDate] = useState('');
-
-
+  const [address, setAddress] = useState('');
+  const [time, setTime] = useState('');
+  const [allDayEvent, setAllDayEvent] = useState(false);
 
 
   return (
     <div className="Form">
       <h1>Create new event</h1>
       <form>
-        <input
-          type='text'
-          placeholder='Venue Name'
-          name='venueName'
-          value={venueName}
-          onChange={event => setVenueName(event.target.value)}
-        />
         <input
           type='text'
           placeholder='City'
