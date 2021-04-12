@@ -29,6 +29,29 @@ const Form = () => {
           value={state}
           onChange={event => setState(event.target.value)}
         />
+        <button>Find Venues</button>
+        <select>
+          <option>Venue1</option>
+          <option>Venue2</option>
+          <option>Add New Venue</option>
+        </select>
+        <button>Next</button>
+        <input
+          type='text'
+          placeholder='Venue Name'
+          name='venueName'
+          value={venueName}
+          onChange={event => setVenueName(event.target.value)}
+        />
+         <input
+          type='text'
+          placeholder='Address (street and number)'
+          name='address'
+          value={address}
+          onChange={event => setAddress(event.target.value)}
+        />
+        <button>Add Venue</button>
+        {/* // main contact? */}
         <input
           type='date'
           placeholder='Date'
@@ -36,6 +59,22 @@ const Form = () => {
           value={date}
           onChange={event => setDate(event.target.value)}
         />
+        <input
+          type='time'
+          name='time'
+          value={time}
+          disabled={ allDayEvent ? true : false }
+          onChange={event => setTime(event.target.value)}
+        />
+        <label>
+          <input
+            type='checkbox'
+            name='time'
+            value={allDayEvent}
+            onChange={event => setAllDayEvent(!allDayEvent)}
+          />
+          All Day
+        </label>
       </form>
     </div>
   );
