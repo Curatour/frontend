@@ -1,11 +1,25 @@
 import React from 'react'
-import './Calendar.css';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import {CalendarWrapper} from './CalendarWrapper'
+// import './Calendar.css';
+
+
 
 const Calendar = () => {
+  const event = [
+    { title: 'event 1', date: '2021-04-01' },
+    { title: 'event 2', date: '2021-04-02' }
+    ]
+  
   return (
-    <div className="Calendar">
-      <h1>THIS IS THE Calendar</h1>
-    </div>
+       <CalendarWrapper>
+         <FullCalendar
+           plugins={[dayGridPlugin]}
+           initialView="dayGridMonth"
+           events={event}
+         />
+       </CalendarWrapper>
   );
 }
 
