@@ -26,10 +26,12 @@ const Dashboard = () => {
               }}
               initialView='upcoming'
               listDayFormat={{
+                weekday: 'long'
+              }}
+              listDaySideFormat={{
                 month: 'long',
                 year: 'numeric',
                 day: 'numeric',
-                weekday: 'long'
               }}
               events={[
               {
