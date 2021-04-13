@@ -1,13 +1,16 @@
 .NavBar {
-  margin-top: auto;
-  padding-top: .75rem;
+  padding: .75rem 0 .75rem 0;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
-  margin-bottom: 1.5rem;
   box-shadow: 0px -2px 3px -1px #b3b3b3;
+  background-color: #4d4d4d;
+}
+
+.fa-4x {
+  font-size: 3em;
 }
 
 .active {

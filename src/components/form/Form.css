@@ -1,0 +1,53 @@
+h1 {
+  color: #b3b3b3;
+}
+
+.form-page {
+  padding-bottom: 8rem
+}
+
+form,
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 1.5rem;
+  width: 10rem;
+  background-color: #cacaca;
+  border-radius: .5rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+select {
+  height: 1.5rem;
+  width: 15rem;
+  background-color: #cacaca;
+  border-radius: .5rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.form-button {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: 8rem;
+  margin-bottom: 1rem;
+}
+
+.form-button:hover {
+  background-color: #e2992f;
+}
+
+label {
+  color: #b3b3b3;
+}
+
+.all-day {
+  width: 1rem
+}
