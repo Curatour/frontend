@@ -1,18 +1,26 @@
 import styled from "@emotion/styled";
 
 export const ListWrapper = styled.div`
-  .fe .fc-media-screenfc .fc-direction-ltr .fc-theme-standard {
+  .fc .fc-media-screenfc .fc-direction-ltr .fc-theme-standard {
     height: 30%;
   }
 
   .fc .fc-list {
-    height: 30%;
+    height: 15rem;
   }
 
-  .fc-view-harness {
+  .fc-list-day-cushion {
+    background-color: #b3b3b3;
+  }
+
+  .fc-list-day-text, .fc-list-day-side-text {
+    color: black;
+  }
+
+  .fc .fc-view-harness {
     margin: auto;
     height: 30%;
-    width: 90%;
+    width: 80%;
   }
 
   .fc .fc-toolbar {
