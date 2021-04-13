@@ -22,6 +22,7 @@ const Calendar = () => {
   }
 
   const handleEventClick = (clickInfo) => {
+    //ADD HANDLE FOR CLICKING ON A DAY - VIEW MORE INFO?
     console.log(clickInfo)
   }
   
