@@ -50,4 +50,10 @@ export const CalendarWrapper = styled.div`
     .fc a:hover {
     cursor: pointer;
   }
+
+  .fc-event.fc-event-draggable {
+    background-color: #b3b3b3;
+    color: #4D4D4D;
+    border-radius: .25rem;
+  }
 `
