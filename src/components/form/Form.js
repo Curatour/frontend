@@ -1,4 +1,7 @@
 import React, {useState} from 'react'
+import FormVenue from './FormVenue'
+import FormTime from './FormTime'
+
 import './Form.css';
 
 const Form = () => {
@@ -10,7 +13,12 @@ const Form = () => {
   const [time, setTime] = useState('');
   const [allDayEvent, setAllDayEvent] = useState(false);
   const [eventName, setEventName] = useState('');
+  const [formCounter, setFormCounter] = useState(0);
 
+  const incrementForm = (event) => {
+    event.preventDefault()
+    setFormCounter(formCounter + 1)
+  }
 
   return (
     <section className='form-page'>
@@ -35,12 +43,15 @@ const Form = () => {
           </div>
           <button
             className='form-button'
-            // onClick={ function to make database call and populate drop down}
+            onClick={incrementForm}
           >
             Find Venues
           </button>
         </section>
-        <section className='form-section'>
+        { formCounter > 0 && <FormVenue 
+          props={incrementForm}
+        />}
+        {/* <section className='form-section'>
           <select>
             <option>Please Select A Venue</option>
             <option value={'newVenue'}>Add New Venue</option>
@@ -71,10 +82,9 @@ const Form = () => {
           >
             Add Venue
           </button>
-        </section>
+        </section> */}
         {/* // main contact? */}
-        <section className='form-section'>
-
+        {/* <section className='form-section'>
           <input
             type='date'
             placeholder='Date'
@@ -111,7 +121,8 @@ const Form = () => {
           >
             Create Event
           </button>
-        </section>
+        </section> */}
+        { formCounter > 1 && <FormTime prop={incrementForm}/>}
       </form>
     </section>
   );
