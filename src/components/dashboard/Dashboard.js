@@ -15,16 +15,22 @@ const Dashboard = () => {
               headerToolbar={{
                 left: '',
                 center: 'title',
-                right: 'listFourDay'
+                right: 'upcoming'
               }}
               views={{
-                listFourDay: {
+                upcoming: {
                   type: 'list',
                   duration: { days: 7 },
                   buttonText: 'Upcoming'
                 }
               }}
-              initialView='listFourDay'
+              initialView='upcoming'
+              listDayFormat={{
+                month: 'long',
+                year: 'numeric',
+                day: 'numeric',
+                weekday: 'long'
+              }}
               events={[
               {
                 title: 'Meeting',
