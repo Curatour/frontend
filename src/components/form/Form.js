@@ -43,86 +43,15 @@ const Form = () => {
           </div>
           <button
             className='form-button'
-            onClick={incrementForm}
+            onClick={event => incrementForm(event)}
           >
             Find Venues
           </button>
         </section>
-        { formCounter > 0 && <FormVenue 
-          props={incrementForm}
-        />}
-        {/* <section className='form-section'>
-          <select>
-            <option>Please Select A Venue</option>
-            <option value={'newVenue'}>Add New Venue</option>
-            <option value={'venue1'}>Venue1</option>
-            <option value={'venue2'}>Venue2</option>
-          </select>
-          <button
-            className='form-button'
-          >
-            Next
-          </button>
-          <input
-            type='text'
-            placeholder='Venue Name'
-            name='venueName'
-            value={venueName}
-            onChange={event => setVenueName(event.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Address (street and number)'
-            name='address'
-            value={address}
-            onChange={event => setAddress(event.target.value)}
-          />
-          <button
-            className='form-button'
-          >
-            Add Venue
-          </button>
-        </section> */}
-        {/* // main contact? */}
-        {/* <section className='form-section'>
-          <input
-            type='date'
-            placeholder='Date'
-            name='date'
-            value={date}
-            onChange={event => setDate(event.target.value)}
-          />
-          <input
-            type='time'
-            name='time'
-            value={time}
-            disabled={ allDayEvent ? true : false }
-            onChange={event => setTime(event.target.value)}
-          />
-          <label>
-            <input
-              className='all-day'
-              type='checkbox'
-              name='time'
-              value={allDayEvent}
-              onChange={event => setAllDayEvent(!allDayEvent)}
-            />
-            All Day
-          </label>
-          <input
-            type='text'
-            placeholder='Event Name'
-            name='eventName'
-            value={eventName}
-            onChange={event => setEventName(event.target.value)}
-          />
-          <button
-            className='form-button'
-          >
-            Create Event
-          </button>
-        </section> */}
-        { formCounter > 1 && <FormTime prop={incrementForm}/>}
+        { formCounter > 0 && (<FormVenue 
+          incrementForm={incrementForm}
+        />)}
+        { formCounter > 1 && <FormTime incrementForm={incrementForm}/> }
       </form>
     </section>
   );

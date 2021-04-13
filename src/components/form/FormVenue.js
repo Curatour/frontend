@@ -32,7 +32,7 @@ const FormVenue = ({ venueName, address, setVenueName, setAddress, incrementForm
       />
       <button
         className='form-button'
-        onClick={incrementForm}
+        onClick={event => incrementForm(event)}
       >
         Add Venue
       </button>

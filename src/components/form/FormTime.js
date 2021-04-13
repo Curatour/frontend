@@ -37,7 +37,7 @@ const FormTime = ({ date, setDate, time, setTime, allDayEvent, setAllDayEvent, e
       />
       <button
         className='form-button'
-        onClick={incrementForm}
+        onClick={event => incrementForm(event)}
       >
         Create Event
       </button>
