@@ -36,4 +36,18 @@ export const CalendarWrapper = styled.div`
   .fc button .inactive {
     background-color: #4D4D4D;
   }
+
+  .fc-h-event .fc-event-main {
+    background-color: #b3b3b3;
+    color: #4D4D4D;
+    border-radius: .25rem;
+  }
+
+  .fc a {
+    border: none;
+  }
+
+    .fc a:hover {
+    cursor: pointer;
+  }
 `
