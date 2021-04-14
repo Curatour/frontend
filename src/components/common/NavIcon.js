@@ -1,9 +1,10 @@
 import React from 'react'
 
 const NavIcon = ({image}) => {
-  return (
+  return ( 
     <img 
       src={image}
+      alt={}
       />
   );
 }
