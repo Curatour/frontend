@@ -26,7 +26,9 @@ const Dashboard = () => {
             // if (error) {
               // console.log('error:', error)
             // }
-            console.log(data["tours"])
+            if (data) {
+              console.log(data["tours"])
+            }
             // console.log(data, 'tours', data.tours)
             return <h1>test</h1>
           }
