@@ -30,17 +30,17 @@ const contactData = [
   }];
 
 const Contacts = () => {
-  const [contactList, setContactList] = useState(contactData);
+  // initialContacts will always be the contactData from dummy data or api or whatever
+  const [initialContacts, setInitialContacts] = useState(contactData);
+  // currentContacts are the ones being displayed after being searched or however we intend on manipulating that list 
+  const [currentContacts, setCurrentContacts] = useState(initialContacts);
   const searchRef = useRef('');
 
-  // functionality to search through your contacts by name
-  // filters through contacts by checking that the contacts first or last name includes the search input value
-  // currently filtering the contactData that is used to create initial state in this component so that when the user has a shorter input, then the filter works on all of the contacts not just the ones left from the last filter
-  // i feel like there is a better way to do this and it might be an issue when we get further down the line and we phase out dummy data 
+  
   const searchContacts = event => {
     event.preventDefault();
     
-    const filteredContacts = contactData.filter(contact => {
+    const filteredContacts = initialContacts.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
       const lastName = contact.lastName.toUpperCase();
       const firstName = contact.firstName.toUpperCase();
@@ -50,10 +50,10 @@ const Contacts = () => {
       }
     });
 
-    setContactList(filteredContacts);
+    setCurrentContacts(filteredContacts);
 }
 
-  const contacts = contactList.map(contact => <ContactCard key={contact.id} contact={contact}/>);
+  const contacts = currentContacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
   return (
     <div className='Contacts'>
