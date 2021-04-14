@@ -18,8 +18,8 @@ export const ListWrapper = styled.div`
   }
 
   .fc .fc-view-harness {
+    height: 30% !important;
     margin: auto;
-    height: 30%;
     width: 80%;
   }
 
