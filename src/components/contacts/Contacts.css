@@ -22,3 +22,8 @@
   padding: 0;
   text-align: left;
 }
+
+/* there is styling on all inputs in components/form/Form.css */
+/* .search-bar {
+  border: none;
+} */
