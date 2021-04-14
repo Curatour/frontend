@@ -6,8 +6,8 @@ const ContactCard = (props) => {
     <article className="ContactCard">
       <h3>{`${lastName}, ${firstName}`}</h3>
       <ul className='contact-info'>
-        <li>{email}</li>
-        <li>{phone}</li>
+        <li>{`Email: ${email}`}</li>
+        <li>{`Phone: ${phone}`}</li>
       </ul>
     </article>
   );
