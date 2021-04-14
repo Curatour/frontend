@@ -33,10 +33,14 @@ const Contacts = () => {
   const [contactList, setContactList] = useState(contactData);
   const searchRef = useRef('');
 
+  // functionality to search through your contacts by name
+  // filters through contacts by checking that the contacts first or last name includes the search input value
+  // currently filtering the contactData that is used to create initial state in this component so that when the user has a shorter input, then the filter works on all of the contacts not just the ones left from the last filter
+  // i feel like there is a better way to do this and it might be an issue when we get further down the line and we phase out dummy data 
   const searchContacts = event => {
     event.preventDefault();
     
-    const filteredContacts = contactList.filter(contact => {
+    const filteredContacts = contactData.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
       const lastName = contact.lastName.toUpperCase();
       const firstName = contact.firstName.toUpperCase();
@@ -56,7 +60,7 @@ const Contacts = () => {
       <input 
         className='search-bar'
         type='text'
-        placeholder='Search contacts...'
+        placeholder='Search contact names...'
         ref={searchRef}
         onChange={event => searchContacts(event)}
       />
