@@ -15,7 +15,7 @@ const Dashboard = () => {
               headerToolbar={{
                 left: '',
                 center: 'title',
-                right: 'upcoming'
+                right: ''
               }}
               views={{
                 upcoming: {
