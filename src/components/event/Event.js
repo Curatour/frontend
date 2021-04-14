@@ -3,9 +3,12 @@ import './Event.css';
 
 const Event = () => {
   return (
-    <div className="Event">
-      <h1>THIS IS THE Event</h1>
-    </div>
+    <section className="Event">
+      <h1>Event Name</h1>
+      <article>
+        Sub Events Here
+      </article>
+    </section>
   );
 }
 
