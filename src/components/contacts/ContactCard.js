@@ -5,10 +5,16 @@ const ContactCard = (props) => {
   return (
     <article className="ContactCard">
       <h3>{`${lastName}, ${firstName}`}</h3>
-      <ul className='contact-info'>
-        <li>{`Email: ${email}`}</li>
-        <li>{`Phone: ${phone}`}</li>
-      </ul>
+      <section className='contact-info'>
+        <div className='contact-link'>
+          <p className='contact-label'>Email:</p>
+          <a className='email' href={`mailto:${email}`}>{email}</a>
+        </div>
+        <div className='contact-link'>
+          <p className='contact-label'>Phone:</p>
+          <a className='phone' href={`tel:${email}`}>{phone}</a>
+        </div>
+      </section>
     </article>
   );
 };
