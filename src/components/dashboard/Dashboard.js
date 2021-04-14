@@ -3,12 +3,35 @@ import './Dashboard.css';
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+const TOURS_QUERY = gql`
+  query {
+    tours {
+      name
+      startDate
+    }
+  }
+`
 
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
       <h1>THIS IS THE Dashboard</h1>
+      <Query query={TOURS_QUERY}>
+        {
+          ({loading, error, data}) => {
+            // if (error) {
+              // console.log('error:', error)
+            // }
+            console.log(data["tours"])
+            // console.log(data, 'tours', data.tours)
+            return <h1>test</h1>
+          }
+        }
+      </Query>
       <ListWrapper>
         <FullCalendar
               plugins={[listPlugin]}

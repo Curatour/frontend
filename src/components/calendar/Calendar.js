@@ -5,7 +5,15 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction"
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
+// import gql from 'graphql-tag';
+// import { Query } from 'react-apollo';
 // import './Calendar.css';
+
+// const TOURS_QUERY = gql`
+//   query {
+//     tours
+//   }
+// `
 
 
 const Calendar = () => {
