@@ -20,10 +20,15 @@ const AppProvider = ({children}) => {
 
   const value = {
     events,
+    setEvents,
     contacts,
+    setContacts,
     error,
+    setError,
     loading,
-    message
+    setLoading,
+    message,
+    setMessage
   }
 
   return (
