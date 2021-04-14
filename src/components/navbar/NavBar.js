@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import './NavBar.css';
-import NavIcon from '../common/NavIcon'
+// import NavIcon from '../common/NavIcon'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCalendarAlt, faCalendarPlus, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
