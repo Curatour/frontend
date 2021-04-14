@@ -4,7 +4,7 @@ const ContactCard = (props) => {
   const { lastName, firstName, email, phone } = props.contact;
   return (
     <article className="ContactCard">
-      <h3>{`${lastName}, ${firstName}`}</h3>
+      <h3 className='contact-name'>{`${lastName}, ${firstName}`}</h3>
       <section className='contact-info'>
         <div className='contact-link'>
           <p className='contact-label'>Email:</p>
