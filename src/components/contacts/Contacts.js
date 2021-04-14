@@ -31,7 +31,8 @@ const contactData = [
 
 const Contacts = () => {
   // initialContacts will always be the contactData from dummy data or api or whatever
-  const [initialContacts, setInitialContacts] = useState(contactData);
+  const [initialContacts] = useState(contactData);
+  // const [initialContacts, setInitialContacts] = useState(contactData);
   // currentContacts are the ones being displayed after being searched or however we intend on manipulating that list 
   const [currentContacts, setCurrentContacts] = useState(initialContacts);
   const searchRef = useRef('');
@@ -39,15 +40,15 @@ const Contacts = () => {
   
   const searchContacts = event => {
     event.preventDefault();
-    
+
     const filteredContacts = initialContacts.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
-      const lastName = contact.lastName.toUpperCase();
-      const firstName = contact.firstName.toUpperCase();
 
-      if (lastName.includes(searchInput) || firstName.includes(searchInput)) {
-        return contact;
-      }
+      return (
+        contact.lastName.toUpperCase().includes(searchInput) 
+        || 
+        contact.firstName.toUpperCase().includes(searchInput)
+        );
     });
 
     setCurrentContacts(filteredContacts);
