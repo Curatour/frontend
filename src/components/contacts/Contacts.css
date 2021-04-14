@@ -17,9 +17,9 @@
   text-align: center;
   padding: 1rem;
   border-radius: 3px;
-  -webkit-box-shadow: 0px 0px 12px #333333;
-  -moz-box-shadow: 0px 0px 12px #333333;
-  box-shadow: 0px 0px 12px #333333;
+  -webkit-box-shadow: 0px 0px 10px #333333;
+  -moz-box-shadow: 0px 0px 10px #333333;
+  box-shadow: 0px 0px 10px #333333;
 }
 
 .contact-name {
