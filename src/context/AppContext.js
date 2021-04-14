@@ -16,6 +16,12 @@ const AppProvider = ({children}) => {
 
   // functions
 
+  const getEvents = () => {
+    // do API call
+    // apiCall.getEvents
+    // return what we want
+  }
+
   // values
 
   const value = {
