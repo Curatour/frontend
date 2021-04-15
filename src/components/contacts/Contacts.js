@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
-import AddContacts from './AddContacts';
+// import AddContacts from './AddContacts';
 import './Contacts.css';
 
 const contactData = [
@@ -53,7 +53,12 @@ const Contacts = () => {
     });
 
     setCurrentContacts(filteredContacts);
-}
+  }
+
+  // const addNewContact = (newContact) => {
+  //   console.log(newContact)
+  //   setCurrentContacts([newContact, ...currentContacts])
+  // }
 
   const contacts = currentContacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
@@ -67,7 +72,7 @@ const Contacts = () => {
         onChange={event => searchContacts(event)}
       />
       {contacts}
-      <AddContacts submitNewContact={newContact => setCurrentContacts({newContact, ...currentContacts})}/>
+      {/* <AddContacts addNewContact={addNewContact}/> */}
     </div>
   )
 }

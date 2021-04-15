@@ -1,34 +1,37 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 
-const AddContacts = ({ submitNewContact }) => {
-  const nameRef = useRef();
+const AddContacts = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
 
-  const [newContact, setNewContact] = useState({});
-
-  const addNewContact = event => {
+  const submitNewContact = event => {
     event.preventDefault();
 
-    // if (nameRef.current.value 
-    //   && phoneRef.current.value 
-    //   && emailRef.curre) {
-      setNewContact({
-          name: nameRef.current.value,
-          phoneNumber: phoneRef.current.value,
-          email: emailRef.current.value
-        });
-        console.log(newContact)
-      
-      submitNewContact(newContact);
-        // console.log('dis on', newContact)
+    if (firstNameRef.current.value 
+      && lastNameRef.current.value
+      && phoneRef.current.value 
+      && emailRef.current) {
+      const newContact = {
 
-    //     clearInputs();
-    // }
+        id: Date.now(),
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        phoneNumber: phoneRef.current.value,
+        email: emailRef.current.value
+      };
+      
+      console.log(newContact)
+      // addNewContact(newContact);
+      // some function to add the contact to the api 
+      clearInputs();
+    }
   }
 
   const clearInputs = () => {
-    nameRef.current.value = '';
+    firstNameRef.current.value = '';
+    lastNameRef.current.value = '';
     phoneRef.current.value = '';
     emailRef.current.value = '';
   }
@@ -36,12 +39,19 @@ const AddContacts = ({ submitNewContact }) => {
   return (
     <>
       <h2>Input your contact's information below</h2>
-      <form className='add-contacts' >
+      <form className='add-contacts' onSubmit={event => submitNewContact(event)}>
         <input 
           type='text'
-          name='contact-name'
-          placeholder='Name'
-          ref={nameRef}
+          name='first-name'
+          placeholder='First Name'
+          ref={firstNameRef}
+        />
+
+        <input 
+          type='text'
+          name='last-name'
+          placeholder='Last Name'
+          ref={lastNameRef}
         />
 
         <input 
@@ -58,8 +68,8 @@ const AddContacts = ({ submitNewContact }) => {
           ref={emailRef}
         />
 
-        <button onSubmit={event => addNewContact(event)}>Add Contact</button>
-      </form>
+        <button>Add Contact</button>
+      </form >
     </>
   )
 }
