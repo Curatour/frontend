@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
 import './Contacts.css';
 
-const contactData = [
+export const contactData = [
   {
     id: 1,
     firstName: 'Kevin',

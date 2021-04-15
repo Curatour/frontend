@@ -4,11 +4,13 @@ import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
 import TourDisplay from './TourDisplay'
+import ContactsPreview from './ContactsPreview'
 
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
+      <ContactsPreview/>
       <TourDisplay name="MVP Tour"/>
       <ListWrapper>
         <FullCalendar
