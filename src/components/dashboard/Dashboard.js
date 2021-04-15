@@ -3,12 +3,13 @@ import './Dashboard.css';
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
+import TourDisplay from './TourDisplay'
 
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
-      <h1>THIS IS THE Dashboard</h1>
+      <TourDisplay name="MVP Tour"/>
       <ListWrapper>
         <FullCalendar
               plugins={[listPlugin]}
