@@ -31,18 +31,14 @@ const contactData = [
   }];
 
 const Contacts = () => {
-  // initialContacts will always be the contactData from dummy data or api or whatever
-  const [initialContacts] = useState(contactData);
-  // const [initialContacts, setInitialContacts] = useState(contactData);
-  // currentContacts are the ones being displayed after being searched or however we intend on manipulating that list 
-  const [currentContacts, setCurrentContacts] = useState(initialContacts);
+  const [contacts, setcontacts] = useState(contactData);
   const searchRef = useRef('');
 
-  
   const searchContacts = event => {
     event.preventDefault();
 
-    const filteredContacts = initialContacts.filter(contact => {
+    // changed to search through dummy data to remove extra piece of state
+    const filteredContacts = contactData.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
 
       return (
@@ -52,15 +48,15 @@ const Contacts = () => {
         );
     });
 
-    setCurrentContacts(filteredContacts);
+    setcontacts(filteredContacts);
   }
 
   // const addNewContact = (newContact) => {
   //   console.log(newContact)
-  //   setCurrentContacts([newContact, ...currentContacts])
+  //   setcontacts([newContact, ...contacts])
   // }
 
-  const contacts = currentContacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
+  const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
   return (
     <div className='Contacts'>
@@ -71,7 +67,7 @@ const Contacts = () => {
         ref={searchRef}
         onChange={event => searchContacts(event)}
       />
-      {contacts}
+      {contactCards}
       {/* <AddContacts addNewContact={addNewContact}/> */}
     </div>
   )
