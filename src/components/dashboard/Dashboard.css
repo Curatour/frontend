@@ -1,5 +1,16 @@
+.TourDisplay {
+  border: 1px solid #b3b3b3;
+  width: 90%;
+  margin: auto;
+}
+
+.TourDisplay h1 {
+  margin: 2%;
+}
+
 .TourDisplay button {
   border: 2px solid #e2992f;
   color: #e2992f;
   background-color: #4d4d4d;
+  margin-bottom: 2%;
 }
