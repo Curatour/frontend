@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
+import AddContacts from './AddContacts';
 import './Contacts.css';
 
 const contactData = [
@@ -66,6 +67,7 @@ const Contacts = () => {
         onChange={event => searchContacts(event)}
       />
       {contacts}
+      <AddContacts submitNewContact={newContact => setCurrentContacts({newContact, ...currentContacts})}/>
     </div>
   )
 }
