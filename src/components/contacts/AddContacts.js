@@ -13,34 +13,26 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
       && lastNameRef.current.value
       && phoneRef.current.value 
       && emailRef.current) {
-      const newContact = {
 
+      const newContact = {
         id: Date.now(),
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         phoneNumber: phoneRef.current.value,
         email: emailRef.current.value
       };
-      
-      // console.log(newContact);
+
       addNewContact(newContact);
       closeAddContact(event);
     }
   }
 
-  // const clearInputs = () => {
-  //   firstNameRef.current.value = '';
-  //   lastNameRef.current.value = '';
-  //   phoneRef.current.value = '';
-  //   emailRef.current.value = '';
-  // }
-
   return (
     <>
     <div className='add-contacts-layer'></div>
       <div className='add-contacts'>
-        <form className='add-contacts-form' onSubmit={event => submitNewContact(event)}>
-        <h2>Input your contact's information below</h2>
+        <form className='add-contacts-form' >
+        <h2>Enter contact's information</h2>
           <input 
             type='text'
             name='first-name'
@@ -69,7 +61,10 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
             ref={emailRef}
           />
 
-          <button>Add Contact</button>
+          <section className='module-buttons'>
+            <button onClick={event => submitNewContact(event)}>Add Contact</button>
+            <button onClick={event => closeAddContact(event)}>Cancel</button>
+          </section>
         </form >
       </div>
     </>

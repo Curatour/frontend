@@ -39,7 +39,7 @@ const Contacts = () => {
     event.preventDefault();
 
     // changed to search through dummy data to remove extra piece of state
-    // hope that holds up when we get to the real data 
+    // hope that holds up when we get to the real data
     const filteredContacts = contactData.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
 
@@ -54,7 +54,6 @@ const Contacts = () => {
   }
 
   const addNewContact = (newContact) => {
-    console.log(newContact)
     setcontacts([...contacts, newContact])
   }
 

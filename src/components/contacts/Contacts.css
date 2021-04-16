@@ -52,8 +52,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* font-family: 'Montserrat',
-  sans-serif;  */
 }
 
 .search-bar {
@@ -84,7 +82,7 @@
   top: 50; 
   bottom: 50;
   height: 50%;
-  width: 80%;
+  width: 50%;
   text-align: center;
   background-color: #b3b3b3;
   color: #4D4D4D;
@@ -92,6 +90,12 @@
   border-radius: 3px;
 }
 
-/* .add-contacts-button {
+.module-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 168px;
+}
+
+/* @media and screen {
   
-}  */
+} */
