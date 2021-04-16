@@ -7,8 +7,6 @@
   margin: auto;
   padding: 1rem;
   color: #b3b3b3;
-  /* font-family: 'Montserrat',
-  sans-serif; */
 }
 
 .ContactCard {
@@ -95,7 +93,3 @@
   justify-content: space-between;
   width: 168px;
 }
-
-/* @media and screen {
-  
-} */

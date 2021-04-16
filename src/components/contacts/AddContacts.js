@@ -13,7 +13,6 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
       && lastNameRef.current.value
       && phoneRef.current.value 
       && emailRef.current) {
-
       const newContact = {
         id: Date.now(),
         firstName: firstNameRef.current.value,
@@ -29,10 +28,10 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
 
   return (
     <>
-    <div className='add-contacts-layer'></div>
+      <div className='add-contacts-layer'></div>
       <div className='add-contacts'>
         <form className='add-contacts-form' >
-        <h2>Enter contact's information</h2>
+          <h2>Enter contact's information</h2>
           <input 
             type='text'
             name='first-name'
@@ -62,10 +61,16 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
           />
 
           <section className='module-buttons'>
-            <button onClick={event => submitNewContact(event)}>Add Contact</button>
-            <button onClick={event => closeAddContact(event)}>Cancel</button>
+            <button 
+              onClick={event => submitNewContact(event)}>
+              Add Contact
+            </button>
+            <button 
+              onClick={event => closeAddContact(event)}>
+              Cancel
+            </button>
           </section>
-        </form >
+        </form>
       </div>
     </>
   )
