@@ -5,7 +5,7 @@ import { contactData } from '../contacts/Contacts'
 
 const ContactsPreview = () => {
   const topThree = contactData.map(contact => {
-    return <article className="contact-icon"><p>{contact.firstName[0]}{contact.lastName[0]}</p></article>
+    return <a className="contact-icon" href={`mailto: ${contact.email}`} ><p>{contact.firstName[0]}{contact.lastName[0]}</p></a>
   })
   return (
     <div className="ContactsPreview">
