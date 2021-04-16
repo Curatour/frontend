@@ -23,7 +23,7 @@ const Event = () => {
         {agenda.length > 0 && 
           <button 
             className='form-button' 
-            style={{marginTop: '2rem'}}
+            style={{marginTop: '1.5rem'}}
             onClick={saveAgenda}
             >Save Agenda
             </button>}
