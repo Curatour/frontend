@@ -1,18 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Agenda from '../agenda/Agenda'
 import './Event.css';
 
 const Event = () => {
+  const [agenda, setAgenda] = useState([])
+  
+  const saveAgenda = () => {
+    console.log(agenda)
+    //MUTATE SUBEVENTS HERE
+  }
+  
   return (
     <section className="Event">
-      <h1>Event Name</h1>
-      <h1>Venue Name</h1>
-      <h1>Address/location</h1>
-      <h1>Main contact: #####</h1>
-      <article>
-        <button>ADD</button>
-        <button>Edit</button>
-        <p>Add events - idea box style</p>
-      </article>
+      <div className='event-info'>
+        <h1>Event Name</h1>
+        <h1>Venue Name</h1>
+        <h1>Address/location</h1>
+        <h1>Main contact: #####</h1>
+      </div>
+      <div className='agenda-wrapper'>
+        <Agenda setAgenda={setAgenda} agenda={agenda}/>
+        {agenda.length > 0 && <button onClick={saveAgenda}>Save Agenda</button>}
+      </div>
     </section>
   );
 }
