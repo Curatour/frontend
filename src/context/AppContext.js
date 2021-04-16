@@ -15,7 +15,7 @@ const AppProvider = ({children}) => {
 
   const eventsData = useQuery(EVENTS_QUERY)
   const [events, setEvents] = useState(eventsData.data ? eventsData.data.events : [])
-  console.log(eventsData.data)
+  console.log(eventsData)
 
   const [contacts, setContacts] = useState([])
 
@@ -30,7 +30,7 @@ const AppProvider = ({children}) => {
     // apiCall.getEvents
     // return what we want
   // }
-
+  
   // values
 
   const value = {
