@@ -32,7 +32,8 @@
 
 .agenda-item-title {
   font-size: 1rem;
-  width: auto;
+  width: 80%;
+  text-align: left;
   margin: 0;
 }
 
@@ -50,13 +51,17 @@
 .agenda-item-desc {
   font-size: .8rem;
   font-style: italic;
+  text-align: left;
   margin: 0;
+  width: 70%;
+  height: auto;
   margin-top: .25rem;
 }
 
 .agenda-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid #cecece;
