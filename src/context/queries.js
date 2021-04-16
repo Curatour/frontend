@@ -9,6 +9,7 @@ export const TOURS_QUERY = gql`
     }
   }
 `
+
 export const CONTACTS_QUERY = gql`
   query {
     contacts

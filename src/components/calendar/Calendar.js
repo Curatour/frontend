@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -8,6 +9,7 @@ import {CalendarWrapper} from './CalendarWrapper'
 // import gql from 'graphql-tag';
 // import { Query } from 'react-apollo';
 // import './Calendar.css';
+import './Calendar.css';
 
 // const TOURS_QUERY = gql`
 //   query {
@@ -21,11 +23,12 @@ const Calendar = () => {
     { title: 'event 2', date: '2021-04-02' }])
 
   const renderEventContent = (clickInfo) => {
+    console.log(clickInfo)
     return (
-      <>
+      <Link to="/event-details" className='event-link'>
         <b>{clickInfo.timeText}</b>
         <i>{clickInfo.event.title}</i>
-      </>
+      </Link>
     )
   }
 

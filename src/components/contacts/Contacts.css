@@ -3,19 +3,17 @@
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
-  width: 100%;
+  width: 40%;
   margin: auto;
   padding: 1rem;
   color: #b3b3b3;
-  /* font-family: 'Montserrat',
-  sans-serif; */
 }
 
-.ContactCard {
+.ContactCard article {
   border: 3px solid #b3b3b3;
-  width: 40%;
+  width: 93%;
   text-align: center;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 3px;
   -webkit-box-shadow: 0px 0px 10px #333333;
   -moz-box-shadow: 0px 0px 10px #333333;
@@ -44,16 +42,54 @@
   margin: 0;
 }
 
-.ContactCard a {
+.Contacts a {
   color: #e2992f;
 }
 
-/* a:hover {
-  cursor: pointer;
-} */
+.handle-contacts-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
+.search-bar {
+  width: 320px;
+  margin: 0;
+}
 
-/* there is styling on all inputs in components/form/Form.css */
-/* .search-bar {
-  border: none;
-} */
+.add-contacts-layer {
+  z-index: 1;
+  position: absolute;
+  left: 50;
+  right: 50;
+  top: 50;
+  bottom: 50;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 50%;
+    display: flex;
+  justify-content: center;
+}
+
+.add-contacts {
+  z-index: 2;
+  position: absolute; 
+  left: 50; 
+  right: 50; 
+  top: 50; 
+  bottom: 50;
+  height: 50%;
+  width: 50%;
+  text-align: center;
+  background-color: #b3b3b3;
+  color: #4D4D4D;
+  border: 3px solid #4D4D4D;
+  border-radius: 3px;
+}
+
+.module-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 168px;
+}

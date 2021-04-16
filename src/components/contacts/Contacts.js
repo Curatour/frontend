@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
+import AddContacts from './AddContacts';
 import './Contacts.css';
 
-const contactData = [
+export const contactData = [
   {
     id: 1,
     firstName: 'Kevin',
@@ -30,18 +31,15 @@ const contactData = [
   }];
 
 const Contacts = () => {
-  // initialContacts will always be the contactData from dummy data or api or whatever
-  const [initialContacts] = useState(contactData);
-  // const [initialContacts, setInitialContacts] = useState(contactData);
-  // currentContacts are the ones being displayed after being searched or however we intend on manipulating that list 
-  const [currentContacts, setCurrentContacts] = useState(initialContacts);
+  const [contacts, setcontacts] = useState(contactData);
+  const [isAddingContact, togggleIsAddingContact] = useState(false);
   const searchRef = useRef('');
 
-  
   const searchContacts = event => {
     event.preventDefault();
-
-    const filteredContacts = initialContacts.filter(contact => {
+    // changed to search through dummy data to remove extra piece of state
+    // hope that holds up when we get to the real data
+    const filteredContacts = contactData.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
 
       return (
@@ -51,21 +49,40 @@ const Contacts = () => {
         );
     });
 
-    setCurrentContacts(filteredContacts);
-}
+    setcontacts(filteredContacts);
+  }
 
-  const contacts = currentContacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
+  const addNewContact = (newContact) => {
+    setcontacts([...contacts, newContact])
+  }
+
+  const toggleAddContactModule = (event) => {
+    event.preventDefault();
+    togggleIsAddingContact(!isAddingContact);
+  }
+
+  const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
   return (
     <div className='Contacts'>
-      <input 
-        className='search-bar'
-        type='text'
-        placeholder='Search contact names...'
-        ref={searchRef}
-        onChange={event => searchContacts(event)}
-      />
-      {contacts}
+      <section className='handle-contacts-options'>
+        <input 
+          className='search-bar'
+          type='text'
+          placeholder='Search contact names...'
+          ref={searchRef}
+          onChange={event => searchContacts(event)}
+        />
+        <button className='add-contacts-button'
+        onClick={event => toggleAddContactModule(event)}>Add Contact</button>
+      </section>
+      {contactCards}
+
+      {isAddingContact &&
+        <AddContacts 
+        addNewContact={addNewContact} 
+        closeAddContact={toggleAddContactModule}
+      />}
     </div>
   )
 }

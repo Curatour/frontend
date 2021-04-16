@@ -20,7 +20,9 @@ export const INITIAL_EVENTS = [
   {
     id: createEventId(),
     title: ' - Timed event',
-    start: todayStr +  insertTimeHere
+    start: todayStr +  insertTimeHere,
+    venueID: 1
+    //adds as extended props - can access through event 
   }
 ]
 
