@@ -3,12 +3,14 @@ import './Dashboard.css';
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
+import {Link} from 'react-router-dom'
 
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
       <h1>THIS IS THE Dashboard</h1>
+      <Link to='/event-details'>go to event details view</Link>
       <ListWrapper>
         <FullCalendar
               plugins={[listPlugin]}
