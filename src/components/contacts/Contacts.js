@@ -55,7 +55,7 @@ const Contacts = () => {
 
   const addNewContact = (newContact) => {
     console.log(newContact)
-    setcontacts([newContact, ...contacts])
+    setcontacts([...contacts, newContact])
   }
 
   const toggleAddContactModule = (event) => {
@@ -81,7 +81,10 @@ const Contacts = () => {
       {contactCards}
 
       {isAddingContact &&
-        <AddContacts closeAddContact={toggleAddContactModule}/>}
+        <AddContacts 
+        addNewContact={addNewContact} 
+        closeAddContact={toggleAddContactModule}
+      />}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const AddContacts = ({ closeAddContact }) => {
+const AddContacts = ({ addNewContact, closeAddContact }) => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const phoneRef = useRef();
@@ -22,55 +22,56 @@ const AddContacts = ({ closeAddContact }) => {
         email: emailRef.current.value
       };
       
-      console.log(newContact);
-      // addNewContact(newContact);
-      // some function to add the contact to the api 
-      clearInputs();
+      // console.log(newContact);
+      addNewContact(newContact);
       closeAddContact(event);
     }
   }
 
-  const clearInputs = () => {
-    firstNameRef.current.value = '';
-    lastNameRef.current.value = '';
-    phoneRef.current.value = '';
-    emailRef.current.value = '';
-  }
+  // const clearInputs = () => {
+  //   firstNameRef.current.value = '';
+  //   lastNameRef.current.value = '';
+  //   phoneRef.current.value = '';
+  //   emailRef.current.value = '';
+  // }
 
   return (
     <>
-      <h2>Input your contact's information below</h2>
-      <form className='add-contacts' onSubmit={event => submitNewContact(event)}>
-        <input 
-          type='text'
-          name='first-name'
-          placeholder='First Name'
-          ref={firstNameRef}
-        />
+    <div className='add-contacts-layer'></div>
+      <div className='add-contacts'>
+        <form className='add-contacts-form' onSubmit={event => submitNewContact(event)}>
+        <h2>Input your contact's information below</h2>
+          <input 
+            type='text'
+            name='first-name'
+            placeholder='First Name'
+            ref={firstNameRef}
+          />
 
-        <input 
-          type='text'
-          name='last-name'
-          placeholder='Last Name'
-          ref={lastNameRef}
-        />
+          <input 
+            type='text'
+            name='last-name'
+            placeholder='Last Name'
+            ref={lastNameRef}
+          />
 
-        <input 
-          type='text'
-          name='contact-phone'
-          placeholder='Phone Number'
-          ref={phoneRef}
-        />
+          <input 
+            type='text'
+            name='contact-phone'
+            placeholder='Phone Number'
+            ref={phoneRef}
+          />
 
-        <input 
-          type='text'
-          name='contact-email'
-          placeholder='Email'
-          ref={emailRef}
-        />
+          <input 
+            type='text'
+            name='contact-email'
+            placeholder='Email'
+            ref={emailRef}
+          />
 
-        <button>Add Contact</button>
-      </form >
+          <button>Add Contact</button>
+        </form >
+      </div>
     </>
   )
 }
