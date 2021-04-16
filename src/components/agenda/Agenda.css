@@ -1,0 +1,73 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 350px;
+}
+
+
+.agenda-list {
+    background-color: white;
+    margin: auto;
+    width: 90%;
+    height: 25vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow:
+    /* The top layer shadow */
+        0 1px 1px rgba(0,0,0,0.15),
+            /* The second layer */
+        0 10px 0 -5px #eee,
+            /* The second layer shadow */
+        0 10px 1px -4px rgba(0,0,0,0.15),
+            /* The third layer */
+        0 20px 0 -10px #eee,
+            /* The third layer shadow */
+        0 20px 1px -9px rgba(0,0,0,0.15);
+    padding: 15px;
+}
+
+.agenda-item-title {
+  font-size: 1.25rem;
+  width: auto;
+  height: ;
+  margin: 0;
+}
+
+.title-wrapper {
+  display: flex;
+}
+
+.agenda-item-desc {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.agenda-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #cecece;
+    font-family: Roboto, sans-serif;
+}
+
+.agenda-check {
+    
+  margin: 0;
+  font-size: 30px;
+}
+.agenda-check:focus {
+  outline: 0;
+}
+
+textarea {
+  background-color: #cacaca;
+  border-radius: .5rem;
+  color: black;
+  margin-bottom: 1rem;
+}
