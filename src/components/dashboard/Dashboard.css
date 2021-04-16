@@ -20,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   width: 80%;
+  max-width: 400px;
   margin: 5% auto;
 }
 
@@ -33,9 +34,8 @@
   color:#b3b3b3;
 }
 
-.contact-icon p {
-  font-size: 2rem;
-  margin-top: 25%;
+.contact-icon:active {
+  background-color: #303030;
 }
 
 .contact-icon p {
