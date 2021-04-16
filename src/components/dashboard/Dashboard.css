@@ -32,6 +32,7 @@
   border-radius: 50%;
   background-color: #4d4d4d;
   color:#b3b3b3;
+  box-shadow: 0px 0px 10px #333333;
 }
 
 .contact-icon:active {
