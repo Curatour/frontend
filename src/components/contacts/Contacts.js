@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
-// import AddContacts from './AddContacts';
+import AddContacts from './AddContacts';
 import './Contacts.css';
 
 const contactData = [
@@ -32,6 +32,7 @@ const contactData = [
 
 const Contacts = () => {
   const [contacts, setcontacts] = useState(contactData);
+  const [isAddingContact, togggleIsAddingContact] = useState(false);
   const searchRef = useRef('');
 
   const searchContacts = event => {
@@ -51,24 +52,27 @@ const Contacts = () => {
     setcontacts(filteredContacts);
   }
 
-  // const addNewContact = (newContact) => {
-  //   console.log(newContact)
-  //   setcontacts([newContact, ...contacts])
-  // }
+  const addNewContact = (newContact) => {
+    console.log(newContact)
+    setcontacts([newContact, ...contacts])
+  }
 
   const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
   return (
     <div className='Contacts'>
-      <input 
-        className='search-bar'
-        type='text'
-        placeholder='Search contact names...'
-        ref={searchRef}
-        onChange={event => searchContacts(event)}
-      />
+      <section className='handle-contacts-options'>
+        <input 
+          className='search-bar'
+          type='text'
+          placeholder='Search contact names...'
+          ref={searchRef}
+          onChange={event => searchContacts(event)}
+        />
+        <button>Add Contact</button>
+      </section>
       {contactCards}
-      {/* <AddContacts addNewContact={addNewContact}/> */}
+      <AddContacts addNewContact={addNewContact}/>
     </div>
   )
 }

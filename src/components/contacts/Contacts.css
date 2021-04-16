@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
-  width: 100%;
+  width: 40%;
   margin: auto;
   padding: 1rem;
   color: #b3b3b3;
@@ -13,9 +13,9 @@
 
 .ContactCard {
   border: 3px solid #b3b3b3;
-  width: 40%;
+  width: 93%;
   text-align: center;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 3px;
   -webkit-box-shadow: 0px 0px 10px #333333;
   -moz-box-shadow: 0px 0px 10px #333333;
@@ -46,6 +46,17 @@
 
 .ContactCard a {
   color: #e2992f;
+}
+
+.handle-contacts-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar {
+  width: 320px;
+  margin: 0;
 }
 /* 
 .add-contacts {
