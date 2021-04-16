@@ -1,4 +1,6 @@
 import React, {useContext, useState} from 'react'
+import { useQuery } from 'react-apollo';
+import { TOURS_QUERY } from './queries'
 
 const Context = React.createContext();
 
@@ -8,6 +10,8 @@ export const useApp = () => {
 
 const AppProvider = ({children}) => {
   // global useState
+  const tourData = useQuery(TOURS_QUERY)
+  const [tours, setTours] = useState(tourData.data ? tourData.data.tours : [])
   const [events, setEvents] = useState([])
   const [contacts, setContacts] = useState([])
   const [error, setError] = useState('')
@@ -25,6 +29,8 @@ const AppProvider = ({children}) => {
   // values
 
   const value = {
+    tours, 
+    setTours,
     events,
     setEvents,
     contacts,
