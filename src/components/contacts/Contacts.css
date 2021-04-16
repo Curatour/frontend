@@ -52,22 +52,15 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  /* font-family: 'Montserrat',
+  sans-serif;  */
 }
 
 .search-bar {
   width: 320px;
   margin: 0;
 }
-/* 
-.add-contacts {
-  margin-bottom: 5rem;
-} */
-/* a:hover {
-  cursor: pointer;
-} */
 
-
-/* there is styling on all inputs in components/form/Form.css */
-/* .search-bar {
-  border: none;
-} */
+/* .add-contacts-button {
+  
+}  */

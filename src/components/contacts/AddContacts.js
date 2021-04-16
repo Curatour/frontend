@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const AddContacts = () => {
+const AddContacts = ({ closeAddContact }) => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const phoneRef = useRef();
@@ -22,10 +22,11 @@ const AddContacts = () => {
         email: emailRef.current.value
       };
       
-      console.log(newContact)
+      console.log(newContact);
       // addNewContact(newContact);
       // some function to add the contact to the api 
       clearInputs();
+      closeAddContact(event);
     }
   }
 

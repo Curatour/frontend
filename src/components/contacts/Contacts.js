@@ -39,6 +39,7 @@ const Contacts = () => {
     event.preventDefault();
 
     // changed to search through dummy data to remove extra piece of state
+    // hope that holds up when we get to the real data 
     const filteredContacts = contactData.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
 
@@ -57,6 +58,11 @@ const Contacts = () => {
     setcontacts([newContact, ...contacts])
   }
 
+  const toggleAddContactModule = (event) => {
+    event.preventDefault();
+    togggleIsAddingContact(!isAddingContact);
+  }
+
   const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
 
   return (
@@ -69,10 +75,13 @@ const Contacts = () => {
           ref={searchRef}
           onChange={event => searchContacts(event)}
         />
-        <button>Add Contact</button>
+        <button className='add-contacts-button'
+        onClick={event => toggleAddContactModule(event)}>Add Contact</button>
       </section>
       {contactCards}
-      <AddContacts addNewContact={addNewContact}/>
+
+      {isAddingContact &&
+        <AddContacts closeAddContact={toggleAddContactModule}/>}
     </div>
   )
 }
