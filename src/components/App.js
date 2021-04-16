@@ -8,9 +8,15 @@ import Form from './form/Form'
 import NavBar from './navbar/NavBar'
 import Contacts from './contacts/Contacts'
 import Event from './event/Event'
+import { useQuery } from 'react-apollo';
+import { TOURS_QUERY } from '../context/queries'
 
 
 function App() {
+  const tourData = useQuery(TOURS_QUERY)
+  if (tourData.loading) console.log('loading')
+  if (tourData.error) console.log('ERROR', tourData.error)
+  console.log(tourData.data.tours[0].name)
   return (
     <div className="App">
       <Header/>

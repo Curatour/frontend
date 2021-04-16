@@ -4,7 +4,10 @@ import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
+import TourDisplay from './TourDisplay'
+import ContactsPreview from './ContactsPreview'
+import {Link} from 'react-router-dom'
 
 const TOURS_QUERY = gql`
   query {
@@ -14,30 +17,13 @@ const TOURS_QUERY = gql`
     }
   }
 `
-import TourDisplay from './TourDisplay'
-import ContactsPreview from './ContactsPreview'
-import {Link} from 'react-router-dom'
 
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
-      <Query query={TOURS_QUERY}>
-        {
-          ({loading, error, data}) => {
-            // if (error) {
-              // console.log('error:', error)
-            // }
-            if (data) {
-              console.log(data["tours"])
-            }
-            // console.log(data, 'tours', data.tours)
-            return <h1>test</h1>
-          }
-        }
-      </Query>
       <ContactsPreview/>
-      <TourDisplay name="MVP Tour"/>
+      <TourDisplay name="MVP"/>
       <Link to='/event-details'>go to event details view</Link>
 
       <ListWrapper>

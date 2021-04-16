@@ -15,3 +15,4 @@ export const CONTACTS_QUERY = gql`
     contacts
   }
 `
+
