@@ -15,3 +15,14 @@ export const CONTACTS_QUERY = gql`
     contacts
   }
 `
+
+export const EVENTS_QUERY = gql`
+  query {
+    events {
+      id
+      name
+      startTime
+      endTime
+    }
+  }
+`
