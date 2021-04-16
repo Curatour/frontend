@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction"
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
-// import './Calendar.css';
+import './Calendar.css';
 
 
 const Calendar = () => {
@@ -13,11 +14,12 @@ const Calendar = () => {
     { title: 'event 2', date: '2021-04-02' }])
 
   const renderEventContent = (clickInfo) => {
+    console.log(clickInfo)
     return (
-      <>
+      <Link to="/event-details" className='event-link'>
         <b>{clickInfo.timeText}</b>
         <i>{clickInfo.event.title}</i>
-      </>
+      </Link>
     )
   }
 

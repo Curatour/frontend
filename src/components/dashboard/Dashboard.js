@@ -5,6 +5,7 @@ import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
 import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
+import {Link} from 'react-router-dom'
 
 
 const Dashboard = () => {
@@ -12,6 +13,8 @@ const Dashboard = () => {
     <div className="Dashboard">
       <ContactsPreview/>
       <TourDisplay name="MVP Tour"/>
+      <Link to='/event-details'>go to event details view</Link>
+
       <ListWrapper>
         <FullCalendar
               plugins={[listPlugin]}
