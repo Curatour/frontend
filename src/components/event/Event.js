@@ -20,7 +20,13 @@ const Event = () => {
       </div>
       <div className='agenda-wrapper'>
         <Agenda setAgenda={setAgenda} agenda={agenda}/>
-        {agenda.length > 0 && <button onClick={saveAgenda}>Save Agenda</button>}
+        {agenda.length > 0 && 
+          <button 
+            className='form-button' 
+            style={{marginTop: '2rem'}}
+            onClick={saveAgenda}
+            >Save Agenda
+            </button>}
       </div>
     </section>
   );
