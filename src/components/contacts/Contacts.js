@@ -3,7 +3,7 @@ import ContactCard from './ContactCard';
 import AddContacts from './AddContacts';
 import './Contacts.css';
 
-const contactData = [
+export const contactData = [
   {
     id: 1,
     firstName: 'Kevin',
