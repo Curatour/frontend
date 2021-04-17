@@ -4,7 +4,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction"
-import { INITIAL_EVENTS, createEventId } from './event-utils'
+import { createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
 import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
@@ -42,7 +42,7 @@ const Calendar = () => {
 
     if (title) {
       calendarApi.addEvent({
-        id: createEventId(),
+        id: selectInfo.id,
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
@@ -67,7 +67,7 @@ const Calendar = () => {
             selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
-            initialEvents={INITIAL_EVENTS}
+            initialEvents={[]}
             select={handleDateSelect}
             events={ events ? formatEvents(events) : []}
             eventContent={renderEventContent}
