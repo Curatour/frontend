@@ -42,9 +42,9 @@ const Form = () => {
     event.preventDefault()
 
     const newEvent = {
-      tourId: 1,
-      name: eventName,
-      venueId: selectedVenue,
+      "tourId": 1,
+      "name": eventName,
+      "venueId": selectedVenue,
       startTime,
       endTime
     }

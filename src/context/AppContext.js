@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { 
   TOURS_QUERY, 
   EVENTS_QUERY, 
@@ -8,6 +8,11 @@ import {
   ORGANIZATION_QUERY,
   USER_QUERY  
 } from './queries'
+
+import {
+  EVENTS_MUTATION
+} from './mutations'
+import gql from 'graphql-tag';
 
 const Context = React.createContext();
 
@@ -69,9 +74,21 @@ const AppProvider = ({children}) => {
   })
   
   // mutations
-    
-  
-  
+    // const EVENTS_MUTATION = gql`
+    //   mutation {
+    //     createEvent(input: {
+    //       tourId: 1,
+    //       name: "TEST",
+    //       venueId: 3,
+    //       startTime: "2021-04-22",
+    //       endTime: "2021-04-22"
+    //     })
+    //     {
+    //       name
+    //     }
+    //  `
+  // const [ helperFunuction ] = useMutation(EVENTS_MUTATION)
+
   // generic state info
   const [error, setError] = useState('')
   const [loading, setLoading] = useState('')
@@ -87,9 +104,7 @@ const AppProvider = ({children}) => {
 
   const updateEvents = (newEvent) => {
     setEvents([...events, newEvent])
-    //setLoading, setError
-    //ADD MUTATIONS TO update
-    //resetLoading, resetError
+    // helperFunction({input: newEvent})
   }
 
   const updateVenues = (newVenue) => {
