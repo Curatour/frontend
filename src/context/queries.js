@@ -12,7 +12,11 @@ export const TOURS_QUERY = gql`
 
 export const CONTACTS_QUERY = gql`
   query {
-    contacts
+    contacts {
+      name
+      email
+      phone
+    }
   }
 `
 
@@ -23,6 +27,18 @@ export const EVENTS_QUERY = gql`
       name
       startTime
       endTime
+    }
+  }
+`
+
+export const VENUE_QUERY = gql`
+  query {
+    venues {
+      name
+      address
+      city
+      state
+      capacity
     }
   }
 `

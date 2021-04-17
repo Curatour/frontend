@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import { useQuery } from '@apollo/client';
-import { TOURS_QUERY, EVENTS_QUERY } from './queries'
+import { TOURS_QUERY, EVENTS_QUERY, CONTACTS_QUERY, VENUE_QUERY } from './queries'
 
 const Context = React.createContext();
 
@@ -29,8 +29,17 @@ const AppProvider = ({children}) => {
     }
   })
 
-  
-  // const contactsData = useQuery(CONTACT_QUERY)
+  // useQuery(CONTACTS_QUERY, {
+  //   onCompleted: data => {
+  //     setContacts(data.contacts)
+  //   }
+  // })
+
+  useQuery(VENUE_QUERY, {
+    onCompleted: data => {
+      setVenues(data.venues)
+    }
+  })
   
   // mutations
     
@@ -81,6 +90,7 @@ const AppProvider = ({children}) => {
     setEvents,
     contacts,
     setContacts,
+    venues,
     error,
     setError,
     loading,
