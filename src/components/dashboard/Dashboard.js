@@ -3,17 +3,15 @@ import './Dashboard.css';
 import FullCalendar from '@fullcalendar/react'
 import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
-import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo';
 import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
-import {Link} from 'react-router-dom'
-import {Context, useApp} from '../../context/AppContext'
+import { Link } from 'react-router-dom'
+import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
 
 const Dashboard = () => {
   const { events } = useApp()
-  console.log(events)
+
   return (
     <div className="Dashboard">
       <ContactsPreview/>
