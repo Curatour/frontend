@@ -1,6 +1,13 @@
 import React, {useContext, useState} from 'react'
 import { useQuery } from '@apollo/client';
-import { TOURS_QUERY, EVENTS_QUERY, CONTACTS_QUERY, VENUE_QUERY } from './queries'
+import { 
+  TOURS_QUERY, 
+  EVENTS_QUERY, 
+  CONTACTS_QUERY, 
+  VENUE_QUERY, 
+  ORGANIZATION_QUERY,
+  USER_QUERY  
+} from './queries'
 
 const Context = React.createContext();
 
@@ -15,11 +22,15 @@ const AppProvider = ({children}) => {
   const [events, setEvents] = useState()
   const [venues, setVenues] = useState([])
   const [contacts, setContacts] = useState([])
+  const [organization, setOrganization] = useState()
+  const [user, setUser] = useState()
 
   // queries
   useQuery(TOURS_QUERY, {
     onCompleted: data => {
       setTours(data.tours)
+      setLoading(false)
+      setError(false)
     }
   })
 
@@ -38,6 +49,22 @@ const AppProvider = ({children}) => {
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
+    }
+  })
+
+  useQuery(ORGANIZATION_QUERY, {
+    onCompleted: data => {
+      console.log(data)
+      setOrganization(data.organization)
+    },
+    onError: error => {
+      console.log(error)
+    }
+  })
+
+  useQuery(USER_QUERY, {
+    onCompleted: data => {
+      setUser(data.user)
     }
   })
   
@@ -87,7 +114,7 @@ const AppProvider = ({children}) => {
     tours, 
     setTours,
     events,
-    setEvents,
+    updateEvents,
     contacts,
     setContacts,
     venues,
