@@ -8,6 +8,7 @@ import { useQuery } from 'react-apollo';
 import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
 import {Link} from 'react-router-dom'
+import {Context, useApp} from '../../context/AppContext'
 
 const TOURS_QUERY = gql`
   query {
@@ -20,6 +21,8 @@ const TOURS_QUERY = gql`
 
 
 const Dashboard = () => {
+  const { events } = useApp()
+  console.log(events)
   return (
     <div className="Dashboard">
       <ContactsPreview/>
@@ -50,28 +53,7 @@ const Dashboard = () => {
                 year: 'numeric',
                 day: 'numeric',
               }}
-              events={[
-              {
-                title: 'Meeting',
-                start: '2021-04-17T14:30:00',
-              },
-              {
-                title: 'Birthday Party',
-                start: '2021-04-18T07:00:00',
-              },
-              {
-                title: 'Big Concert',
-                start: '2021-04-19T16:00:00',
-              },
-              {
-                title: 'Photo Shoot',
-                start: '2021-04-20T16:00:00',
-              },
-              {
-                title: 'TV Interview',
-                start: '2021-04-22T09:00:00',
-              }
-            ]}
+              events={ events ? events.events : []}
           />
     </ListWrapper>
     </div>

@@ -30,7 +30,7 @@ const AppProvider = ({children}) => {
     // apiCall.getEvents
     // return what we want
   // }
-  
+
   // values
 
   const value = {
