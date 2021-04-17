@@ -4,20 +4,18 @@ import React, { useState } from 'react';
 import {useApp} from '../../context/AppContext'
 import './Form.css';
 
-const FormVenue = ({ venueName, address, setVenueName, setAddress, incrementForm, city, state}) => {
-  const { venues } = useApp()
-  const [selected, setSelected] = useState('')
+const FormVenue = ({ venues, selectedVenue, setSelectedVenue, venueName, address, setVenueName, setAddress, incrementForm, city, state}) => {
 
   const handleVenueSelect = (event) => {
     event.preventDefault()
-    setSelected(event.target.value)
+    setSelectedVenue(event.target.value)
   }
 
   const findVenues = () => {
-    const selectedVenue = venues.filter(venue => {
+    const selected = venues.filter(venue => {
       return venue.city === city && venue.state === state
     })
-    return selectedVenue.map(venue => {
+    return selected.map(venue => {
       return (
         <option key={venue.id} value={venue.id} onChange={event => handleVenueSelect(event)}>{venue.name}</option>
       )
@@ -37,7 +35,7 @@ const FormVenue = ({ venueName, address, setVenueName, setAddress, incrementForm
       >
         Next
       </button>
-      {selected.length > 0 && (
+      {selectedVenue > 0 && (
         <>
         <input
           type='text'

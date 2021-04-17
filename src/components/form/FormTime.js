@@ -1,8 +1,25 @@
 // import React, {useState} from 'react'
 import React from 'react';
+import {useApp} from '../../context/AppContext'
 import './Form.css';
 
-const FormTime = ({ date, setDate, time, setTime, allDayEvent, setAllDayEvent, eventName, setEventName, incrementForm}) => {
+const FormTime = ({ selectedVenue, date, setEventDate, startTime, setStartTime, setEndTime, endTime, allDayEvent, setAllDayEvent, eventName, setEventName, incrementForm}) => {
+  const { updateEvents } = useApp()
+  
+  const validateForm = (event) => {
+    event.preventDefault()
+    
+    const newEvent = {
+      tourId: 1,
+      name: eventName,
+      venueId: selectedVenue,
+      startTime,
+      endTime
+    }
+
+    updateEvents(newEvent)
+  }
+  
   return (
     <section className='form-section'>
       <input
@@ -10,14 +27,21 @@ const FormTime = ({ date, setDate, time, setTime, allDayEvent, setAllDayEvent, e
         placeholder='Date'
         name='date'
         value={date}
-        onChange={event => setDate(event.target.value)}
+        onChange={event => setEventDate(event.target.value)}
       />
       <input
         type='time'
-        name='time'
-        value={time}
+        name='start-time'
+        value={startTime}
         disabled={ allDayEvent ? true : false }
-        onChange={event => setTime(event.target.value)}
+        onChange={event => setStartTime(event.target.value)}
+      />
+      <input
+        type='time'
+        name='end-time'
+        value={endTime}
+        disabled={allDayEvent ? true : false}
+        onChange={event => setEndTime(event.target.value)}
       />
       <label>
         <input
@@ -38,7 +62,7 @@ const FormTime = ({ date, setDate, time, setTime, allDayEvent, setAllDayEvent, e
       />
       <button
         className='form-button'
-        onClick={event => incrementForm(event)}
+        onClick={event => validateForm(event)}
       >
         Create Event
       </button>
