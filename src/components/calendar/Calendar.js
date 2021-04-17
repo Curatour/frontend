@@ -68,7 +68,7 @@ const Calendar = () => {
             selectMirror={true}
             dayMaxEvents={true}
             initialEvents={[]}
-            select={handleDateSelect}
+            // select={handleDateSelect}
             events={ events ? formatEvents(events) : []}
             eventContent={renderEventContent}
             eventClick={handleEventClick}
