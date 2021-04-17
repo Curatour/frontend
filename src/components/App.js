@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {Switch, Route} from 'react-router-dom'
 import './App.css';
 import Dashboard from './dashboard/Dashboard'
@@ -8,19 +8,21 @@ import Form from './form/Form'
 import NavBar from './navbar/NavBar'
 import Contacts from './contacts/Contacts'
 import Event from './event/Event'
-import { useQuery } from 'react-apollo'
+import { useQuery } from '@apollo/client'
 import { TOURS_QUERY, EVENTS_QUERY } from '../context/queries'
-import {Context, useApp} from '../context/AppContext'
+import { useApp } from '../context/AppContext'
 
 
 function App() {
-  const eventsData = useQuery(EVENTS_QUERY)
+  // const eventsData = useQuery(EVENTS_QUERY)
 
-  const {setEvents} = useApp()
+  // const {events} = useApp()
 
-  useEffect(() => {
-    setEvents(eventsData.data)
-  },[eventsData])
+  // useEffect(() => {
+   
+  // },[])
+
+
 
   return (
     <div className="App">

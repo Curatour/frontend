@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 import { TOURS_QUERY, EVENTS_QUERY } from './queries'
 
 const Context = React.createContext();
@@ -9,21 +9,32 @@ export const useApp = () => {
 }
 
 const AppProvider = ({children}) => {
+  // GLOBAL STATE
+  // intial data -> state match queries
+  const [tours, setTours] = useState([])
+  const [events, setEvents] = useState()
+  const [venues, setVenues] = useState([])
+  const [contacts, setContacts] = useState([])
 
   // queries
-  const toursData = useQuery(TOURS_QUERY)
-  const eventsData = useQuery(EVENTS_QUERY)
-  const contactsData = useQuery(CONTACT_QUERY)
+  useQuery(TOURS_QUERY, {
+    onCompleted: data => {
+      setTours(data.tours)
+    }
+  })
+
+  useQuery(EVENTS_QUERY, {
+    onCompleted: data => {
+      setEvents(data.events)
+    }
+  })
+
+  
+  // const contactsData = useQuery(CONTACT_QUERY)
   
   // mutations
     
   
-  // GLOBAL STATE
-  // intial data -> state match queries
-  const [allTours, setTours] = useState(toursData.data ? toursData.data.tours : [])
-  const [events, setEvents] = useState(eventsData.data ? eventsData.data.events : [])
-  const [venues, setVenues] = useState([])
-  const [contacts, setContacts] = useState([])
   
   // generic state info
   const [error, setError] = useState('')
@@ -32,7 +43,7 @@ const AppProvider = ({children}) => {
 
   // FUNCTIONS
   const updateTours = (newTour) => {
-    setTours([...allTours, newTour])
+    setTours([...tours, newTour])
     //setLoading, setError
     //ADD MUTATIONS TO update
     //resetLoading, resetError
