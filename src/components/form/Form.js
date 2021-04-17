@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useApp} from '../../context/AppContext'
 import FormVenue from './FormVenue'
 import FormTime from './FormTime'
 
@@ -50,6 +51,8 @@ const Form = () => {
         </section>
         { formCounter > 0 && (<FormVenue 
           incrementForm={incrementForm}
+          city={city}
+          state={state}
         />)}
         { formCounter > 1 && <FormTime incrementForm={incrementForm}/> }
       </form>
