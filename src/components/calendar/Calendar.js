@@ -8,23 +8,11 @@ import { INITIAL_EVENTS, createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
 import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
-// import gql from 'graphql-tag';
-// import { Query } from 'react-apollo';
-// import './Calendar.css';
 import './Calendar.css';
-
-// const TOURS_QUERY = gql`
-//   query {
-//     tours
-//   }
-// `
 
 
 const Calendar = () => {
   const { events, setEvents } = useApp()
-
-  // const [events, setEvents] = useState([{ title: 'event 1', date: '2021-04-01' },
-  //   { title: 'event 2', date: '2021-04-02' }])
 
   const renderEventContent = (clickInfo) => {
     console.log(clickInfo)
@@ -81,7 +69,7 @@ const Calendar = () => {
             dayMaxEvents={true}
             initialEvents={INITIAL_EVENTS}
             select={handleDateSelect}
-            events={ events && events.events ? formatEvents(events.events) : []}
+            events={ events ? formatEvents(events) : []}
             eventContent={renderEventContent}
             eventClick={handleEventClick}
             // eventsSet={handleEvents}
