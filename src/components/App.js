@@ -16,9 +16,9 @@ import {Context, useApp} from '../context/AppContext'
 function App() {
   const eventsData = useQuery(EVENTS_QUERY)
   const {setEvents} = useApp()
-  // useEffect(() => {
-  //   setEvents(eventsData.data)
-  // },[eventsData])
+  useEffect(() => {
+    setEvents(eventsData.data)
+  },[eventsData])
   // setEvents(eventsData.data)
   return (
     <div className="App">
