@@ -26,6 +26,17 @@ export const INITIAL_EVENTS = [
   }
 ]
 
+export function formatEvents(eventsArray) {
+  return eventsArray.map(event => {
+    return {
+      id: event.id,
+      title: event.name,
+      start: event.startTime,
+      end: event.endTime,
+    }
+  })
+}
+
 export function createEventId() {
   console.log(todayStr)
   return String(eventGuid++)

@@ -9,16 +9,7 @@ import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
 import {Link} from 'react-router-dom'
 import {Context, useApp} from '../../context/AppContext'
-
-const TOURS_QUERY = gql`
-  query {
-    tours {
-      name
-      startDate
-    }
-  }
-`
-
+import { formatEvents } from '../calendar/event-utils'
 
 const Dashboard = () => {
   const { events } = useApp()
@@ -53,7 +44,7 @@ const Dashboard = () => {
                 year: 'numeric',
                 day: 'numeric',
               }}
-              events={ events ? events.events : []}
+              events={ events && events.events ? formatEvents(events.events) : []}
           />
     </ListWrapper>
     </div>
