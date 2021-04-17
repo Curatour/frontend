@@ -4,7 +4,6 @@ import {useApp} from '../../context/AppContext'
 
 const TourDisplay = () => {
   const {tours} = useApp()
-
   // const findMostRecentTour = () => {
   //   return tours.sort((a,b) => a.startDate - b.startDate )
   // }

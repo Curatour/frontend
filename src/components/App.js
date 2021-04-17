@@ -14,15 +14,6 @@ import { useApp } from '../context/AppContext'
 
 
 function App() {
-  // const eventsData = useQuery(EVENTS_QUERY)
-
-  // const {events} = useApp()
-
-  // useEffect(() => {
-   
-  // },[])
-
-
 
   return (
     <div className="App">
