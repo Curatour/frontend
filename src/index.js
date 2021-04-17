@@ -5,13 +5,21 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import AppProvider from './context/AppContext'
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: 'https://curatour-be.herokuapp.com/graphql'
+});
 
 ReactDOM.render(
-  <AppProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </AppProvider>,
+  <ApolloProvider client={client}>
+    <AppProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AppProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 

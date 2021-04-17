@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const CalendarWrapper = styled.div`
   .fc .fc-scrollgrid-liquid {
-    height: 650px;
+    height: 80vw;
   }
 
   .fc .fc-view-harness {

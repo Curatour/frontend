@@ -6,12 +6,25 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction"
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
+import { useApp } from '../../context/AppContext'
+import { formatEvents } from '../calendar/event-utils'
+// import gql from 'graphql-tag';
+// import { Query } from 'react-apollo';
+// import './Calendar.css';
 import './Calendar.css';
+
+// const TOURS_QUERY = gql`
+//   query {
+//     tours
+//   }
+// `
 
 
 const Calendar = () => {
-  const [events, setEvents] = useState([{ title: 'event 1', date: '2021-04-01' },
-    { title: 'event 2', date: '2021-04-02' }])
+  const { events, setEvents } = useApp()
+
+  // const [events, setEvents] = useState([{ title: 'event 1', date: '2021-04-01' },
+  //   { title: 'event 2', date: '2021-04-02' }])
 
   const renderEventContent = (clickInfo) => {
     console.log(clickInfo)
@@ -28,9 +41,9 @@ const Calendar = () => {
     console.log(clickInfo)
   }
   
-  const handleEvents = (newEvent) => {
-    setEvents([...events, newEvent])
-  }
+  // const handleEvents = (newEvent) => {
+  //   setEvents([...events, newEvent])
+  // }
   
 
   const handleDateSelect = (selectInfo) => {
@@ -68,10 +81,10 @@ const Calendar = () => {
             dayMaxEvents={true}
             initialEvents={INITIAL_EVENTS}
             select={handleDateSelect}
-            // events={events}
+            events={ events && events.events ? formatEvents(events.events) : []}
             eventContent={renderEventContent}
             eventClick={handleEventClick}
-            eventsSet={handleEvents}
+            // eventsSet={handleEvents}
          />
        </CalendarWrapper>
   );

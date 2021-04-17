@@ -5,14 +5,17 @@ import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
 import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
-import {Link} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import { useApp } from '../../context/AppContext'
+import { formatEvents } from '../calendar/event-utils'
 
 const Dashboard = () => {
+  const { events } = useApp()
+
   return (
     <div className="Dashboard">
       <ContactsPreview/>
-      <TourDisplay name="MVP Tour"/>
+      <TourDisplay name="MVP"/>
       <Link to='/event-details'>go to event details view</Link>
 
       <ListWrapper>
@@ -39,28 +42,7 @@ const Dashboard = () => {
                 year: 'numeric',
                 day: 'numeric',
               }}
-              events={[
-              {
-                title: 'Meeting',
-                start: '2021-04-17T14:30:00',
-              },
-              {
-                title: 'Birthday Party',
-                start: '2021-04-18T07:00:00',
-              },
-              {
-                title: 'Big Concert',
-                start: '2021-04-19T16:00:00',
-              },
-              {
-                title: 'Photo Shoot',
-                start: '2021-04-20T16:00:00',
-              },
-              {
-                title: 'TV Interview',
-                start: '2021-04-22T09:00:00',
-              }
-            ]}
+              events={ events && events.events ? formatEvents(events.events) : []}
           />
     </ListWrapper>
     </div>
