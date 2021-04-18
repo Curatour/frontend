@@ -68,7 +68,7 @@
   height: 100%;
   background: black;
   opacity: 50%;
-    display: flex;
+  display: flex;
   justify-content: center;
 }
 

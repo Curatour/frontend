@@ -31,8 +31,8 @@ export const contactData = [
   }];
 
 const Contacts = () => {
-  const [contacts, setcontacts] = useState(contactData);
-  const [isAddingContact, togggleIsAddingContact] = useState(false);
+  const [contacts, setContacts] = useState(contactData);
+  const [isAddingContact, toggleIsAddingContact] = useState(false);
   const searchRef = useRef('');
 
   const searchContacts = event => {
@@ -49,16 +49,16 @@ const Contacts = () => {
         );
     });
 
-    setcontacts(filteredContacts);
+    setContacts(filteredContacts);
   }
 
   const addNewContact = (newContact) => {
-    setcontacts([...contacts, newContact])
+    setContacts([...contacts, newContact])
   }
 
   const toggleAddContactModule = (event) => {
     event.preventDefault();
-    togggleIsAddingContact(!isAddingContact);
+    toggleIsAddingContact(!isAddingContact);
   }
 
   const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
