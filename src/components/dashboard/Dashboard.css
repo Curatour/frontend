@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: auto;
+  width: 100vw;
 }
 
 .TourDisplay {
