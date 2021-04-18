@@ -66,4 +66,12 @@ export const ListWrapper = styled.div`
   .fc-list-event-dot {
     border: 5px solid #fab856;
   }
+
+  @media screen and (max-width:800px) {
+    .fc .fc-list {
+    width: 75vw;
+    margin-bottom: 5rem;
+    left: -32%;
+  }
+  }
 `
