@@ -30,10 +30,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:ci": "serve --no-clipboard --listen ${PORT:-3000}",
+    "start:ci:windows": "serve --no-clipboard --listen 3000",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "npm start & cypress run",
-    "cypress": "./node_modules/.bin/cypress open"
+    "cypress": "cypress open",
+    "cy:run": "cypress run --browser firefox",
+    "cy:run:record": "cypress run --record"
   },
   "eslintConfig": {
     "extends": [

@@ -9,9 +9,12 @@ cache:
   - "~/.cache"
   override:
   - npm ci
-  script:
+  - npm run cy:verify
+script:
   - npm start &
+  - npm run start:ci &
   - cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
+  - kill $(jobs -p) || true
 deploy:
   provider: vercel
   app: ozoneIQ
