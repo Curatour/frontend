@@ -12,7 +12,6 @@ import {
 import {
   EVENTS_MUTATION
 } from './mutations'
-import gql from 'graphql-tag';
 
 const Context = React.createContext();
 
@@ -72,26 +71,13 @@ const AppProvider = ({children}) => {
       setUser(data.user)
     }
   })
-  
-  // mutations
-    // const EVENTS_MUTATION = gql`
-    //   mutation {
-    //     createEvent(input: {
-    //       tourId: 1,
-    //       name: "TEST",
-    //       venueId: 3,
-    //       startTime: "2021-04-22",
-    //       endTime: "2021-04-22"
-    //     })
-    //     {
-    //       name
-    //     }
-    //  `
-  // const [ helperFunuction ] = useMutation(EVENTS_MUTATION)
+
+  //MUTATIONS
+  const [ mutateEvent, {error} ] = useMutation(EVENTS_MUTATION)
 
   // generic state info
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState('')
+  const [appError, setError] = useState('')
+  const [appLoading, setLoading] = useState('')
   const [message, setMessage] = useState('')
 
   // FUNCTIONS
@@ -104,7 +90,18 @@ const AppProvider = ({children}) => {
 
   const updateEvents = (newEvent) => {
     setEvents([...events, newEvent])
-    // helperFunction({input: newEvent})
+    const { tourId, name, venueId, startTime, endTime } = newEvent
+    mutateEvent({
+      variables: {
+        input: {
+          tourId, 
+          name, 
+          venueId, 
+          startTime, 
+          endTime
+        }
+      }
+    })
   }
 
   const updateVenues = (newVenue) => {
@@ -133,9 +130,9 @@ const AppProvider = ({children}) => {
     contacts,
     setContacts,
     venues,
-    error,
+    appError,
     setError,
-    loading,
+    appLoading,
     setLoading,
     message,
     setMessage
