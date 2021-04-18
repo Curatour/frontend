@@ -11,13 +11,8 @@ cache:
   - npm ci
   - npm run cy:verify
 before_script:
-  - npm build
   - npm start --silent &
 script:
   - npm run start:ci &
   - cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
   - kill $(jobs -p) || true
-deploy:
-  provider: vercel
-  app: ozoneIQ
-  skip_cleanup: true
