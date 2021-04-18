@@ -9,7 +9,7 @@ export const ListWrapper = styled.div`
     height: auto;
     width: 80vw;
     position: relative;
-    right: 20px;
+    right: 25px;
     margin-bottom: 5rem;
   }
 
@@ -38,8 +38,8 @@ export const ListWrapper = styled.div`
   }
 
   .fc table, td, th {
-    border: 2px solid #e2992f;
-    color: #e2992f;
+    border: 2px solid #fab856;
+    color: #fab856;
   }
 
   .fc button {
@@ -65,6 +65,6 @@ export const ListWrapper = styled.div`
   }
 
   .fc-list-event-dot {
-    border: 5px solid #e2992f;
+    border: 5px solid #fab856;
   }
 `

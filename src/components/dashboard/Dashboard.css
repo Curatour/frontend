@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100vw;
+  width: auto;
 }
 
 .TourDisplay {
@@ -17,8 +17,8 @@
 }
 
 .TourDisplay button {
-  border: 2px solid #e2992f;
-  color: #e2992f;
+  border: 2px solid #fab856;
+  color: #fab856;
   font-size: 1rem;
   background-color: #4d4d4d;
   margin-bottom: 2%;
