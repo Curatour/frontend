@@ -26,8 +26,8 @@ export const CalendarWrapper = styled.div`
   }
 
   .fc table, td, th {
-    border: 2px solid #e2992f;
-    color: #e2992f;
+    border: 2px solid #fab856;
+    color: #fab856;
   }
 
   .fc button {
