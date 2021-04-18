@@ -31,7 +31,7 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
       <div className='add-contacts-layer'></div>
       <div className='add-contacts'>
         <form className='add-contacts-form' >
-          <h2>Enter contact's information</h2>
+          <h2>New Contact</h2>
           <input 
             type='text'
             name='first-name'

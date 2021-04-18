@@ -115,8 +115,8 @@
   height: 50%;
   width: 50%;
   text-align: center;
-  background-color: #b3b3b3;
-  color: #4D4D4D;
+  background-color: #4D4D4D;
+  color: #b3b3b3;
   border: 3px solid #4D4D4D;
   border-radius: 3px;
 }
@@ -136,7 +136,19 @@
 .module-buttons {
   display: flex;
   justify-content: space-between;
-  width: 168px;
+  /* width: 168px; */
+}
+
+.module-buttons button {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: auto;
+  margin: 0 1rem 0 0;
+}
+
+.module-buttons button:hover {
+  background-color: #fab856;
 }
 
 @media screen and (max-width: 800px) {
