@@ -3,25 +3,45 @@
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
-  width: 40%;
+  width: 100vw;
   margin: auto;
-  padding: 1rem;
   color: #b3b3b3;
 }
 
-.ContactCard article {
-  border: 3px solid #b3b3b3;
-  width: 93%;
-  text-align: center;
-  padding: 16px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0px 0px 10px #333333;
-  -moz-box-shadow: 0px 0px 10px #333333;
-  box-shadow: 0px 0px 10px #333333;
+.ContactCard {
+  display: flex;
+  align-items: center;
+  width: 35vw;
+  height: 15vh;
+  border: 1px solid #b3b3b3;
+  padding: 0 .4rem;
+  margin: 1rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: auto;
+  justify-content: space-around;
 }
 
 .contact-name {
   text-decoration: underline;
+  margin: .5rem 0;
+  text-align: left;
+}
+
+.contact-icons {
+  margin: 2%;
+  border: 1px solid #fab856;
+  border-radius: 50%;
+  box-shadow: 0px 0px 13px .5px rgba(250, 184, 86, 0.84);
+  background-color: #4d4d4d;
+  color:#fab856;
+  height: 3.5rem;
+  width: 3.5rem;
 }
 
 .contact-info {
@@ -40,21 +60,34 @@
 
 .contact-label {
   margin: 0;
+  font-size: .85rem;
+}
+
+.contact-details {
+  margin-left: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .Contacts a {
   color: #fab856;
+  font-size: .85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .handle-contacts-options {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .search-bar {
-  width: 320px;
-  margin: 0;
+  width: 25vw;
+  margin: 0 0 0 1rem;
 }
 
 .add-contacts-layer {
@@ -88,8 +121,37 @@
   border-radius: 3px;
 }
 
+.add-contacts-button {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: 8rem;
+  margin: 0 1rem 0 0;
+}
+
+.add-contacts-button:hover {
+  background-color: #fab856;
+}
+
 .module-buttons {
   display: flex;
   justify-content: space-between;
   width: 168px;
+}
+
+@media screen and (max-width: 800px) {
+  .contact-cards {
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .ContactCard {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ContactCard {
+    width: 70vw;
+  }
 }

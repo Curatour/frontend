@@ -69,14 +69,16 @@ const Contacts = () => {
         <input 
           className='search-bar'
           type='text'
-          placeholder='Search contact names...'
+          placeholder='Search Contacts'
           ref={searchRef}
           onChange={event => searchContacts(event)}
         />
         <button className='add-contacts-button'
         onClick={event => toggleAddContactModule(event)}>Add Contact</button>
       </section>
-      {contactCards}
+      <section className='contact-cards'>
+        {contactCards}
+      </section>
 
       {isAddingContact &&
         <AddContacts 
