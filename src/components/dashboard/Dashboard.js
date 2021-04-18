@@ -14,9 +14,9 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
-      <ContactsPreview/>
       <TourDisplay name="MVP"/>
-      <Link to='/event-details'>go to event details view</Link>
+      <ContactsPreview/>
+      {/* <Link to='/event-details'>go to event details view</Link> */}
 
       <ListWrapper>
         <FullCalendar

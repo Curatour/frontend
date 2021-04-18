@@ -6,7 +6,11 @@ export const ListWrapper = styled.div`
   }
 
   .fc .fc-list {
-    height: 15rem;
+    height: auto;
+    width: 80vw;
+    position: relative;
+    right: 20px;
+    margin-bottom: 5rem;
   }
 
   .fc-list-day-cushion {
@@ -20,13 +24,13 @@ export const ListWrapper = styled.div`
   .fc .fc-view-harness {
     height: 30% !important;
     margin: auto;
-    width: 80%;
+    width: 81vw;
   }
 
   .fc .fc-toolbar {
     display: flex;
     margin: 1rem auto;
-    width: 90%;
+    width: 100%;
   }
 
   .fc {

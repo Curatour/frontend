@@ -1,7 +1,15 @@
+.Dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+
 .TourDisplay {
   border: 1px solid #b3b3b3;
   width: 80%;
-  margin: auto;
+  margin: 1rem;
 }
 
 .TourDisplay h1 {
