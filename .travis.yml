@@ -9,6 +9,9 @@ cache:
   - "~/.cache"
   override:
   - npm ci
+  script:
+  - npm start &
+  - cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
 deploy:
   provider: vercel
   app: ozoneIQ
