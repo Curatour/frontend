@@ -8,7 +8,7 @@
 
 .TourDisplay {
   border: 1px solid #b3b3b3;
-  width: 80%;
+  width: 50%;
   margin: 1rem;
 }
 
@@ -50,4 +50,16 @@
 .contact-icon p {
   font-size: 2rem;
   margin-top: 25%;
+}
+
+@media screen and (max-width: 800px) {
+  .TourDisplay {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .TourDisplay {
+    width: 80%;
+  }
 }
