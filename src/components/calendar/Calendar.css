@@ -7,8 +7,10 @@
 
 b {
   margin: 0.4rem;
+  font-weight: 500;
 }
 
 i {
   font-size: 10pt;
+  color: rgb(66, 65, 65);
 }

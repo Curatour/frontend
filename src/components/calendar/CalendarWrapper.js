@@ -31,7 +31,8 @@ export const CalendarWrapper = styled.div`
   }
 
   .fc button {
-    background-color: #b3b3b3;
+    background-color: transparent;
+    color: #b3b3b3
   }
 
   .fc button .inactive {
