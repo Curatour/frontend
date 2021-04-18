@@ -9,11 +9,6 @@ cache:
   - "~/.cache"
   override:
   - npm ci
-# if this file doesn't work, this branches option should be deleted before moving forward in trouble shooting
-branches:
-  only: 
-    - main
-# -------------------------------------
 deploy:
   provider: vercel
   app: ozoneIQ
