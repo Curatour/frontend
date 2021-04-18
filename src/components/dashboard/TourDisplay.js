@@ -11,7 +11,7 @@ const TourDisplay = () => {
   return (
     <div className='TourDisplay'>
       <h1 className='tour-name'>{tours.length > 0 ? tours[0]["name"] : 'No Tour Set'}</h1>
-      <p className='tour-duration'>{tours.length > 0 ? tours[0]["startDate"] : ''}</p>
+      <p className='tour-duration'>{tours.length > 0 ? `${tours[0]["startDate"]} - ${tours[0]["endDate"]}` : ''}</p>
       <button className='change-btn'>Change Tour</button>
     </div>
   );
