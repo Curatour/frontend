@@ -1,6 +1,6 @@
 describe('Contacts', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/contacts');
+    cy.visit('http://localhost:3000/contacts/');
   });
 
   it('should have a contacts area', () => {

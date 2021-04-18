@@ -1,6 +1,6 @@
 describe('AddContacts', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/contacts');
+    cy.visit('http://localhost:3000/contacts/');
   });
 
   it('should have a module covering the page', () => {
