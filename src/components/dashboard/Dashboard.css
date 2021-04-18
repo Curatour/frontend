@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: end;
   width: 100vw;
 }
 
@@ -19,33 +19,63 @@
 .tour-name {
   margin-bottom: 0;
   color: #fab856;
-  border-bottom: 1px solid #b3b3b3;
-  width: 280px;
+  border-bottom: 1px solid #fab856;
+  width: fit-content;
   align-self: center;
-  font-size: 30pt;
+  font-style: italic;
 }
 
 .tour-duration {
+  color: #b3b3b3;
   margin-top: .5rem;
   margin-bottom: .2rem;
-  font-size: smaller;
 }
 
 .change-btn {
   border: none;
   color: #b3b3b3;
   font-size: .85rem;
+  text-decoration: underline;
   background-color: #4d4d4d;
+  margin-top: 4rem;
+}
+
+.change-btn:hover {
+  color: #fab856;
 }
 
 .ContactsPreview {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   border: 1px solid #b3b3b3;
   width: 25vw;
   height: 12rem;
   max-width: 400px;
-  /* margin: 2% auto; */
+}
+
+.ContactsPreview p {
+  color: #b3b3b3;
+}
+
+.all-contacts {
+  color: #b3b3b3;
+  text-decoration: underline;
+  margin-top: 2.5rem;
+  font-size: .85rem;
+}
+
+.all-contacts:hover {
+  color: #fab856;
+}
+
+.top-three {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top-three p {
+  color: #fab856;
 }
 
 .contact-icon {
@@ -57,11 +87,13 @@
   box-shadow: 0px 0px 13px 2px rgba(250, 184, 86, 0.84);
   background-color: #4d4d4d;
   color:#fab856;
-}
-
-.contact-icon {
   height: 3.5rem;
   width: 3.5rem;
+}
+
+.contact-icon:hover {
+  transition: all .6s;
+  transform: scale(1.2);
 }
 
 .contact-icon p {
@@ -69,34 +101,24 @@
   margin-top: 25%;
 }
 
-.side {
+.details {
   display: flex;
   flex-direction: column;
   width: 40vw;
-  height: 100vh;
   align-items: center;
+  padding-top: 1.5rem;
 }
 
 @media screen and (max-width: 800px) {
   .Dashboard {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .TourDisplay {
     width: 65%;
-  }
-
-  .side {
-    flex-direction: row;
-    width: 90vw;
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .TourDisplay {
-    width: 80%;
   }
 
   .contact-icon {
@@ -109,22 +131,47 @@
     margin-top: 25%;
   }
 
-  .ContactsPreview {
-    width: 65%;
-    height: 7rem
-  }
-
-  .side {
-    flex-direction: column;
+  .details {
+    flex-direction: row;
     width: 90vw;
     height: auto;
   }
 }
 
-/* @media screen and (min-width: 900px) {
+@media screen and (max-width: 600px) {
   .Dashboard {
     display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-} */
+  
+  .TourDisplay {
+    width: 80%;
+    height: 10rem;
+  }
+
+  .ContactsPreview {
+    width: 65%;
+    height: 8rem
+  }
+
+  .details {
+    padding-top: 0;
+    flex-direction: column;
+    width: 90vw;
+    height: auto;
+  }
+
+  .change-btn {
+    margin-top: 2rem;
+  }
+
+  .all-contacts {
+    margin-top: 0;
+  }
+
+  .top-three {
+    justify-content: space-evenly;
+  }
+}
