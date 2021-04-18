@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "test": "npm start & cypress run",
     "cypress": "cypress open",
-    "cy:run": "cypress run --browser firefox",
+    "cy:run": "cypress run",
     "cy:run:record": "cypress run --record"
   },
   "eslintConfig": {
