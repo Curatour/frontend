@@ -59,6 +59,15 @@ export const CalendarWrapper = styled.div`
     border-radius: .25rem;
   }
 
+  .fc-timeGridWeek-view .event-link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   @media screen and (max-width: 600px) {
     .fc .fc-view-harness {
       margin-bottom: 10rem;

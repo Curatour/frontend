@@ -14,3 +14,9 @@ i {
   font-size: 10pt;
   color: rgb(66, 65, 65);
 }
+
+.event-link-week {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
