@@ -33,7 +33,7 @@
     "start": "react-scripts start",
     "start:ci": "serve --no-clipboard --listen ${PORT:-3000}",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm start & cypress run",
     "eject": "react-scripts eject",
     "cypress": "cypress open",
     "cy:run": "cypress run --browser chrome",
