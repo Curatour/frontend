@@ -1,17 +1,14 @@
 language: node_js
 node_js:
-  - "node"
+- node
+notifications:
+  email: false
 cache:
-  npm: true
   directories:
-    - ~/.cache
-install:
+  - "~/.npm"
+  - "~/.cache"
+  override:
   - npm ci
-  - npm run build
-before_script:
-  - npm start -- --silent &
-script:
-  - $(npm bin)/cypress run
 deploy:
   provider: vercel
   app: ozoneIQ
