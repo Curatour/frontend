@@ -62,6 +62,10 @@ export const CalendarWrapper = styled.div`
   @media screen and (max-width: 600px) {
     .fc .fc-view-harness {
       margin-bottom: 10rem;
-  }
+    }
+    
+    .fc-toolbar-title {
+      font-size: 16pt
+    }
   }
 `
