@@ -10,12 +10,12 @@ import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
 
 const Dashboard = () => {
-  const { events } = useApp()
+  const { events, tours } = useApp()
 
   return (
     <div className="Dashboard">
       <ContactsPreview/>
-      <TourDisplay name="MVP"/>
+      <TourDisplay />
       <Link to='/event-details'>go to event details view</Link>
 
       <ListWrapper>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                 year: 'numeric',
                 day: 'numeric',
               }}
-              events={ events && events.events ? formatEvents(events.events) : []}
+              events={ events ? formatEvents(events) : []}
           />
     </ListWrapper>
     </div>
