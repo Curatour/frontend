@@ -17,8 +17,12 @@ cache:
     - npm run cy:verify
 install:
   - npm ci
+before_script:  
+   - npm start -- --silent &
+# script:
+#    - $(npm bin)/cypress run
 script:
-  - npm start &
+  # - npm start &
   - npm run start:ci &
   - cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
 deploy:

@@ -1,6 +1,6 @@
 describe('NavBar', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/' || 'https://curatour.vercel.app/')
   });
 
   it('should have three links', () => {
