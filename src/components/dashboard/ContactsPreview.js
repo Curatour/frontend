@@ -8,12 +8,15 @@ const ContactsPreview = () => {
     return <a className="contact-icon" href={`mailto: ${contact.email}`} ><p>{contact.firstName[0]}{contact.lastName[0]}</p></a>
   })
   return (
+    <>
     <div className="ContactsPreview">
+    {/* <p>Contacts</p> */}
       { topThree[0] }
       { topThree[1] }
       { topThree[2] }
       {/* <Link to="/contacts">view more</Link> */}
     </div>
+    </>
   );
 }
     

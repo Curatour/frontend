@@ -1,40 +1,56 @@
 .Dashboard {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
 }
 
 .TourDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid #b3b3b3;
-  width: 50%;
+  height: 12rem;
+  width: 25vw;
   margin: 1rem;
 }
 
-.TourDisplay h1 {
-  margin: 2%;
+.tour-name {
+  margin-bottom: 0;
+  color: #fab856;
+  border-bottom: 1px solid #b3b3b3;
+  width: 280px;
+  align-self: center;
+  font-size: 30pt;
 }
 
-.TourDisplay button {
-  border: 2px solid #fab856;
-  color: #fab856;
-  font-size: 1rem;
+.tour-duration {
+  margin-top: .5rem;
+  margin-bottom: .2rem;
+  font-size: smaller;
+}
+
+.change-btn {
+  border: none;
+  color: #b3b3b3;
+  font-size: .85rem;
   background-color: #4d4d4d;
-  margin-bottom: 2%;
 }
 
 .ContactsPreview {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  border: 1px solid #b3b3b3;
+  width: 25vw;
+  height: 12rem;
   max-width: 400px;
-  margin: 5% auto;
+  /* margin: 2% auto; */
 }
 
 .contact-icon {
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   margin: 2%;
   border: 1px solid #fab856;
   border-radius: 50%;
@@ -43,12 +59,30 @@
   color:#fab856;
 }
 
+.contact-icon {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
 .contact-icon p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 25%;
 }
 
+.side {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 @media screen and (max-width: 800px) {
+  .Dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
   .TourDisplay {
     width: 65%;
   }
@@ -73,3 +107,11 @@
     width: 65%;
   }
 }
+
+/* @media screen and (min-width: 900px) {
+  .Dashboard {
+    display: flex;
+    flex-direction: row;
+
+  }
+} */

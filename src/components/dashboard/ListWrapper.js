@@ -7,9 +7,8 @@ export const ListWrapper = styled.div`
 
   .fc .fc-list {
     height: auto;
-    width: 80vw;
+    width: 55vw;
     position: relative;
-    right: 25px;
     margin-bottom: 5rem;
   }
 
@@ -24,7 +23,7 @@ export const ListWrapper = styled.div`
   .fc .fc-view-harness {
     height: 30% !important;
     margin: auto;
-    width: 81vw;
+    width: 45vw;
   }
 
   .fc .fc-toolbar {

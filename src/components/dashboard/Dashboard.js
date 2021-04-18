@@ -14,8 +14,11 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
+      <div className='side'>
+
       <TourDisplay />
       <ContactsPreview/>
+      </div>
       {/* <Link to='/event-details'>go to event details view</Link> */}
 
       <ListWrapper>
