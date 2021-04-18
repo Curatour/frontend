@@ -12,7 +12,7 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
     if (firstNameRef.current.value 
       && lastNameRef.current.value
       && phoneRef.current.value 
-      && emailRef.current) {
+      && emailRef.current.value) {
       const newContact = {
         id: Date.now(),
         firstName: firstNameRef.current.value,
