@@ -12,6 +12,7 @@ export const CalendarWrapper = styled.div`
     height: 80%;
     width: 90%;
     padding: 1rem;
+    margin-bottom: 15rem;
   }
 
   .fc .fc-toolbar {
@@ -55,5 +56,11 @@ export const CalendarWrapper = styled.div`
     background-color: #b3b3b3;
     color: #4D4D4D;
     border-radius: .25rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    .fc .fc-view-harness {
+      margin-bottom: 10rem;
+  }
   }
 `
