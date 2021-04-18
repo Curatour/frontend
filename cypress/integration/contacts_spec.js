@@ -1,6 +1,7 @@
 describe('Contacts', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/contacts/');
+    cy.visit('http://localhost:3000/');
+    cy.get('svg[data-icon=address-book]').click()
   });
 
   it('should have a contacts area', () => {
