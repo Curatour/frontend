@@ -3,11 +3,12 @@ import {useApp} from '../../context/AppContext'
 
 import './Form.css';
 
-const Form = () => {
+const Form = ({location}) => {
+  // console.log(location.state.eventDate)
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [venueName, setVenueName] = useState('');
-  const [date, setEventDate] = useState();
+  const [date, setEventDate] = useState(!location.state ? '' : location.state.eventDate);
   const [address, setAddress] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
@@ -47,10 +48,9 @@ const Form = () => {
       "startTime": `${date}T${startTime}:00.000Z`,
       "endTime": `${date}T${endTime}:00.000Z`
     }
-
     updateEvents(newEvent)
   }
-
+  
   return (
     <section className='form-page'>
       <h1>Create new event</h1>

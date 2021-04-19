@@ -28,12 +28,11 @@ const Calendar = () => {
   }
   
   const handleDateSelect = (selectInfo) => {
-    let title = prompt(`Please enter a new title for your event`)
+    let title = alert(`Adding an event on ${selectInfo.dateStr}.`)
     let calendarApi = selectInfo.view.calendar
-    console.log(selectInfo)
     history.push({
       pathname: "/new-event",
-      state: { eventInfo: selectInfo.date }
+      state: { eventDate: selectInfo.dateStr }
     })
 
     calendarApi.unselect() // clear date selection
