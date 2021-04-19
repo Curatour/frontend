@@ -10,7 +10,7 @@ import {
 } from './queries'
 
 import {
-  EVENTS_MUTATION
+  CREATE_EVENT
 } from './mutations'
 
 const Context = React.createContext();
@@ -73,7 +73,7 @@ const AppProvider = ({children}) => {
   })
 
   //MUTATIONS
-  const [ mutateEvent, {error} ] = useMutation(EVENTS_MUTATION)
+  const [ mutateEvent, {error} ] = useMutation(CREATE_EVENT)
 
   // generic state info
   const [appError, setError] = useState('')
