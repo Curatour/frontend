@@ -115,6 +115,7 @@ const AppProvider = ({children}) => {
 
   const [destroyEvent] = useMutation(DESTROY_EVENT, {
     onCompleted: data => {
+      console.log('SUCCESS')
       setEvents(events.filter(event => event.id !== data.destroyEvent.id))
       setLoading(false)
       setError(false)

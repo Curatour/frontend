@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
-import {useApp} from '../../context/AppContext'
+import {useHistory} from 'react-router-dom'
+import { useApp } from '../../context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -10,6 +11,7 @@ const Event = (props) => {
   const [agenda, setAgenda] = useState([])
   const [currentEvent] = useState(props.location.state.eventInfo)
   const { deleteEvent, createAgenda } = useApp()
+  const history = useHistory()
   
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
@@ -34,8 +36,10 @@ const Event = (props) => {
 
   const deleteSelectedEvent = (event) => {
     event.preventDefault()
-    //deleteEvent(event.target.id)?? or //history object? id?
-    console.log('I WILL DELETE')
+    deleteEvent(currentEvent.publicId)
+    history.push({
+      pathname: '/calendar'
+    })
   }
 
   return (
