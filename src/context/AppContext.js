@@ -155,6 +155,10 @@ const AppProvider = ({children}) => {
     })
   }
 
+  const createAgenda = (agenda) => {
+    
+  }
+
   const updateContacts = (newContact) => {
     const { firstName, lastName, phoneNumber, email} = newContact
     setLoading(true)

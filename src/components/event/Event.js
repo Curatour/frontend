@@ -7,11 +7,12 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import './Event.css';
 
 const Event = () => {
-  const { deleteEvent } = useApp()
+  const { deleteEvent, createAgenda } = useApp()
   const [agenda, setAgenda] = useState([])
   
   const saveAgenda = () => {
     console.log(agenda)
+    //createAgenda()
     //MUTATE SUBEVENTS HERE
   }
 
