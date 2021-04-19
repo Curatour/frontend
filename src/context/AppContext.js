@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useMemo, useState} from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { 
   TOURS_QUERY, 
@@ -62,14 +62,6 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
-  useQuery(CONTACTS_QUERY, {
-    onCompleted: data => {
-      setContacts(data.contacts)
-      // setLoading(false)
-    },
-    onError: error => setError(error)
-  })
-
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
@@ -91,8 +83,9 @@ const AppProvider = ({children}) => {
   useQuery(USER_QUERY, {
     onCompleted: data => {
       setUser(data.user)
-      // setLoading(false)
-      // setError(false)
+      setContacts(data.user.contacts)
+      setLoading(false)
+      setError(false)
     }, 
     onError: error => setError(error)
   })
@@ -108,7 +101,16 @@ const AppProvider = ({children}) => {
 
   const [createContact] = useMutation(CREATE_CONTACT, {
     onCompleted: data => {
-      console.log(data)
+      setContacts([...contacts, data.createContact])
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
+  const [destroyContact] = useMutation(DESTROY_CONTACT, {
+    onCompleted: data => {
+      setContacts(contacts.filter(contact => contact.id !== data.destroyContact.id))
       setLoading(false)
       setError(false)
     },
@@ -144,24 +146,31 @@ const AppProvider = ({children}) => {
   const updateVenues = (newVenue) => {
     setVenues([...venues, newVenue])
     
-    //setLoading, setError
-    //ADD MUTATIONS
-    //resetLoading, resetError
+    
   }
 
   const updateContacts = (newContact) => {
-    setContacts([...contacts, newContact])
-    const {id, firstName, lastName, phoneNumber, email} = newContact
-    console.log(id)
+    const { firstName, lastName, phoneNumber, email} = newContact
     setLoading(true)
     createContact({
       variables: {
         input: {
-          userId: id,
+          userId: parseInt(user.id),
           firstName,
           lastName,
           phoneNumber,
           email
+        }
+      }
+    })
+  }
+
+  const deleteContact = (id) => {
+    setLoading(true)
+    destroyContact({
+      variables: { 
+        input: { 
+          id: parseInt(id)
         }
       }
     })
@@ -177,6 +186,7 @@ const AppProvider = ({children}) => {
     updateEvents,
     contacts,
     updateContacts,
+    deleteContact,
     venues,
     appError,
     setError,

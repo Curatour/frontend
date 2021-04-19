@@ -34,6 +34,10 @@ export const CREATE_CONTACT = gql`
    mutation CreateContact($input: CreateContactInput!) {
     createContact(input: $input) {
       id
+      firstName
+      lastName
+      phoneNumber
+      email
     }
   }
 `
@@ -68,6 +72,10 @@ export const UPDATE_CONTACT = gql`
    mutation UpdateContaact($input: UpdateContactInput!) {
     updateContact(input: $input) {
       id
+      firstName
+      lastName
+      phoneNumber
+      email
     }
   }
 `

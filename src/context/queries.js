@@ -68,6 +68,13 @@ export const USER_QUERY = gql`
       email
       phoneNumber
       role
+      contacts {
+        id
+        firstName
+        lastName
+        email
+        phoneNumber
+      }
     }
   }
 `
