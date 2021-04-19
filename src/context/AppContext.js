@@ -48,18 +48,10 @@ const AppProvider = ({children}) => {
   useQuery(TOURS_QUERY, {
     onCompleted: data => {
       setTours(data.tours)
+      setEvents(data.tours[0].events)
       // setLoading(false)
       // setError(false)
     }
-  })
-
-  useQuery(EVENTS_QUERY, {
-    onCompleted: data => {
-      setEvents(data.events)
-      // setLoading(false)
-      // setError(false)
-    }, 
-    onError: error => setError(error)
   })
 
   useQuery(VENUE_QUERY, {
@@ -74,8 +66,6 @@ const AppProvider = ({children}) => {
   useQuery(ORGANIZATION_QUERY, {
     onCompleted: data => {
       setOrganization(data.organization)
-      // setLoading(false)
-      // setError(false)
     },
     onError: error => setError(error)
   })

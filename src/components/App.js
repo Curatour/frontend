@@ -10,9 +10,6 @@ import Contacts from './contacts/Contacts'
 import Event from './event/Event'
 // import Loading from './common/Loading';
 import NotFound from './error/NotFound';
-import { useQuery } from '@apollo/client';
-import { TOURS_QUERY, EVENTS_QUERY } from '../context/queries'
-import { useApp } from '../context/AppContext'
 
 
 function App() {

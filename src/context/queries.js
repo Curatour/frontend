@@ -4,11 +4,27 @@ import gql from 'graphql-tag';
 export const TOURS_QUERY = gql`
   query {
     tours {
+      id
       name
-      startDate
+      events {
+        id
+        name
+        startTime
+        endTime
+        venue {
+          id
+          name
+          address
+          city
+          state
+          zip
+          capacity
+        }
+      }
     }
   }
 `
+
 
 export const CONTACTS_QUERY = gql`
   query {
@@ -55,6 +71,8 @@ export const ORGANIZATION_QUERY = gql`
       tours {
         id
         name
+        startDate
+        endDate
       }
     }
   }
