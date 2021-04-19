@@ -1,5 +1,6 @@
 h1 {
-  color: #b3b3b3;
+  color: #fab856;
+  font-style: italic;
 }
 
 .form-page {
@@ -41,7 +42,7 @@ select {
 }
 
 .form-button:hover {
-  background-color: #e2992f;
+  background-color: #fab856;
 }
 
 label {

@@ -1,3 +1,14 @@
+.agenda-display {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 90vw;
+}
+
+.agenda-display h3 {
+  color: #fab856
+}
+
 .input-wrapper {
   display: flex;
   flex-direction: row;
@@ -5,29 +16,28 @@
   width: 350px;
 }
 
-
 .agenda-list {
-    background-color: #CACACA;
-    margin: auto;
-    width: 90%;
-    height: 25vh;
-    overflow: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #b3b3b3;
-    box-shadow:
-    /* The top layer shadow */
-        0 1px 1px rgba(0,0,0,0.15),
-            /* The second layer */
-        0 10px 0 -5px #b3b3b3,
-            /* The second layer shadow */
-        0 10px 1px -4px rgba(0,0,0,0.15),
-            /* The third layer */
-        0 20px 0 -10px #b3b3b3,
-            /* The third layer shadow */
-        0 20px 1px -9px rgba(0,0,0,0.15);
-    padding: 15px;
+  background-color: #CACACA;
+  margin: auto 0;
+  width: 40vw;
+  height: 45vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #b3b3b3;
+  box-shadow:
+  /* The top layer shadow */
+      0 1px 1px rgba(0,0,0,0.15),
+          /* The second layer */
+      0 10px 0 -5px #b3b3b3,
+          /* The second layer shadow */
+      0 10px 1px -4px rgba(0,0,0,0.15),
+          /* The third layer */
+      0 20px 0 -10px #b3b3b3,
+          /* The third layer shadow */
+      0 20px 1px -9px rgba(0,0,0,0.15);
+  padding: 15px;
 }
 
 .agenda-item-title {
@@ -35,6 +45,7 @@
   width: 80%;
   text-align: left;
   margin: 0;
+  color: black;
 }
 
 .completed {
@@ -55,17 +66,16 @@
   width: 70%;
   height: auto;
   margin: .25rem 0 .25rem 0;
-
+  color: black;
 }
 
 .agenda-item {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 40vw;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid black;
-    font-family: Roboto, sans-serif;
 }
 
 .agenda-check {
@@ -77,9 +87,40 @@
   outline: 0;
 }
 
-textarea {
+.agenda-description {
   background-color: #cacaca;
   border-radius: .5rem;
   color: black;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  .agenda-wrapper {
+    flex-direction: row;
+    margin-bottom: 5rem;
+  }
+
+  .agenda-display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .agenda-item {
+    width: 80vw;
+  }
+
+  .agenda-list {
+    width: 80vw;
+  }
+
+  .agenda-description {
+    width: 80vw;
+  }
+
+  .input-wrapper {
+    width: 80vw;
+    justify-content: space-evenly;
+  }
 }

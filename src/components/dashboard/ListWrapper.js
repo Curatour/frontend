@@ -6,7 +6,10 @@ export const ListWrapper = styled.div`
   }
 
   .fc .fc-list {
-    height: 15rem;
+    height: auto;
+    width: 55vw;
+    position: relative;
+    margin-bottom: 5rem;
   }
 
   .fc-list-day-cushion {
@@ -20,13 +23,13 @@ export const ListWrapper = styled.div`
   .fc .fc-view-harness {
     height: 30% !important;
     margin: auto;
-    width: 80%;
+    width: 45vw;
   }
 
   .fc .fc-toolbar {
     display: flex;
     margin: 1rem auto;
-    width: 90%;
+    width: 100%;
   }
 
   .fc {
@@ -34,8 +37,8 @@ export const ListWrapper = styled.div`
   }
 
   .fc table, td, th {
-    border: 2px solid #e2992f;
-    color: #e2992f;
+    border: 2px solid #fab856;
+    color: #fab856;
   }
 
   .fc button {
@@ -61,6 +64,14 @@ export const ListWrapper = styled.div`
   }
 
   .fc-list-event-dot {
-    border: 5px solid #e2992f;
+    border: 5px solid #fab856;
+  }
+
+  @media screen and (max-width:800px) {
+    .fc .fc-list {
+    width: 75vw;
+    margin-bottom: 5rem;
+    left: -32%;
+  }
   }
 `
