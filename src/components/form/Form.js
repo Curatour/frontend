@@ -8,7 +8,7 @@ const Form = ({location}) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [venueName, setVenueName] = useState('');
-  const [date, setEventDate] = useState(!location.state ? '' : location.state.eventDate);
+  const [date, setEventDate] = useState();
   const [address, setAddress] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
