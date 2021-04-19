@@ -76,7 +76,6 @@
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid black;
-    font-family: Roboto, sans-serif;
 }
 
 .agenda-check {
@@ -88,9 +87,40 @@
   outline: 0;
 }
 
-textarea {
+.agenda-description {
   background-color: #cacaca;
   border-radius: .5rem;
   color: black;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  .agenda-wrapper {
+    flex-direction: row;
+    margin-bottom: 5rem;
+  }
+
+  .agenda-display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .agenda-item {
+    width: 80vw;
+  }
+
+  .agenda-list {
+    width: 80vw;
+  }
+
+  .agenda-description {
+    width: 80vw;
+  }
+
+  .input-wrapper {
+    width: 80vw;
+    justify-content: space-evenly;
+  }
 }
