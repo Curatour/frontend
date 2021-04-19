@@ -1,20 +1,26 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
+import { useApp } from '../../context/AppContext'
 import './Event.css';
 
 const Event = (props) => {
   const [agenda, setAgenda] = useState([])
-  const [eventInfo, setEventInfo] = useState(props.location.state.eventInfo)
+  const { events, setEvents } = useApp()
+  const [eventId, setEventId] = useState(props.location.state.eventInfo.publicId)
+
+  const currentEvent = events.find(event => {
+    return event.id === eventId
+  })
   
   const saveAgenda = () => {
     console.log(agenda)
     //MUTATE SUBEVENTS HERE
   }
-  console.log("HERE", eventInfo)
+  console.log("HERE", eventId, currentEvent)
   return (
     <section className="Event">
       <div className='event-info'>
-        <h1>{eventInfo.title}</h1>
+        <h1>{ currentEvent.name }</h1>
         <h1>Venue Name</h1>
         <h1>Address/location</h1>
         <h1>Main contact: #####</h1>
