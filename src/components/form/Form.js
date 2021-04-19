@@ -13,7 +13,7 @@ const Form = ({location}) => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [allDayEvent, setAllDayEvent] = useState(false);
-  const [eventName, setEventName] = useState('');
+  const [eventName, setEventName] = useState(!location.state ? '' : location.state.title);
   const [formCounter, setFormCounter] = useState(0);
   const [selectedVenue, setSelectedVenue] = useState('')
   const { venues, updateEvents } = useApp()
