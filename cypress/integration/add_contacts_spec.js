@@ -1,5 +1,11 @@
 describe('AddContacts', () => {
   beforeEach(() => {
+    cy.intercept('POST', '/graphql', (req) => {
+      const { body } = req
+      if (body.hasOwnProperty('mutation') && req.body.query.includes('contact')) {
+        req.reply({ fixture: 'contacts.json'});
+      } 
+    })
     cy.visit('http://localhost:3000/contacts/');
   });
 

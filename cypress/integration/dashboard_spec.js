@@ -1,5 +1,12 @@
 describe('Dashboard', () => {
   beforeEach(() => {
+    cy.intercept('POST', '/graphql', (req) => {
+      const { body } = req
+      if (body.hasOwnProperty('query') && req.body.query.includes('events')) {
+        req.reply({ fixture: 'events.json'});
+      } 
+    })
+    cy.clock(new Date(2021, 4, 20).getTime());
     cy.visit('http://localhost:3000/');
   });
 
