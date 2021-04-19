@@ -88,7 +88,7 @@ const AppProvider = ({children}) => {
 
   const [createVenue] = useMutation(CREATE_VENUE, {
     onCompleted: data => {
-      setVenues([...venues, data.createVenue])
+      console.log(data)
       setLoading(false)
       setError(false)
     },

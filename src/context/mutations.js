@@ -15,7 +15,6 @@ export const CREATE_EVENT = gql`
         city
         state
         zip
-        capacity
       }
     }
   }

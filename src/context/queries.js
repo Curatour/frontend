@@ -60,7 +60,6 @@ export const VENUE_QUERY = gql`
       address
       city
       state
-      capacity
     }
   }
 `
