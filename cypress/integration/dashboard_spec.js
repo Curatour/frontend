@@ -19,4 +19,11 @@ describe('Dashboard', () => {
     cy.get('.Header').find('.logo').click()
   });
 
+  it('should have a Tour Display with the name of the user\'s current tour', () => {
+    cy.get('.TourDisplay').find('.tour-name').should('contain', 'MVP Tour')
+    cy.get('.TourDisplay').find('.tour-duration').should('be.visible')
+    cy.get('.TourDisplay').find('.change-btn').should('be.visible')
+    
+  });
+
 });
