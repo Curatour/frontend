@@ -4,4 +4,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100vw;
+  color: #b3b3b3;
 }
+
+.event-info h1 {
+  font-style: italic;
+}
+
+.venue-info p {
+  margin: 0;
+}
+
