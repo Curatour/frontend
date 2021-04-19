@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
 import './Event.css';
 
 const Event = () => {
@@ -20,6 +23,7 @@ const Event = () => {
         </div>
         <div className='date-info'>
           <p>Date: MM, DD, YYYY</p>
+          <FontAwesomeIcon className='delete-event-button' icon={faTrashAlt} />
         </div>
       </div>
       <div className='agenda-wrapper'>

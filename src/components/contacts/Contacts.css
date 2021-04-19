@@ -57,6 +57,11 @@
   width: 1rem;
 }
 
+.delete-contact-button:hover {
+  color: #fab856;
+  cursor: pointer;
+}
+
 .contact-info {
   list-style-type: none;
   padding: 0;

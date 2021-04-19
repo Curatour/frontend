@@ -113,6 +113,15 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
+  const [destroyEvent] = useMutation(DESTROY_EVENT, {
+    onCompleted: data => {
+      setEvents(events.filter(event => event.id !== data.destroyEvent.id))
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
 
   // FUNCTIONS
   const updateEvents = (newEvent) => {
@@ -144,8 +153,6 @@ const AppProvider = ({children}) => {
         }
       }
     })
-    //MUTATION
-    
   }
 
   const updateContacts = (newContact) => {
@@ -175,6 +182,16 @@ const AppProvider = ({children}) => {
     })
   }
 
+  const deleteEvent = (id) => {
+    setLoading(true)
+    destroyEvent({
+      variables: {
+        input: {
+          id: parseInt(id)
+        }
+      }
+    })
+  }
 
   // VALUES
 
@@ -183,6 +200,7 @@ const AppProvider = ({children}) => {
     setTours,
     events,
     updateEvents,
+    deleteEvent,
     contacts,
     updateContacts,
     deleteContact,

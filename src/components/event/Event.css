@@ -16,6 +16,16 @@
   margin: 0;
 }
 
+.delete-event-button {
+  height: 1rem;
+  width: 1rem;
+}
+
+.delete-event-button:hover {
+  color: #fab856;
+  cursor: pointer;
+}
+
 /* @media screen and (max-width: 800px) {
   .Event {
     flex-direction: row;
