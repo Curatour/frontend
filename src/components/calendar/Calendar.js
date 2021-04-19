@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -13,15 +13,13 @@ import './Calendar.css';
 
 const Calendar = () => {
   const { events, setEvents } = useApp()
+  let history = useHistory();
 
   const renderEventContent = (clickInfo) => {
-    console.log(clickInfo)
-    return (
-      <Link to="/event-details" className='event-link'>
-        <b>{clickInfo.timeText}</b>
-        <i>{clickInfo.event.title}</i>
-      </Link>
-    )
+    history.push({
+      pathname: "/event-details",
+      state: { eventInfo: clickInfo.event._def }
+    })
   }
 
   const handleEventClick = (clickInfo) => {
@@ -70,8 +68,7 @@ const Calendar = () => {
             initialEvents={[]}
             // select={handleDateSelect}
             events={ events ? formatEvents(events) : []}
-            eventContent={renderEventContent}
-            eventClick={handleEventClick}
+            eventClick={renderEventContent}
             // eventsSet={handleEvents}
          />
        </CalendarWrapper>
