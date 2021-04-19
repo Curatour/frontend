@@ -9,9 +9,15 @@
 
 .event-info h1 {
   font-style: italic;
+  margin: 1rem 0 0 0;
 }
 
 .venue-info p {
   margin: 0;
 }
 
+/* @media screen and (max-width: 800px) {
+  .Event {
+    flex-direction: row;
+  }
+} */
