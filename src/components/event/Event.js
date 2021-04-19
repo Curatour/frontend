@@ -41,7 +41,7 @@ const Event = (props) => {
         <h1>{ currentEvent.name }</h1>
         <h1>{ currentEvent.venue.name }</h1>
         <h1>{currentEvent.venue.city}, {currentEvent.venue.state}</h1>
-        <h1>Main contact: #####</h1>
+        <h1>Date: {currentEvent.startTime} </h1>
       </div>
       <div className='agenda-wrapper'>
         <Agenda setAgenda={setAgenda} agenda={agenda}/>
