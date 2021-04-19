@@ -28,7 +28,7 @@ const Calendar = () => {
   }
   
   const handleDateSelect = (selectInfo) => {
-    if (window.confirm(`Add new event on ${selectInfo.dateStr}?`)) {
+    if (window.confirm(`Add new event on ${selectInfo.dateStr.slice(5)}?`)) {
      let calendarApi = selectInfo.view.calendar
     history.push({
       pathname: "/new-event",
