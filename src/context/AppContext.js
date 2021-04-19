@@ -83,6 +83,8 @@ const AppProvider = ({children}) => {
   //MUTATIONS
   const [ createEvent ] = useMutation(CREATE_EVENT, {
     onCompleted: data => {
+      setEvents([...events, data.createEvent])
+      console.log(data)
       setLoading(false)
       setError(false)
     },
@@ -109,15 +111,7 @@ const AppProvider = ({children}) => {
 
 
   // FUNCTIONS
-  const updateTours = (newTour) => {
-    setTours([...tours, newTour])
-    //setLoading, setError
-    //ADD MUTATIONS TO update
-    //resetLoading, resetError
-  }
-
   const updateEvents = (newEvent) => {
-    setEvents([...events, newEvent])
     const { tourId, name, venueId, startTime, endTime } = newEvent
     setLoading(true)
     createEvent({
@@ -133,9 +127,9 @@ const AppProvider = ({children}) => {
     })
   }
 
-  const updateVenues = (newVenue) => {
+  const addNewVenue = (newVenue) => {
     setVenues([...venues, newVenue])
-    
+    //MUTATION
     
   }
 

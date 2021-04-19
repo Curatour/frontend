@@ -6,8 +6,17 @@ export const CREATE_EVENT = gql`
     createEvent(input: $input) {
       id
       name
-      startTime 
+      startTime
       endTime
+      venue {
+        id
+        name
+        address
+        city
+        state
+        zip
+        capacity
+      }
     }
   }
 `

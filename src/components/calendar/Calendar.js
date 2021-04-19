@@ -1,10 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction"
-import { createEventId } from './event-utils'
 import {CalendarWrapper} from './CalendarWrapper'
 import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
