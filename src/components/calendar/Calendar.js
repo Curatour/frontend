@@ -27,14 +27,14 @@ const Calendar = () => {
     console.log(clickInfo)
   }
   
-  // const handleEvents = (newEvent) => {
-  //   setEvents([...events, newEvent])
-  // }
-  
-
   const handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
+    let title = prompt(`Please enter a new title for your event`)
     let calendarApi = selectInfo.view.calendar
+    console.log(selectInfo)
+    history.push({
+      pathname: "/new-event",
+      state: { eventInfo: selectInfo.date }
+    })
 
     calendarApi.unselect() // clear date selection
 
@@ -66,7 +66,7 @@ const Calendar = () => {
             selectMirror={true}
             dayMaxEvents={true}
             initialEvents={[]}
-            // select={handleDateSelect}
+            dateClick={(event) => handleDateSelect(event) }
             events={ events ? formatEvents(events) : []}
             eventClick={renderEventContent}
             // eventsSet={handleEvents}
