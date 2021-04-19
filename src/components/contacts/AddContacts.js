@@ -16,8 +16,6 @@ const AddContacts = ({ closeAddContact }) => {
       && phoneRef.current.value 
       && emailRef.current.value) {
       const newContact = {
-        // id: parseInt(Date.now().toString().split('').splice(0, 6).join('')),
-        id: contacts.length,
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         phoneNumber: phoneRef.current.value,

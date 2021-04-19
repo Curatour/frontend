@@ -44,6 +44,19 @@
   width: 3.5rem;
 }
 
+.delete-contact {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.delete-contact-button {
+  height: 1rem;
+  width: 1rem;
+}
+
 .contact-info {
   list-style-type: none;
   padding: 0;
