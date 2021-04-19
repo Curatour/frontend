@@ -40,13 +40,12 @@ const Form = () => {
 
   const validateForm = (event) => {
     event.preventDefault()
-
     const newEvent = {
       "tourId": 1,
       "name": eventName,
-      "venueId": selectedVenue,
-      startTime,
-      endTime
+      "venueId": parseInt(selectedVenue),
+      "startTime": `${date}T${startTime}:00.000Z`,
+      "endTime": `${date}T${endTime}:00.000Z`
     }
 
     updateEvents(newEvent)
