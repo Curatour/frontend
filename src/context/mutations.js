@@ -33,7 +33,7 @@ export const CREATE_TOUR = gql`
 export const CREATE_CONTACT = gql`
    mutation CreateContact($input: CreateContactInput!) {
     createContact(input: $input) {
-      userId
+      id
     }
   }
 `

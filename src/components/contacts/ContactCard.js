@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContactCard = (props) => {
-  const { lastName, firstName, email, phone } = props.contact;
+  const { lastName, firstName, email, phoneNumber } = props.contact;
   return (
     <article className="ContactCard">
       <div className='contact-icons'>
@@ -16,7 +16,7 @@ const ContactCard = (props) => {
           </div>
           <div className='contact-link'>
             <p className='contact-label'>Phone:</p>
-            <a className='phone' href={`tel:${email}`}>{phone}</a>
+            <a className='phone' href={`tel:${phoneNumber}`}>{phoneNumber}</a>
           </div>
         </section>
       </div>

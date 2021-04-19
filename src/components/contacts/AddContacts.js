@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
+import { useApp } from '../../context/AppContext'
 
-const AddContacts = ({ addNewContact, closeAddContact }) => {
+const AddContacts = ({ closeAddContact }) => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
+  const { contacts, updateContacts } = useApp()
 
   const submitNewContact = event => {
     event.preventDefault();
@@ -14,14 +16,15 @@ const AddContacts = ({ addNewContact, closeAddContact }) => {
       && phoneRef.current.value 
       && emailRef.current.value) {
       const newContact = {
-        id: Date.now(),
+        // id: parseInt(Date.now().toString().split('').splice(0, 6).join('')),
+        id: contacts.length,
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         phoneNumber: phoneRef.current.value,
         email: emailRef.current.value
       };
 
-      addNewContact(newContact);
+      updateContacts(newContact)
       closeAddContact(event);
     }
   }

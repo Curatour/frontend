@@ -108,6 +108,7 @@ const AppProvider = ({children}) => {
 
   const [createContact] = useMutation(CREATE_CONTACT, {
     onCompleted: data => {
+      console.log(data)
       setLoading(false)
       setError(false)
     },
@@ -150,12 +151,17 @@ const AppProvider = ({children}) => {
 
   const updateContacts = (newContact) => {
     setContacts([...contacts, newContact])
-    console.log(newContact)
+    const {id, firstName, lastName, phoneNumber, email} = newContact
+    console.log(id)
     setLoading(true)
     createContact({
       variables: {
         input: {
-          
+          userId: id,
+          firstName,
+          lastName,
+          phoneNumber,
+          email
         }
       }
     })
