@@ -10,7 +10,18 @@ import {
 } from './queries'
 
 import {
-  CREATE_EVENT
+  CREATE_EVENT,
+  CREATE_ORGANIZATION,
+  CREATE_TOUR,
+  CREATE_CONTACT,
+  UPDATE_EVENT,
+  UPDATE_ORGANIZATION,
+  UPDATE_TOUR,
+  UPDATE_CONTACT,
+  DESTROY_EVENT,
+  DESTROY_ORGANIZATION,
+  DESTROY_TOUR,
+  DESTROY_CONTACT
 } from './mutations'
 
 const Context = React.createContext();
@@ -21,7 +32,6 @@ export const useApp = () => {
 
 const AppProvider = ({children}) => {
   // GLOBAL STATE
-  // intial data -> state match queries
   const [tours, setTours] = useState([])
   const [events, setEvents] = useState()
   const [venues, setVenues] = useState([])
@@ -29,56 +39,81 @@ const AppProvider = ({children}) => {
   const [organization, setOrganization] = useState()
   const [user, setUser] = useState()
 
-  // queries
+  // GENERIC APP STATE
+  const [appError, setError] = useState('')
+  const [appLoading, setLoading] = useState('')
+  const [message, setMessage] = useState('')
+
+  // QUERIES
   useQuery(TOURS_QUERY, {
     onCompleted: data => {
       setTours(data.tours)
-      setLoading(false)
-      setError(false)
+      // setLoading(false)
+      // setError(false)
     }
   })
 
   useQuery(EVENTS_QUERY, {
     onCompleted: data => {
       setEvents(data.events)
-    }
+      // setLoading(false)
+      // setError(false)
+    }, 
+    onError: error => setError(error)
   })
 
-  // useQuery(CONTACTS_QUERY, {
-  //   onCompleted: data => {
-  //     setContacts(data.contacts)
-  //   }
-  // })
+  useQuery(CONTACTS_QUERY, {
+    onCompleted: data => {
+      setContacts(data.contacts)
+      // setLoading(false)
+    },
+    onError: error => setError(error)
+  })
 
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
-    }
+      // setLoading(false)
+      // setError(false)
+    },
+    onError: error => setError(error)
   })
 
   useQuery(ORGANIZATION_QUERY, {
     onCompleted: data => {
-      console.log(data)
       setOrganization(data.organization)
+      // setLoading(false)
+      // setError(false)
     },
-    onError: error => {
-      console.log(error)
-    }
+    onError: error => setError(error)
   })
 
   useQuery(USER_QUERY, {
     onCompleted: data => {
       setUser(data.user)
-    }
+      // setLoading(false)
+      // setError(false)
+    }, 
+    onError: error => setError(error)
   })
 
   //MUTATIONS
-  const [ mutateEvent, {error} ] = useMutation(CREATE_EVENT)
+  const [ createEvent ] = useMutation(CREATE_EVENT, {
+    onCompleted: data => {
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
 
-  // generic state info
-  const [appError, setError] = useState('')
-  const [appLoading, setLoading] = useState('')
-  const [message, setMessage] = useState('')
+  const [createContact] = useMutation(CREATE_CONTACT, {
+    onCompleted: data => {
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
 
   // FUNCTIONS
   const updateTours = (newTour) => {
@@ -91,7 +126,8 @@ const AppProvider = ({children}) => {
   const updateEvents = (newEvent) => {
     setEvents([...events, newEvent])
     const { tourId, name, venueId, startTime, endTime } = newEvent
-    mutateEvent({
+    setLoading(true)
+    createEvent({
       variables: {
         input: {
           tourId, 
@@ -114,9 +150,15 @@ const AppProvider = ({children}) => {
 
   const updateContacts = (newContact) => {
     setContacts([...contacts, newContact])
-    //setLoading, setError
-    //ADD MUTATIONS
-    //resetLoading, resetError
+    console.log(newContact)
+    setLoading(true)
+    createContact({
+      variables: {
+        input: {
+          
+        }
+      }
+    })
   }
 
 
@@ -128,7 +170,7 @@ const AppProvider = ({children}) => {
     events,
     updateEvents,
     contacts,
-    setContacts,
+    updateContacts,
     venues,
     appError,
     setError,

@@ -13,9 +13,12 @@ export const TOURS_QUERY = gql`
 export const CONTACTS_QUERY = gql`
   query {
     contacts {
-      name
+      id
+      firstName
+      lastName
       email
-      phone
+      phoneNumber
+      note
     }
   }
 `
@@ -58,14 +61,13 @@ export const ORGANIZATION_QUERY = gql`
 `
 export const USER_QUERY = gql`
   query {
-    user {
+    user(id: 1) {
       id
       firstName
       lastName
       email
       phoneNumber
       role
-      organizations
     }
   }
 `
