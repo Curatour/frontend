@@ -14,7 +14,6 @@ const Dashboard = () => {
   let history = useHistory();
 
   const renderEventContent = (clickInfo) => {
-    console.log(clickInfo.event._def)
     history.push({
       pathname: "/event-details",
       state: { eventInfo: clickInfo.event._def }

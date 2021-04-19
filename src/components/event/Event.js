@@ -6,7 +6,7 @@ import './Event.css';
 
 const Event = (props) => {
   const [agenda, setAgenda] = useState([])
-  const [eventId, setEventId] = useState(props.location.state.eventInfo.publicId)
+  const [eventId] = useState(props.location.state.eventInfo.publicId)
   const [currentEvent, setCurrentEvent] = useState({name: 'event name', venue: {name: 'venue name'}})
 
 
