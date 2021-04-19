@@ -4,18 +4,23 @@ import {useApp} from '../../context/AppContext'
 
 import './Form.css';
 
+<<<<<<< HEAD
 const Form = () => {
   const history = useHistory()
+=======
+const Form = ({location}) => {
+  // console.log(location.state.eventDate)
+>>>>>>> main
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [venueName, setVenueName] = useState('');
-  const [date, setEventDate] = useState();
+  const [date, setEventDate] = useState(!location.state ? '' : location.state.eventDate);
   const [address, setAddress] = useState('');
   const [zipCode, setZipCode] = useState('')
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [allDayEvent, setAllDayEvent] = useState(false);
-  const [eventName, setEventName] = useState('');
+  const [eventName, setEventName] = useState(!location.state ? '' : location.state.title);
   const [formCounter, setFormCounter] = useState(0);
   const [selectedVenue, setSelectedVenue] = useState('')
   const [confirmed, setConfirmation] = useState(false)
@@ -51,7 +56,6 @@ const Form = () => {
       "startTime": `${date}T${startTime}:00.000Z`,
       "endTime": `${date}T${endTime}:00.000Z`
     }
-
     updateEvents(newEvent)
     setConfirmation(true)
   }
@@ -79,7 +83,7 @@ const Form = () => {
       pathname: '/calendar'
     })
   }
-
+  
   return (
     <section className='form-page'>
       {confirmed && (
