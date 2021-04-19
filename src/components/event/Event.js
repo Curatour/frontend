@@ -1,16 +1,24 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
+import {useApp} from '../../context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import './Event.css';
 
 const Event = () => {
+  const { deleteEvent } = useApp()
   const [agenda, setAgenda] = useState([])
   
   const saveAgenda = () => {
     console.log(agenda)
     //MUTATE SUBEVENTS HERE
+  }
+
+  const deleteSelectedEvent = (event) => {
+    event.preventDefault()
+    //deleteEvent(event.target.id)?? or //history object? id?
+    console.log('I WILL DELETE')
   }
   
   return (
@@ -23,7 +31,7 @@ const Event = () => {
         </div>
         <div className='date-info'>
           <p>Date: MM, DD, YYYY</p>
-          <FontAwesomeIcon className='delete-event-button' icon={faTrashAlt} />
+          <FontAwesomeIcon onClick={(event) => deleteSelectedEvent(event)} className='delete-event-button' icon={faTrashAlt} />
         </div>
       </div>
       <div className='agenda-wrapper'>
