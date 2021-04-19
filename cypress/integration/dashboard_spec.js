@@ -23,7 +23,15 @@ describe('Dashboard', () => {
     cy.get('.TourDisplay').find('.tour-name').should('contain', 'MVP Tour')
     cy.get('.TourDisplay').find('.tour-duration').should('be.visible')
     cy.get('.TourDisplay').find('.change-btn').should('be.visible')
-    
   });
 
+  it('should have an upcoming week display of events', () => {
+    //Specify date when applicable.
+    cy.get('.fc').find('.fc-toolbar-title').should('be.visible')
+   // Adjust values once mock data is implemented
+    // cy.get('.fc').find('.fc-list-event-time').should('have.length', 10)
+    //   .eq(0).should('contain', '12:00pm - 1:00pm')
+    // cy.get('.fc').find('.fc-list-event-title').should('have.length', 10)
+    //   .eq(0).should('contain', 'Johnny Cash')
+  });
 });
