@@ -23,21 +23,21 @@ const NavBar = () => {
         onClick={() => toggleButtons(selectCalendar, selectContacts, selectAddEvent)} 
         to="/calendar"
       >
-        <FontAwesomeIcon icon={faCalendarAlt} size="3x"/>
+        <FontAwesomeIcon icon={faCalendarAlt} />
       </Link>
       <Link 
         className={addEventButton}
         onClick={() => toggleButtons(selectAddEvent, selectCalendar, selectContacts)} 
         to="/new-event"
       >
-        <FontAwesomeIcon icon={faCalendarPlus} size="3x" />
+        <FontAwesomeIcon icon={faCalendarPlus} />
       </Link>
       <Link 
         className={contactsButton}
         onClick={() => toggleButtons(selectContacts, selectAddEvent, selectCalendar)} 
         to="/contacts"
       >
-        <FontAwesomeIcon icon={faAddressBook} size="3x" />
+        <FontAwesomeIcon icon={faAddressBook} />
       </Link>
     </div>
   );

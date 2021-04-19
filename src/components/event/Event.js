@@ -32,9 +32,13 @@ const Event = (props) => {
     <section className="Event">
       <div className='event-info'>
         <h1>{ currentEvent.title }</h1>
-        <h1>{ currentEvent.extendedProps.venue.name }</h1>
-        <h1>{currentEvent.extendedProps.venue.city}, {currentEvent.extendedProps.venue.state}</h1>
-        <h1>Date: {formatDate(currentEvent.extendedProps.start)} </h1>
+        <div className='venue-info'>
+          <p>{currentEvent.extendedProps.venue.name}</p>
+          <p>{currentEvent.extendedProps.venue.state}</p>
+        </div>
+        <div className='date-info'>
+          <p>Date: {formatDate(currentEvent.extendedProps.start)}</p>
+        </div>
       </div>
       <div className='agenda-wrapper'>
         <Agenda setAgenda={setAgenda} agenda={agenda}/>
