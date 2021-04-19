@@ -27,6 +27,12 @@ export const EVENTS_QUERY = gql`
       name
       startTime
       endTime
+      venue {
+        name
+        address
+        state
+        city 
+      }
     }
   }
 `

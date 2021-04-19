@@ -1,47 +1,40 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
-import { useQuery, useMutation } from '@apollo/client';
-import gql from 'graphql-tag';
 import './Event.css';
 
 const Event = (props) => {
   const [agenda, setAgenda] = useState([])
-  const [eventId] = useState(props.location.state.eventInfo.publicId)
-  const [currentEvent, setCurrentEvent] = useState({name: 'event name', venue: {name: 'venue name'}})
-
-
-  useQuery(gql`query {
-    event(id: ${eventId}) {
-      id
-      name
-      startTime
-      endTime
-      venue {
-          name
-          address
-          state
-          city 
-      }
+  const [currentEvent] = useState(props.location.state.eventInfo)
+  // console.log(eventDate)
+  
+  const formatDate = (eventDate) => {
+    let date = new Date(eventDate);
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+    let dt = date.getDate();
+    if (dt < 10) {
+      dt = '0' + dt;
     }
-  }`, {
-    onCompleted: data => {
-    setCurrentEvent(data.event)
-  }
-})
+    if (month < 10) {
+      month = '0' + month;
+    }
+    const newDate = month + '/'+ dt + '/' + year
+    return newDate;
+    }
   
   const saveAgenda = () => {
     console.log(agenda)
     //MUTATE SUBEVENTS HERE
   }
-  console.log("HERE", eventId, currentEvent)
+  console.log("HERE", currentEvent)
 
   return (
     <section className="Event">
       <div className='event-info'>
-        <h1>{ currentEvent.name }</h1>
-        <h1>{ currentEvent.venue.name }</h1>
-        <h1>{currentEvent.venue.city}, {currentEvent.venue.state}</h1>
-        <h1>Date: {currentEvent.startTime} </h1>
+        <h1>{ currentEvent.title }</h1>
+        <h1>{ currentEvent.extendedProps.venue.name }</h1>
+        <h1>{currentEvent.extendedProps.venue.city}, {currentEvent.extendedProps.venue.state}</h1>
+        <h1>Date: {formatDate(currentEvent.extendedProps.start)} </h1>
       </div>
       <div className='agenda-wrapper'>
         <Agenda setAgenda={setAgenda} agenda={agenda}/>
