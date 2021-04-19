@@ -11,6 +11,7 @@ import {
 
 import {
   CREATE_EVENT,
+  CREATE_VENUE,
   CREATE_ORGANIZATION,
   CREATE_TOUR,
   CREATE_CONTACT,
@@ -49,16 +50,13 @@ const AppProvider = ({children}) => {
     onCompleted: data => {
       setTours(data.tours)
       setEvents(data.tours[0].events)
-      // setLoading(false)
-      // setError(false)
-    }
+    },
+    onError: error => setError(error)
   })
 
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
-      // setLoading(false)
-      // setError(false)
     },
     onError: error => setError(error)
   })
@@ -74,8 +72,6 @@ const AppProvider = ({children}) => {
     onCompleted: data => {
       setUser(data.user)
       setContacts(data.user.contacts)
-      setLoading(false)
-      setError(false)
     }, 
     onError: error => setError(error)
   })
@@ -84,7 +80,15 @@ const AppProvider = ({children}) => {
   const [ createEvent ] = useMutation(CREATE_EVENT, {
     onCompleted: data => {
       setEvents([...events, data.createEvent])
-      console.log(data)
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
+  const [createVenue] = useMutation(CREATE_VENUE, {
+    onCompleted: data => {
+      setVenues([...venues, data.createVenue])
       setLoading(false)
       setError(false)
     },
@@ -128,7 +132,18 @@ const AppProvider = ({children}) => {
   }
 
   const addNewVenue = (newVenue) => {
-    setVenues([...venues, newVenue])
+    const {name, address, city, state, zip} = newVenue
+    createVenue({
+      variables: {
+        input: {
+          name,
+          address,
+          city, 
+          state,
+          zip
+        }
+      }
+    })
     //MUTATION
     
   }
@@ -172,6 +187,7 @@ const AppProvider = ({children}) => {
     updateContacts,
     deleteContact,
     venues,
+    addNewVenue,
     appError,
     setError,
     appLoading,

@@ -51,6 +51,19 @@ export const CREATE_CONTACT = gql`
   }
 `
 
+export const CREATE_VENUE = gql`
+   mutation CreateVenue($input: CreateVenueInput!) {
+    createVenue(input: $input) {
+      id
+      name
+      address
+      city
+      state
+      zip
+    }
+  }
+`
+
 
 //UPDATE
 export const UPDATE_EVENT = gql`

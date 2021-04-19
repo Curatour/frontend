@@ -6,6 +6,8 @@ export const TOURS_QUERY = gql`
     tours {
       id
       name
+      startDate
+      endDate
       events {
         id
         name
@@ -18,7 +20,6 @@ export const TOURS_QUERY = gql`
           city
           state
           zip
-          capacity
         }
       }
     }
