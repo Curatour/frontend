@@ -4,13 +4,8 @@ import {useApp} from '../../context/AppContext'
 
 import './Form.css';
 
-<<<<<<< HEAD
-const Form = () => {
-  const history = useHistory()
-=======
 const Form = ({location}) => {
-  // console.log(location.state.eventDate)
->>>>>>> main
+  const history = useHistory()
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [venueName, setVenueName] = useState('');
