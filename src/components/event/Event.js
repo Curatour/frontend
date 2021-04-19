@@ -14,9 +14,13 @@ const Event = () => {
     <section className="Event">
       <div className='event-info'>
         <h1>Event Name</h1>
-        <h1>Venue Name</h1>
-        <h1>Address/location</h1>
-        <h1>Main contact: #####</h1>
+        <div className='venue-info'>
+          <p>Venue Name</p>
+          <p>Address/location</p>
+        </div>
+        <div className='date-info'>
+          <p>Date: MM, DD, YYYY</p>
+        </div>
       </div>
       <div className='agenda-wrapper'>
         <Agenda setAgenda={setAgenda} agenda={agenda}/>

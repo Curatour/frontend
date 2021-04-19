@@ -14,10 +14,10 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
-      <ContactsPreview/>
-      <TourDisplay />
-      <Link to='/event-details'>go to event details view</Link>
-
+      <div className='details'>
+        <TourDisplay />
+        <ContactsPreview/>
+      </div>
       <ListWrapper>
         <FullCalendar
               plugins={[listPlugin]}
