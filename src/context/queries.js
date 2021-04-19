@@ -69,3 +69,20 @@ export const USER_QUERY = gql`
     }
   }
 `
+
+// export const EVENT_BY_ID_QUERY = gql`
+//   query {
+//     event(id: ${eventId}) {
+//       id
+//       name
+//       startTime
+//       endTime
+//       venue {
+//           name
+//           address
+//           state
+//           city 
+//       }
+//     }
+//   }
+// `
