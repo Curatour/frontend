@@ -2,7 +2,7 @@ import React, {useContext, useMemo, useState} from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { 
   TOURS_QUERY, 
-  EVENTS_QUERY, 
+  EVENT_BY_ID_QUERY, 
   CONTACTS_QUERY, 
   VENUE_QUERY, 
   ORGANIZATION_QUERY,
@@ -65,6 +65,16 @@ const AppProvider = ({children}) => {
     }, 
     onError: error => setError(error)
   })
+
+  // const getEventById = (id) => useQuery(EVENT_BY_ID_QUERY, {
+  //   variables: {
+  //     id: id
+  //   },
+  //   onCompleted: data => {
+  //     setEvents([...events.filter(e => e.id === data.event.id), data.event])
+  //   },
+  //   onError: error => setError(error)
+  // })
 
   //MUTATIONS
   const [ createEvent ] = useMutation(CREATE_EVENT, {
@@ -168,11 +178,6 @@ const AppProvider = ({children}) => {
           endTime,
         }
       }
-    })
-    .then((data) => {
-      // const updateEvent = events.find(event => event.id === eventId.toString())
-      // console.log(updateEvent.subEvents)
-      // updateEvent.subEvents.push(data)
     })
   }
 
