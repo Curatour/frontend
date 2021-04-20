@@ -1,7 +1,14 @@
 describe('Dashboard', () => {
-  before(() => {
-    cy.visit('http://localhost:3000')
-  })
+  beforeEach(() => {
+    cy.intercept('POST', '/graphql', (req) => {
+      const { body } = req
+      if (body.hasOwnProperty('query') && req.body.query.includes('events')) {
+        req.reply({ fixture: 'events.json'});
+      } 
+    })
+    cy.clock(Date.UTC(2021, 3, 20), ['Date']);
+    cy.visit('http://localhost:3000/');
+  });
 
   it('should have a header', () => {
     cy.get('.Header').find('.logo').should('have.attr', 'src', '/static/media/CuratourLogo.90886745.png')
