@@ -13,6 +13,7 @@ export function formatEvents(eventsArray) {
         venue: event.venue,
         start: event.startTime,
         end: event.endTime,
+        subEvents: event.subEvents
       }
     }
   })
