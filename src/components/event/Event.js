@@ -15,7 +15,7 @@ import './Event.css';
 
 const Event = (props) => {
   const [currentEvent] = useState(props.location.state.eventInfo)
-  const { events, setEvents, deleteEvent, setSubEventParent } = useApp()
+  const { deleteEvent, setSubEventParent } = useApp()
   const history = useHistory()
   console.log(parseInt(currentEvent.publicId))
   
@@ -27,17 +27,6 @@ const Event = (props) => {
     query: EVENT_BY_ID_QUERY,
     variables: { id: parseInt(currentEvent.publicId) }
   })
-
-  // const [destroyEvent] = useMutation(DESTROY_EVENT, {
-  //   onCompleted: data => {
-  //     console.log(data)
-  //     setEvents(events.filter(event => event.id !== data.destroyEvent.id))
-  //     history.push({
-  //       pathname: '/calendar'
-  //     })
-  //   },
-  //   onError: error => console.log(error)
-  // })
 
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
