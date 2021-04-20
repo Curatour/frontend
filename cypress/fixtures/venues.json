@@ -1,0 +1,86 @@
+{
+  "data": {
+      "venues": [
+          {
+              "id": "1",
+              "name": "Batura Sar Amphitheater",
+              "address": "390 Fredric Ports",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 911
+          },
+          {
+              "id": "2",
+              "name": "Chamlang Amphitheater",
+              "address": "18267 Velma Inlet",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 1612
+          },
+          {
+              "id": "3",
+              "name": "Diran Amphitheater",
+              "address": "65808 Ismael Crossing",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 9056
+          },
+          {
+              "id": "4",
+              "name": "Gyachung Kang Amphitheater",
+              "address": "910 Mayme Locks",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 7736
+          },
+          {
+              "id": "5",
+              "name": "Masherbrum Amphitheater",
+              "address": "76585 Blanda Drive",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 596
+          },
+          {
+              "id": "6",
+              "name": "Baltistan Peak Amphitheater",
+              "address": "417 Block Landing",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 344
+          },
+          {
+              "id": "7",
+              "name": "Muztagh Tower Amphitheater",
+              "address": "8646 Erasmo Crescent",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 2595
+          },
+          {
+              "id": "8",
+              "name": "Karjiang Amphitheater",
+              "address": "500 Green Grove",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 9250
+          },
+          {
+              "id": "9",
+              "name": "Ultar Amphitheater",
+              "address": "6921 Schulist Course",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 711
+          },
+          {
+              "id": "10",
+              "name": "Kabru N Amphitheater",
+              "address": "6925 Monte Crest",
+              "city": "Denver",
+              "state": "CO",
+              "capacity": 3592
+          }
+      ]
+  }
+}
