@@ -1,79 +1,64 @@
-{"data":{
-  "tours":[
-    {"id":"1","name":"The Testing Tour",
-      "events":[
-        {"id":"1",
-          "name":"Frank Zappa",
-          "startTime":"2021-04-20T17:00:00Z",
-          "endTime":"2021-04-20T21:00:00Z",
-          "venue":{
-            "id":"2",
-            "name":"Dhaulagiri VI Amphitheater",
-            "address":"914 Timika Knolls",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":6529}},
-        {"id":"2",
-          "name":"George Michael and the Testing Testing",
-          "startTime":"2021-04-22T21:00:00Z",
-          "endTime":"2021-04-22T23:00:00Z",
-          "venue":{
-            "id":"4",
-            "name":"Gasherbrum I Amphitheater",
-            "address":"229 Towne Mountain",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":3266}},
-        {"id":"3",
-          "name":"Cortinas at the Tester",
-          "startTime":"2021-04-24T20:00:00Z",
-          "endTime":"2021-04-24T00:00:00Z",
-          "venue":{
-            "id":"7",
-            "name":"K2 Amphitheater",
-            "address":"296 Koelpin Fords",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":7046}},
-        {"id":"4",
-          "name":"Marilyn Manson Tests Positive",
-          "startTime":"2021-04-25T21:00:00Z",
-          "endTime":"2021-04-25T23:00:00Z",
-          "venue":{
-            "id":"9",
-            "name":"Gyachung Kang Amphitheater",
-            "address":"656 Fay Alley",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":7066}},
-        {"id":"5",
-          "name":"Jeff Beck Live From Testsville, Testington",
-          "startTime":"2021-04-25T21:00:00Z",
-          "endTime":"2021-04-25T22:00:00Z",
-          "venue":{
-            "id":"1",
-            "name":"Malubiting Amphitheater",
-            "address":"84682 Dooley Loaf",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":6129}},
-        {"id":"6",
-          "name":"The Undertones and Overtests",
-          "startTime":"2021-04-26T18:00:00Z",
-          "endTime":"2021-04-26T19:00:00Z",
-          "venue":{
-            "id":"4",
-            "name":"Gasherbrum I Amphitheater",
-            "address":"229 Towne Mountain",
-            "city":"Denver",
-            "state":"CO",
-            "zip":"80203",
-            "capacity":3266}
-            }]
-          }]
-        }}
+{"data": {
+  "user": {
+    "contacts": [
+        {
+          "id": 1, 
+          "firstName": "Bobby", 
+          "lastName": "Schmurda", 
+          "email": "holla@example.com",
+          "phoneNumber": "5558458004"
+        },
+        {
+          "id": 2, 
+          "firstName": "Truman", 
+          "lastName": "Roberts", 
+          "email": "hollaback@example.com",
+          "phoneNumber": "5555345554"
+        },
+        {
+          "id": 3, 
+          "firstName": "Jackie", 
+          "lastName": "Kennedy", 
+          "email": "yagirl@example.com",
+          "phoneNumber": "5555399954"
+        }
+      ],
+    "organizations": [
+      {
+        "id": 1, 
+        "name": "TOUR", 
+        "startDate": "2021-02-23", 
+        "endDate":"2022-02-28", 
+        "events": [
+          {
+            "endTime": "2021-04-22T21:00:00Z",
+            "id": "1",
+            "name": "Flaming Lips",
+            "startTime": "2021-04-22T19:00:00Z",
+            "subEvents": [
+                {
+                  "id": "1", 
+                  "name": "Find the Ukelele", 
+                  "description": "value proposition", 
+                  "startTime": "2021-04-22T18:30:00Z", 
+                  "endTime": "2021-04-22T18:30:00Z", 
+                  "completed": false 
+                }
+             ],
+            "venue": {
+              "address": "390 Fredric Ports",
+              "capacity": 911,
+              "city": "Denver",
+              "id": "1",
+              "name": "Batura Sar Amphitheater",
+              "state": "CO",
+              "zip": "80203"
+            }
+          }
+        ]     
+      }
+    ]
+  }
+}
+
+}
