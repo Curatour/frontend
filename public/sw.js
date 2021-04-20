@@ -13,6 +13,20 @@ self.addEventListener('install', (e) => {
   )
 })
 
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request)
+    .then((res) => {
+      if (res) return res
+
+      return fetch(e.request).then((newRes) => {
+        caches.open(pwaCache).then((cache) => cache.put(e.request, newRes))
+        return newRes.clone()
+      })
+    })
+  )
+})
+
 self.addEventListener('activate', (e) => {
   let cacheCleaned = caches.keys()
     .then(keys => {
@@ -25,16 +39,3 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(cacheCleaned)
 })
 
-
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((res) => {
-      if (res) return res
-
-      return fetch(e.request).then((newRes) => {
-        caches.open(pwaCache).then((cache) => cache.post(e.request, newRes))
-        return newRes.clone()
-      })
-    })
-  )
-})
