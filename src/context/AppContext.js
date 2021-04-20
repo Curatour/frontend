@@ -1,29 +1,18 @@
-import React, {useContext, useMemo, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { 
-  TOURS_QUERY, 
   EVENT_BY_ID_QUERY, 
-  CONTACTS_QUERY, 
   VENUE_QUERY, 
-  ORGANIZATION_QUERY,
-  USER_QUERY  
+  USER_QUERY,  
 } from './queries'
 
 import {
   CREATE_EVENT,
   CREATE_VENUE,
-  CREATE_ORGANIZATION,
-  CREATE_TOUR,
   CREATE_CONTACT,
-  UPDATE_EVENT,
-  UPDATE_ORGANIZATION,
-  UPDATE_TOUR,
-  UPDATE_CONTACT,
-  DESTROY_EVENT,
-  DESTROY_ORGANIZATION,
-  DESTROY_TOUR,
   DESTROY_CONTACT,
-  CREATE_SUB_EVENT
+  CREATE_SUB_EVENT,
+  DESTROY_EVENT
 } from './mutations'
 
 const Context = React.createContext();
@@ -97,6 +86,7 @@ const AppProvider = ({children}) => {
 
   const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
     onCompleted: data => {
+      console.log(data)
       setLoading(false)
       setError(false)
     },
@@ -115,6 +105,7 @@ const AppProvider = ({children}) => {
 
   const [destroyEvent] = useMutation(DESTROY_EVENT, {
     onCompleted: data => {
+      console.log(data)
       setEvents(events.filter(event => event.id !== data.destroyEvent.id))
       setLoading(false)
       setError(false)
@@ -193,18 +184,18 @@ const AppProvider = ({children}) => {
     destroyContact({
       variables: { 
         input: { 
-          id: parseInt(id)
+          id: id
         }
       }
     })
   }
 
-  const deleteEvent = (id) => {
+  const deleteEvent = () => {
     setLoading(true)
     destroyEvent({
       variables: {
         input: {
-          id: parseInt(id)
+          id: subEventParent
         }
       }
     })
@@ -219,6 +210,7 @@ const AppProvider = ({children}) => {
     setSubEventParent,
     events,
     updateEvents,
+    setEvents,
     deleteEvent,
     createAgenda,
     contacts,

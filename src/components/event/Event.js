@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import Agenda from '../agenda/Agenda'
 import Loading from '../common/Loading'
+import NotFound from '../error/NotFound'
 import { useHistory } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { client } from '../../index'
 import { EVENT_BY_ID_QUERY } from '../../context/queries'
-import { useQuery } from '@apollo/client'
+import { DESTROY_EVENT } from '../../context/mutations'
+import { useQuery, useMutation } from '@apollo/client'
 
 import './Event.css';
 
 const Event = (props) => {
   const [currentEvent] = useState(props.location.state.eventInfo)
-  const { deleteEvent, subEventParent, setSubEventParent } = useApp()
-  const [agenda, setAgenda] = useState(currentEvent.extendedProps.subEvents)
+  const { events, setEvents, deleteEvent, setSubEventParent } = useApp()
   const history = useHistory()
-  
-  setSubEventParent(parseInt(currentEvent.publicId))
+  console.log(parseInt(currentEvent.publicId))
   
   const {loading, error} = useQuery(EVENT_BY_ID_QUERY, { 
-    variables: { id: subEventParent},
-    onCompleted: data => console.log(data),
-    onError: error => console.log(error)
+    variables: { id: parseInt(currentEvent.publicId)},
   })
 
   const eventData = client.readQuery({
     query: EVENT_BY_ID_QUERY,
-    variables: { id: parseInt(currentEvent.publicId)}
+    variables: { id: parseInt(currentEvent.publicId) }
   })
+
+  // const [destroyEvent] = useMutation(DESTROY_EVENT, {
+  //   onCompleted: data => {
+  //     console.log(data)
+  //     setEvents(events.filter(event => event.id !== data.destroyEvent.id))
+  //     history.push({
+  //       pathname: '/calendar'
+  //     })
+  //   },
+  //   onError: error => console.log(error)
+  // })
 
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
@@ -46,28 +55,33 @@ const Event = (props) => {
     }
 
   const deleteSelectedEvent = (event) => {
-    event.preventDefault()
-    deleteEvent(currentEvent.publicId)
+    deleteEvent(parseInt(currentEvent.publicId))
     history.push({
       pathname: '/calendar'
     })
   }
-
-  // useEffect(() => {
-
-  // }, [eventData])
+  
+  useEffect(() => {
+    setSubEventParent(parseInt(currentEvent.publicId))
+  }, [])
 
   if(loading || !eventData){
     return <Loading />
   }
 
+  if(error){
+    return <NotFound />
+  }
+
+
   return (
       <section className="Event">
       <div className='event-info'>
-        <h1>{ currentEvent.title }</h1>
+        <h1>{ eventData.event.name }</h1>
         <div className='venue-info'>
-          <p>{currentEvent.extendedProps.venue.name}</p>
-          <p>{currentEvent.extendedProps.venue.state}</p>
+          <p>{eventData.event.venue.name}</p>
+          <p>{eventData.event.venue.address}</p>
+          <p>{`${eventData.event.venue.city}, ${eventData.event.venue.state}`}</p>
         </div>
         <div className='date-info'>
           <p>Date: {formatDate(currentEvent.extendedProps.start)}</p>
@@ -75,7 +89,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className='agenda-wrapper'>
-        <Agenda setAgenda={setAgenda} agenda={eventData.event.subEvents} currentEvent={currentEvent}/>
+        <Agenda agenda={eventData.event.subEvents} currentEvent={currentEvent}/>
       </div>
     </section>
   );
