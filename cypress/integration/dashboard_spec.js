@@ -1,22 +1,22 @@
 describe('Dashboard', () => {
   beforeEach(() => {
-    // cy.intercept('POST', '/graphql', (req) => {
+       // cy.intercept('POST', '/graphql', (req) => {
     //   const { body } = req
     //   if (body.hasOwnProperty('query') && req.body.query.includes("venues")) {
     //     console.log('venue query')
-    //     req.reply({fixture: 'venues.json'})
-    //   }
+   //     req.reply({fixture: 'venues.json'})
+   //   }
     // })
 
-    cy.intercept('POST', '/graphql', (req) => {
-      const { body } = req
-       if (body.hasOwnProperty('query') && req.body.query.includes("user")) {
-        req.reply({fixture: 'login.json'})
-        console.log( req, 'user query')
-      } 
-    })
+  //   cy.intercept('POST', '/graphql', (req) => {
+  //     const { body } = req
+  //      if (body.hasOwnProperty('query') && req.body.query.includes("user")) {
+  //       req.reply({fixture: 'login.json'})
+  //       console.log( req, 'user query')
+  //     } 
+  //   })
 
-    cy.clock(Date.UTC(2021, 3, 20), ['Date']);
+  //  cy.clock(Date.UTC(2021, 3, 20), ['Date']);
     cy.visit('http://localhost:3000/');
   });
 
@@ -29,7 +29,7 @@ describe('Dashboard', () => {
   });
 
   it('should have a Contacts Preview', () => {
-    cy.get('.ContactsPreview').find('.top-three a').should('have.length', 3)
+    cy.get('.ContactsPreview').find('.top-three a').should('be.visible')
     cy.get('.ContactsPreview p').eq(0).should('contain', 'Main Contacts')
     cy.get('.ContactsPreview').find('.all-contacts').should('contain', 'All Contacts')
       .click().get('.Contacts').should('be.visible')
@@ -44,10 +44,8 @@ describe('Dashboard', () => {
 
   it('should have an upcoming week display of events', () => {
     cy.get('.fc').find('.fc-toolbar-title').should('be.visible')
-    cy.get('.fc').find('.fc-list-event-time').should('have.length', 2)
-      .eq(0).should('contain', '11:20am - 2:20pm')
-    cy.get('.fc').find('.fc-list-event-title').should('have.length', 2)
-      .eq(0).should('contain', 'Bob Marley (and the Wailers)')
+    cy.get('.fc').find('.fc-list-event-time').should('be.visible')
+    cy.get('.fc').find('.fc-list-event-title').should('be.visible')
   });
 });
 
