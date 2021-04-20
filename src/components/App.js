@@ -14,20 +14,20 @@ import { useApp } from '../context/AppContext';
 
 
 function App() {
-  const {appLoading} = useApp();
+  const {appLoading, appError} = useApp();
 
   return (
     <div className="App">
       <Header/>
-      {appLoading && <Loading />}
-      {!appLoading &&
+      {appError && <NotFound />}
+      {appLoading && !appError && <Loading />}
+      {!appLoading && !appError &&
         <Switch>
           <Route exact path="/" component={Dashboard}/>
           <Route path="/calendar" component={Calendar} />
           <Route path="/new-event" component={Form} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/event-details" component={Event} />
-          {/* <Route path='/loading' component={Loading} /> */}
           {/* <Route path="/event/:name" render={blah blah match what not here} /> */}
           <Route component={NotFound} />
         </Switch>
