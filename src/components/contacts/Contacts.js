@@ -40,11 +40,7 @@ const Contacts = () => {
     }
     toggleIsAddingContact(!isAddingContact);
   }
-
-  useEffect(() => {
-    contactCards()
-  }, [ contacts.length, searchRef.current.value, contactCards ])
-
+ 
   const contactCards = () => {
     if (searchRef.current.value.length > 0){
       setDisplay(filterContacts.map(contact => <ContactCard key={contact.id} contact={contact} />)) ;
@@ -53,6 +49,11 @@ const Contacts = () => {
     }
 
     }
+
+  useEffect(() => {
+    contactCards()
+  }, [ contacts.length, searchRef.current.value ])
+
 
   return (
     <div className='Contacts'>
