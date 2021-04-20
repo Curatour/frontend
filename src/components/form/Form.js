@@ -23,6 +23,14 @@ const Form = ({location}) => {
 
   const incrementForm = (event) => {
     event.preventDefault()
+    if (!navigator.onLine) {
+      alert('Event cannot be added while offline')
+      history.push({
+        pathname: "/",
+      })
+      console.log("offline bro")
+      return
+    }
     setFormCounter(formCounter + 1)
   }
 
