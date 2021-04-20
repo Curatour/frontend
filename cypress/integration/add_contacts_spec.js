@@ -9,21 +9,21 @@ describe('AddContacts', () => {
     cy.get('.add-contacts').should('be.visible');
   });
 
-  it('should disable any interactions behind it', () => {
-    // cy.get('.add-contacts-button').click();
+  // it('should disable any interactions behind it', () => {
+  //   cy.get('.add-contacts-button').click();
 
-    // cy.on("fail", (err) => {
-    //   expect(err.message).to.include("failed because this element")
-    // })
+  //   cy.on("fail", (err) => {
+  //     expect(err.message).to.include("failed because this element")
+  //   })
 
-    // cy.get('.Contacts a:last').click();
-  });
+  //   cy.get('.Contacts a:last').click();
+  // });
 
-  it('should have 4 inputs fields', () => {
-    cy.get('.add-contacts-button').click();
+  // it('should have 4 inputs fields', () => {
+  //   cy.get('.add-contacts-button').click();
     
-    cy.get('.add-contacts input').should('have.length', 4);
-  });
+  //   cy.get('.add-contacts input').should('have.length', 4);
+  // });
 
   // it('should add a contact to the list', () => {
   //   cy.get('.ContactCard').should('have.length', 4);
