@@ -2,51 +2,51 @@
 ## Features
 
 To view please:
-- please visit [here](www.example.com) to interact and view
+- please visit [here](https://curatour.vercel.app/) to interact and view
 
 ### Categories:
 - [Home Page](#Home-Page)
 
-- [Selecting a Movie](#Selecting-a-movie)
+- [Calendar](#Calendar)
 
-- [Error Message](#Error-Message)
+- [Contacts](#Contacts)
 
-- [Cypress User Flow Testing](#Cypress-User-Flow-Testing)
+- [Add Event](#Add-Event)
 
 #### Home Page
-Upon navigating to our landing page, users see the available movies.
+Upon navigating to our landing page, users see a dashboard with their top contacts, tour name, and upcoming events.
 
 <details>
 <summary>Home page example</summary>
 <br>
- <img width="450" alt="all movies" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+ <img width="450" alt="all movies" src="https://user-images.githubusercontent.com/64617435/115464872-f634b280-a1ea-11eb-90fb-f3020be83abd.png">
 </details>
 
-#### Feature one
-When a user does something, something happens.
+#### Calendar
+When a user navigates to the calendar, they see a more detailed calendar that can display day, month, or year.
 
 <details>
-<summary>Summary</summary>
+<summary>Calendar view</summary>
 <br>
-<img width="450" alt="description of image" src="https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif">
+<img width="450" alt="description of image" src="https://user-images.githubusercontent.com/64617435/115465236-8a9f1500-a1eb-11eb-8e7f-7f6f87919302.png">
 </details>
 
-#### Feature two
-When a user does something, something happens.
+#### Contacts
+When a user navigates to the contact tab, a list of their contacts is shown.
 
 <details>
-<summary>Summary</summary>
+<summary>Contacts</summary>
 <br>
-<img width="450" alt="description of image" src="https://media.giphy.com/media/cW64pEEZe0YZa/giphy.gif">
+<img width="450" alt="description of image" src="https://user-images.githubusercontent.com/64617435/115465644-2466c200-a1ec-11eb-8192-9f2d762c92e4.png">
 </details>
 
-#### Feature three
-When a user does something, something happens.
+#### Add Event
+When a user navigates to the 'Add Event' page, they are presented with form to add events.
 
 <details>
-<summary>Summary</summary>
+<summary>Event Form</summary>
 <br>
-<img width="450" alt="description of image" src="https://media.giphy.com/media/d6UbuwWVKJHXO/giphy.gif">
+<img width="450" alt="description of image" src="https://user-images.githubusercontent.com/64617435/115465892-83c4d200-a1ec-11eb-9317-56cd7aa2c406.png">
 </details>
 
 ## Technologies
