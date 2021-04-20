@@ -1,11 +1,17 @@
 import React, {useState} from 'react'
 import Agenda from '../agenda/Agenda'
+import {useHistory} from 'react-router-dom'
+import { useApp } from '../../context/AppContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
 import './Event.css';
 
 const Event = (props) => {
-  const [agenda, setAgenda] = useState([])
   const [currentEvent] = useState(props.location.state.eventInfo)
-  // console.log(eventDate)
+  const { deleteEvent } = useApp()
+  const [agenda, setAgenda] = useState(currentEvent.extendedProps.subEvents)
+  const history = useHistory()
   
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
@@ -21,12 +27,14 @@ const Event = (props) => {
     const newDate = month + '/'+ dt + '/' + year
     return newDate;
     }
-  
-  const saveAgenda = () => {
-    console.log(agenda)
-    //MUTATE SUBEVENTS HERE
+
+  const deleteSelectedEvent = (event) => {
+    event.preventDefault()
+    deleteEvent(currentEvent.publicId)
+    history.push({
+      pathname: '/calendar'
+    })
   }
-  console.log("HERE", currentEvent)
 
   return (
     <section className="Event">
@@ -38,17 +46,11 @@ const Event = (props) => {
         </div>
         <div className='date-info'>
           <p>Date: {formatDate(currentEvent.extendedProps.start)}</p>
+          <FontAwesomeIcon onClick={(event) => deleteSelectedEvent(event)} className='delete-event-button' icon={faTrashAlt} />
         </div>
       </div>
       <div className='agenda-wrapper'>
-        <Agenda setAgenda={setAgenda} agenda={agenda}/>
-        {agenda.length > 0 && 
-          <button 
-            className='form-button' 
-            style={{marginTop: '1.5rem'}}
-            onClick={saveAgenda}
-            >Save Agenda
-            </button>}
+        <Agenda setAgenda={setAgenda} agenda={agenda} currentEvent={currentEvent}/>
       </div>
     </section>
   );
