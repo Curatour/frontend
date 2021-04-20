@@ -23,8 +23,8 @@ describe('Contacts', () => {
     cy.get('.fc-timeGridWeek-view').should('be.visible')
     cy.get('.event-link').find('b').should('contain', '2:00 - 5:00')
    .click()
-    //   .get('.Event').should('be.visible')
-    // cy.get('.NavBar').find('a').eq(0).click()
+      .get('.Event').should('be.visible')
+    cy.get('.NavBar').find('a').eq(0).click()
   });
 
   it('should be able to show a daily calendar view', () => {
