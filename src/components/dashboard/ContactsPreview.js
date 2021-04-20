@@ -1,10 +1,11 @@
 import React from 'react'
 import './Dashboard.css'
 import { Link } from 'react-router-dom'
-import { contactData } from '../contacts/Contacts'
+import { useApp } from '../../context/AppContext'
 
 const ContactsPreview = () => {
-  const topThree = contactData.map(contact => {
+  const { contacts } = useApp()
+  const topThree = contacts.map(contact => {
     return (
     <a className="contact-icon" href={`mailto: ${contact.email}`} >
       <p>{contact.firstName[0]}{contact.lastName[0]}</p>

@@ -1,48 +1,34 @@
 import React, { useState, useRef } from 'react';
+import { useApp } from '../../context/AppContext'
 
-function AgendaSideBar({updateAgenda}) {
+function AgendaSideBar({currentEvent}) {
   const titleRef = useRef('')
   const descriptionRef = useRef('')
   const [time, setTime] = useState('')
+  const {createAgenda} = useApp()
 
   const onSubmit = (e) => {
     e.preventDefault()
     const newAgendaItem = formatAgendaItem()
-    updateAgenda(newAgendaItem)
+    createAgenda(newAgendaItem)
     titleRef.current.value = ''
     descriptionRef.current.value = ''
     setTime('')
   }
 
   const convertTime = (time) => {
-    const splitTime = time.split(':')
-
-    const hours = Number(splitTime[0])
-    const minutes = Number(splitTime[1])
-
-    let timeValue;
-
-    if (hours > 0 && hours <= 12) {
-      timeValue = "" + hours;
-    } else if (hours > 12) {
-      timeValue = "" + (hours - 12);
-    } else if (hours === 0) {
-      timeValue = "12";
-    }
-
-    timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes
-    timeValue += (hours >= 12) ? "PM" : "AM"
-
-    return timeValue
+    console.log("input time",time)
+    const date = currentEvent.extendedProps.start.replace(/T.*$/, '')
+    return `${date}T${time}:00Z`
   }
 
   const formatAgendaItem = () => {
     const item = {
-      id: Date.now(),
+      eventId: parseInt(currentEvent.publicId),
       startTime: convertTime(time),
-      title: titleRef.current.value,
+      endTime: convertTime(time),
+      name: titleRef.current.value,
       description: descriptionRef.current.value,
-      isCompleted: false
     }
     return item
   }
