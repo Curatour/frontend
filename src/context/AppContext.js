@@ -169,6 +169,11 @@ const AppProvider = ({children}) => {
         }
       }
     })
+    .then((data) => {
+      // const updateEvent = events.find(event => event.id === eventId.toString())
+      // console.log(updateEvent.subEvents)
+      // updateEvent.subEvents.push(data)
+    })
   }
 
   const updateContacts = (newContact) => {
