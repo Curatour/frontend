@@ -1,9 +1,9 @@
-  
 const pwaCache = 'pwa-cache-1'
 const staticCache = [
       '/index.html',
       '/index.css',
       '/index.js',
+      '/CTicon.png'
     ]
 
 self.addEventListener('install', (e) => {
@@ -37,4 +37,4 @@ self.addEventListener('fetch', (e) => {
       })
     })
   )
-  })
+})
