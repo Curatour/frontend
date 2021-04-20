@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {useApp} from '../../context/AppContext'
+import { useHistory } from 'react-router-dom'
 
 import './Form.css';
 
 const Form = ({location}) => {
+  let history = useHistory();
   // console.log(location.state.eventDate)
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -20,6 +22,14 @@ const Form = ({location}) => {
 
   const incrementForm = (event) => {
     event.preventDefault()
+    if (!navigator.onLine) {
+      alert('Event cannot be added while offline')
+      history.push({
+        pathname: "/",
+      })
+      console.log("offline bro")
+      return
+    }
     setFormCounter(formCounter + 1)
   }
 
