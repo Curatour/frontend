@@ -1,0 +1,23 @@
+{"data":
+  {"events":[{
+    "id":"1",
+    "name":"Bob Marley (and the Wailers)",
+    "startTime":"2021-04-20T17:20:28Z",
+    "endTime":"2021-04-20T20:20:28Z",
+    "venue":{
+      "name":"Noijin Kangsang Amphitheater",
+      "address":"836 Flatley Lane",
+      "state":"CO","city":"Denver"
+      }
+    },{
+      "id":"2",
+      "name":"Hamhead and The Meetmen",
+      "startTime":"2021-04-21T17:20:28Z",
+      "endTime":"2021-04-21T20:20:28Z",
+      "venue":{
+        "name":"Sausage Factory",
+        "address":"42 Charcuterie Court",
+        "state":"CO","city":"Denver"
+        }
+      }
+      ]}}
