@@ -9,6 +9,8 @@ To view please:
 
 - [Calendar](#Calendar)
 
+- [Event](#Event-View)
+
 - [Contacts](#Contacts)
 
 - [Add Event](#Add-Event)
@@ -29,6 +31,15 @@ When a user navigates to the calendar, they see a more detailed calendar that ca
 <summary>Calendar view</summary>
 <br>
 <img width="450" alt="description of image" src="https://user-images.githubusercontent.com/64617435/115465236-8a9f1500-a1eb-11eb-8e7f-7f6f87919302.png">
+</details>
+
+#### Event View
+When a user selects and event, details and a related agenda is displayed.
+
+<details>
+<summary>Event with an Agenda</summary>
+<br>
+<img width="450" alt="description of image" src="https://user-images.githubusercontent.com/64617435/115466432-575d8580-a1ed-11eb-8416-7e435628e26e.png">
 </details>
 
 #### Contacts
