@@ -102,13 +102,21 @@ export const UPDATE_TOUR = gql`
 `
 
 export const UPDATE_CONTACT = gql`
-   mutation UpdateContaact($input: UpdateContactInput!) {
+   mutation UpdateContact($input: UpdateContactInput!) {
     updateContact(input: $input) {
       id
       firstName
       lastName
       phoneNumber
       email
+    }
+  }
+`
+
+export const UPDATE_SUB_EVENT = gql`
+   mutation UpdateSubEvent($input: UpdateSubEventInput!) {
+    updateSubEvent(input: $input) {
+      id
     }
   }
 `
