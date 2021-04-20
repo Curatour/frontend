@@ -60,7 +60,7 @@ describe('New Event', () => {
       .click()
   })
 
-  it.only('should be able to add time and date and name to the event', () => {
+  it('should be able to add time and date and name to the event', () => {
      cy.get('input[type=text]').eq(0).type('Denver')
     cy.get('input[type=text]').eq(1).type('CO')
     cy.get('.form-button').click()

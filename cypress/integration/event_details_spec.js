@@ -4,6 +4,7 @@ describe('Event Details', () => {
 
     cy.get('.fc').find('.fc-daygrid-event')
     .eq(1).click();
+    cy.wait(500)
   });
   
   it('should be on the event-details page', () => {
