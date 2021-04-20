@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ContactCard from './ContactCard';
 import AddContacts from './AddContacts';
+import { useHistory } from 'react-router-dom'
 import './Contacts.css';
 
 export const contactData = [
@@ -31,6 +32,7 @@ export const contactData = [
   }];
 
 const Contacts = () => {
+  let history = useHistory();
   const [contacts, setContacts] = useState(contactData);
   const [isAddingContact, toggleIsAddingContact] = useState(false);
   const searchRef = useRef('');
@@ -58,6 +60,13 @@ const Contacts = () => {
 
   const toggleAddContactModule = (event) => {
     event.preventDefault();
+    if (!navigator.onLine) {
+      alert('New contact cannot be added while offline')
+      history.push({
+        pathname: "/",
+      })
+      return
+    }
     toggleIsAddingContact(!isAddingContact);
   }
 
