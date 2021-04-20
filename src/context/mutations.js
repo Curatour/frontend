@@ -63,6 +63,18 @@ export const CREATE_VENUE = gql`
   }
 `
 
+export const CREATE_SUB_EVENT = gql`
+  mutation CreateSubEvent($input: CreateSubEventInput!) {
+    createSubEvent(input: $input) {
+      id
+      startTime
+      name
+      description
+      completed
+    }
+  }
+`
+
 
 //UPDATE
 export const UPDATE_EVENT = gql`
