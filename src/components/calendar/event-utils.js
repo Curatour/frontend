@@ -9,6 +9,12 @@ export function formatEvents(eventsArray) {
       title: event.name,
       start: event.startTime,
       end: event.endTime,
+      extendedProps: {
+        venue: event.venue,
+        start: event.startTime,
+        end: event.endTime,
+        subEvents: event.subEvents
+      }
     }
   })
 }

@@ -19,4 +19,5 @@ describe('Contacts', () => {
 
   //   cy.get('.ContactCard').should('have.length', 1);
   // });
+
 })
