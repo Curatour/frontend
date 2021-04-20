@@ -33,12 +33,10 @@ describe('Dashboard', () => {
   });
 
   it('should have an upcoming week display of events', () => {
-    //Specify date when applicable.
     cy.get('.fc').find('.fc-toolbar-title').should('be.visible')
-   // Adjust values once mock data is implemented
-    // cy.get('.fc').find('.fc-list-event-time').should('have.length', 10)
-    //   .eq(0).should('contain', '12:00pm - 1:00pm')
-    // cy.get('.fc').find('.fc-list-event-title').should('have.length', 10)
-    //   .eq(0).should('contain', 'Johnny Cash')
+    cy.get('.fc').find('.fc-list-event-time').should('have.length', 2)
+      .eq(0).should('contain', '11:20am - 2:20pm')
+    cy.get('.fc').find('.fc-list-event-title').should('have.length', 2)
+      .eq(0).should('contain', 'Bob Marley (and the Wailers)')
   });
 });
