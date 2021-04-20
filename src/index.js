@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './components/App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import AppProvider from './context/AppContext'
 import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 
 const client = new ApolloClient({
   uri: 'https://curatour-be.herokuapp.com/graphql',

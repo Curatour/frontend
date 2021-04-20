@@ -21,5 +21,6 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#fab856",
-  "background_color": "#4d4d4d"
+  "background_color": "#4d4d4d",
+  "description": "Curatour"
 }
