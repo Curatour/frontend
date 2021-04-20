@@ -32,7 +32,7 @@ self.addEventListener('fetch', (e) => {
       if (res) return res
 
       return fetch(e.request).then((newRes) => {
-        caches.open(pwaCache).then((cache) => cache.put(e.request, newRes))
+        caches.open(pwaCache).then((cache) => cache.post(e.request, newRes))
         return newRes.clone()
       })
     })
