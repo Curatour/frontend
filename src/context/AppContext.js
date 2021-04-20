@@ -22,7 +22,8 @@ import {
   DESTROY_EVENT,
   DESTROY_ORGANIZATION,
   DESTROY_TOUR,
-  DESTROY_CONTACT
+  DESTROY_CONTACT,
+  CREATE_SUB_EVENT
 } from './mutations'
 
 const Context = React.createContext();
@@ -46,13 +47,6 @@ const AppProvider = ({children}) => {
   const [message, setMessage] = useState('')
 
   // QUERIES
-  useQuery(TOURS_QUERY, {
-    onCompleted: data => {
-      setTours(data.tours)
-      setEvents(data.tours[0].events)
-    },
-    onError: error => setError(error)
-  })
 
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
@@ -61,17 +55,13 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
-  useQuery(ORGANIZATION_QUERY, {
-    onCompleted: data => {
-      setOrganization(data.organization)
-    },
-    onError: error => setError(error)
-  })
-
   useQuery(USER_QUERY, {
     onCompleted: data => {
       setUser(data.user)
+      setOrganization(data.user.organizations[0])
       setContacts(data.user.contacts)
+      setTours(data.user.organizations[0].tours)
+      setEvents(data.user.organizations[0].tours[0].events)
     }, 
     onError: error => setError(error)
   })
@@ -104,6 +94,15 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
+  const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
+    onCompleted: data => {
+      console.log(data)
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
   const [destroyContact] = useMutation(DESTROY_CONTACT, {
     onCompleted: data => {
       setContacts(contacts.filter(contact => contact.id !== data.destroyContact.id))
@@ -115,7 +114,6 @@ const AppProvider = ({children}) => {
 
   const [destroyEvent] = useMutation(DESTROY_EVENT, {
     onCompleted: data => {
-      console.log('SUCCESS')
       setEvents(events.filter(event => event.id !== data.destroyEvent.id))
       setLoading(false)
       setError(false)
@@ -156,8 +154,21 @@ const AppProvider = ({children}) => {
     })
   }
 
-  const createAgenda = (agenda) => {
-    
+  const createAgenda = (agendaItem) => {
+    const {eventId, name, description, startTime, endTime} = agendaItem
+    setLoading(true)
+    console.log('APP',startTime)
+    createSubEvent({
+      variables: {
+        input: {
+          eventId,
+          name,
+          description,
+          startTime, 
+          endTime,
+        }
+      }
+    })
   }
 
   const updateContacts = (newContact) => {
@@ -206,6 +217,7 @@ const AppProvider = ({children}) => {
     events,
     updateEvents,
     deleteEvent,
+    createAgenda,
     contacts,
     updateContacts,
     deleteContact,
