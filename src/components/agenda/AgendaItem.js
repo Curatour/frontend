@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {useApp} from '../../context/AppContext'
 
 function AgendaItem({info}) {
   const {id, startTime, name, description, completed} = info
   const [isCompleted, setCompleted] = useState(completed)
+  const { updateAgenda } = useApp()
   const time = new Date(startTime).toLocaleTimeString('en', {
     timeStyle:'short',
     hour12: true,
@@ -11,7 +13,7 @@ function AgendaItem({info}) {
 
   const handleChange = () => {
     setCompleted(isCompleted ? false : true)
-    //UPDATE SUBEVENT FROM MUTATION
+    updateAgenda(parseInt(id), !isCompleted ? true : false)
   }
 
   useEffect(() => {

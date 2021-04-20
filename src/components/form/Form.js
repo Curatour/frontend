@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import {useApp} from '../../context/AppContext'
 
@@ -23,6 +23,14 @@ const Form = ({location}) => {
 
   const incrementForm = (event) => {
     event.preventDefault()
+    if (!navigator.onLine) {
+      alert('Event cannot be added while offline')
+      history.push({
+        pathname: "/",
+      })
+      console.log("offline bro")
+      return
+    }
     setFormCounter(formCounter + 1)
   }
 
@@ -78,6 +86,15 @@ const Form = ({location}) => {
       pathname: '/calendar'
     })
   }
+
+  const determineSelectValue = () => {
+    const selectedId = selectedVenue === "NEW" ? venues.find(ven => ven.name === venueName).id : selectedVenue
+    setSelectedVenue(selectedId)
+  }
+
+  useEffect(() => {
+    determineSelectValue()
+  }, [venues])
   
   return (
     <section className='form-page'>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import AgendaList from './AgendaList'
 import AgendaSideBar from './AgendaSideBar'
 import './Agenda.css'

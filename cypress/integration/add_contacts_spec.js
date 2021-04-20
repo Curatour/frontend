@@ -25,12 +25,6 @@ describe('AddContacts', () => {
 
   });
 
-  it('should have 4 inputs fields', () => {
-    cy.get('.add-contacts-button').click();
-    
-    cy.get('.add-contacts input').should('have.length', 4);
-  });
-
   it('should add a contact to the list', () => {
     cy.get('.ContactCard').should('have.length', 2);
 

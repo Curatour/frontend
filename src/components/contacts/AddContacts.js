@@ -6,7 +6,7 @@ const AddContacts = ({ closeAddContact }) => {
   const lastNameRef = useRef();
   const phoneRef = useRef();
   const emailRef = useRef();
-  const { contacts, updateContacts } = useApp()
+  const { updateContacts } = useApp()
 
   const submitNewContact = event => {
     event.preventDefault();

@@ -1,18 +1,31 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Agenda from '../agenda/Agenda'
-import {useHistory} from 'react-router-dom'
+import Loading from '../common/Loading'
+import NotFound from '../error/NotFound'
+import { useHistory } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { client } from '../../index'
+import { EVENT_BY_ID_QUERY } from '../../context/queries'
+import { useQuery } from '@apollo/client'
 
 import './Event.css';
 
 const Event = (props) => {
   const [currentEvent] = useState(props.location.state.eventInfo)
-  const { deleteEvent } = useApp()
-  const [agenda, setAgenda] = useState(currentEvent.extendedProps.subEvents)
+  const { deleteEvent, setSubEventParent } = useApp()
   const history = useHistory()
   
+  const {loading, error} = useQuery(EVENT_BY_ID_QUERY, { 
+    variables: { id: parseInt(currentEvent.publicId)},
+  })
+
+  const eventData = client.readQuery({
+    query: EVENT_BY_ID_QUERY,
+    variables: { id: parseInt(currentEvent.publicId) }
+  })
+
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
     let year = date.getFullYear();
@@ -29,20 +42,33 @@ const Event = (props) => {
     }
 
   const deleteSelectedEvent = (event) => {
-    event.preventDefault()
-    deleteEvent(currentEvent.publicId)
+    deleteEvent(parseInt(currentEvent.publicId))
     history.push({
       pathname: '/calendar'
     })
   }
+  
+  useEffect(() => {
+    setSubEventParent(parseInt(currentEvent.publicId))
+  }, [])
+
+  if(loading || !eventData){
+    return <Loading />
+  }
+
+  if(error){
+    return <NotFound />
+  }
+
 
   return (
-    <section className="Event">
+      <section className="Event">
       <div className='event-info'>
-        <h1>{ currentEvent.title }</h1>
+        <h1>{ eventData.event.name }</h1>
         <div className='venue-info'>
-          <p>{currentEvent.extendedProps.venue.name}</p>
-          <p>{currentEvent.extendedProps.venue.state}</p>
+          <p>{eventData.event.venue.name}</p>
+          <p>{eventData.event.venue.address}</p>
+          <p>{`${eventData.event.venue.city}, ${eventData.event.venue.state}`}</p>
         </div>
         <div className='date-info'>
           <p>Date: {formatDate(currentEvent.extendedProps.start)}</p>
@@ -50,7 +76,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className='agenda-wrapper'>
-        <Agenda setAgenda={setAgenda} agenda={agenda} currentEvent={currentEvent}/>
+        <Agenda agenda={eventData.event.subEvents} currentEvent={currentEvent}/>
       </div>
     </section>
   );

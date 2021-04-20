@@ -9,6 +9,10 @@ function AgendaSideBar({currentEvent}) {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    if (!navigator.onLine) {
+      alert('Agenda cannot be update while offline.')
+      return
+    }
     const newAgendaItem = formatAgendaItem()
     createAgenda(newAgendaItem)
     titleRef.current.value = ''

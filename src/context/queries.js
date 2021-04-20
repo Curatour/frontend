@@ -129,7 +129,7 @@ export const USER_QUERY = gql`
 `
 
 export const EVENT_BY_ID_QUERY = gql`
-  query {
+  query ($id: ID!){
     event(id: $id) {
       id
       name

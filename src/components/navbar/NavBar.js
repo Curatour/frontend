@@ -9,16 +9,19 @@ const NavBar = () => {
     <div className="NavBar">
       <NavLink 
         to="/calendar"
+        aria-label='navigate to calendar page'
       >
         <FontAwesomeIcon icon={faCalendarAlt} />
       </NavLink>
       <NavLink 
         to="/new-event"
+        aria-label='navigate to add to calendar page'
       >
         <FontAwesomeIcon icon={faCalendarPlus} />
       </NavLink>
       <NavLink 
         to="/contacts"
+        aria-label='navigate to contacts page'
       >
         <FontAwesomeIcon icon={faAddressBook} />
       </NavLink>
