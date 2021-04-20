@@ -32,6 +32,35 @@ describe('New Event', () => {
     cy.get('.form-button').click()
   })
 
+  it('should populate the drop down menu with pre-existing venues in that location', () => {
+    cy.get('input[type=text]').eq(0).type('Denver')
+    cy.get('input[type=text]').eq(1).type('CO')
+    cy.get('.form-button').click()
+    
+    cy.get('select').select('Diran Amphitheater')
+    //change amphitheater when mock data working
+    cy.get('.form-button').eq(1).should('contain', 'Next')
+      .click()
+    cy.get('.date-time').should('be.visible')
+  })
+
+  it('should be able to input a new venue', () => {
+    cy.get('input[type=text]').eq(0).type('Denver')
+    cy.get('input[type=text]').eq(1).type('CO')
+    cy.get('.form-button').click()
+
+    cy.get('select').select('Add New Venue')
+    cy.get('.venue-add-section').find('input[type=text]')
+
+    cy.get('input[type=text]').eq(2).type('Gyachung Kang Amphitheater')
+    cy.get('input[type=text]').eq(3).type('910 Mayme Locks')
+    cy.get('input[type=text]').eq(4).type('80203')
+
+    cy.get('.form-button').eq(1).should('contain', 'Add Venue')
+      .click()
+    
+  })
+
 });
 
 // "createEvent": {
