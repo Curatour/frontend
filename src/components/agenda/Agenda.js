@@ -3,15 +3,11 @@ import AgendaList from './AgendaList'
 import AgendaSideBar from './AgendaSideBar'
 import './Agenda.css'
 
-function Agenda({setAgenda, agenda}) {
-
-  const updateAgenda = (listItem) => {
-    setAgenda([...agenda, listItem])
-  }
+function Agenda({ agenda, currentEvent}) {
 
   return (
     <div className='agenda-display'>
-      <AgendaSideBar updateAgenda={updateAgenda}/>
+      <AgendaSideBar currentEvent={currentEvent}/>
       {agenda.length > 0 && <AgendaList agendaInfo={agenda}/>}
     </div>
   );

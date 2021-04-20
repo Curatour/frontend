@@ -8,9 +8,9 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import './Event.css';
 
 const Event = (props) => {
-  const [agenda, setAgenda] = useState([])
   const [currentEvent] = useState(props.location.state.eventInfo)
-  const { deleteEvent, createAgenda } = useApp()
+  const { deleteEvent } = useApp()
+  const [agenda, setAgenda] = useState(currentEvent.extendedProps.subEvents)
   const history = useHistory()
   
   const formatDate = (eventDate) => {
@@ -27,12 +27,6 @@ const Event = (props) => {
     const newDate = month + '/'+ dt + '/' + year
     return newDate;
     }
-  
-  const saveAgenda = () => {
-    console.log(agenda)
-    //createAgenda()
-    //MUTATE SUBEVENTS HERE
-  }
 
   const deleteSelectedEvent = (event) => {
     event.preventDefault()
@@ -56,14 +50,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className='agenda-wrapper'>
-        <Agenda setAgenda={setAgenda} agenda={agenda}/>
-        {agenda.length > 0 && 
-          <button 
-            className='form-button' 
-            style={{marginTop: '1.5rem'}}
-            onClick={saveAgenda}
-            >Save Agenda
-            </button>}
+        <Agenda setAgenda={setAgenda} agenda={agenda} currentEvent={currentEvent}/>
       </div>
     </section>
   );
