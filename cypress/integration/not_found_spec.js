@@ -4,7 +4,7 @@ describe('Not Found', () => {
   });
 
   it('should have an error message', () => {
-    cy.get('.Not-Found').find('.not-found-heading').should('contain', 'This page does not exist! Apologies, please head back to the dashboard.')
+    cy.get('.Not-Found').find('.not-found-heading').should('contain', 'Something went wrong! Our apologies, please try again.')
     cy.get('.not-found-message').should('contain', 'This is what we get for letting the drummer work on some of this code.');
   });
 
