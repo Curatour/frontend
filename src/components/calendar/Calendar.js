@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -11,7 +11,7 @@ import './Calendar.css';
 
 
 const Calendar = () => {
-  const { events, setEvents } = useApp()
+  const { events } = useApp()
   let history = useHistory();
 
   const renderEventContent = (clickInfo) => {
@@ -21,10 +21,10 @@ const Calendar = () => {
     })
   }
 
-  const handleEventClick = (clickInfo) => {
-    //ADD HANDLE FOR CLICKING ON A DAY - VIEW MORE INFO?
-    console.log(clickInfo)
-  }
+  // const handleEventClick = (clickInfo) => {
+  //   //ADD HANDLE FOR CLICKING ON A DAY - VIEW MORE INFO?
+  //   console.log(clickInfo)
+  // }
   
   const handleDateSelect = (selectInfo) => {
     if (window.confirm(`Add new event on ${selectInfo.dateStr.slice(5)}?`)) {
