@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import {useApp} from '../../context/AppContext'
-import { useHistory } from 'react-router-dom'
 
 import './Form.css';
 
