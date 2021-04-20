@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ContactCard from './ContactCard';
 import AddContacts from './AddContacts';
 import { useHistory } from 'react-router-dom'
+import { useApp } from '../../context/AppContext'
 import './Contacts.css';
 
 export const contactData = [
@@ -33,15 +34,15 @@ export const contactData = [
 
 const Contacts = () => {
   let history = useHistory();
-  const [contacts, setContacts] = useState(contactData);
+  const { contacts } = useApp()
+  const [filterContacts, setFilterContacts] = useState([]);
+  const [display, setDisplay] = useState()
   const [isAddingContact, toggleIsAddingContact] = useState(false);
   const searchRef = useRef('');
 
   const searchContacts = event => {
     event.preventDefault();
-    // changed to search through dummy data to remove extra piece of state
-    // hope that holds up when we get to the real data
-    const filteredContacts = contactData.filter(contact => {
+    const filteredContacts = contacts.filter(contact => {
       const searchInput = searchRef.current.value.toUpperCase();
 
       return (
@@ -51,11 +52,7 @@ const Contacts = () => {
         );
     });
 
-    setContacts(filteredContacts);
-  }
-
-  const addNewContact = (newContact) => {
-    setContacts([...contacts, newContact])
+    setFilterContacts(filteredContacts);
   }
 
   const toggleAddContactModule = (event) => {
@@ -70,7 +67,18 @@ const Contacts = () => {
     toggleIsAddingContact(!isAddingContact);
   }
 
-  const contactCards = contacts.map(contact => <ContactCard key={contact.id} contact={contact}/>);
+  useEffect(() => {
+    contactCards()
+  }, [ contacts.length, searchRef.current.value ])
+
+  const contactCards = () => {
+    if (searchRef.current.value.length > 0){
+      setDisplay(filterContacts.map(contact => <ContactCard key={contact.id} contact={contact} />)) ;
+    } else {
+      setDisplay(contacts.map(contact => <ContactCard key={contact.id} contact={contact} />));
+    }
+
+    }
 
   return (
     <div className='Contacts'>
@@ -86,12 +94,11 @@ const Contacts = () => {
         onClick={event => toggleAddContactModule(event)}>Add Contact</button>
       </section>
       <section className='contact-cards'>
-        {contactCards}
+        {display}
       </section>
 
       {isAddingContact &&
         <AddContacts 
-        addNewContact={addNewContact} 
         closeAddContact={toggleAddContactModule}
       />}
     </div>

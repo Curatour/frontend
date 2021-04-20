@@ -1,11 +1,18 @@
 import React from 'react';
+import { useApp } from '../../context/AppContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const ContactCard = (props) => {
-  const { lastName, firstName, email, phone } = props.contact;
+  const { id, lastName, firstName, email, phoneNumber } = props.contact;
+  const { deleteContact } = useApp()
   return (
     <article className="ContactCard">
-      <div className='contact-icons'>
-        <p>{firstName[0]}{lastName[0]}</p>
+      <div className='delete-contact'>
+        <div className='contact-icons'>
+          <p>{firstName[0]}{lastName[0]}</p>
+        </div>
+        <FontAwesomeIcon className='delete-contact-button' id={id} icon={faTrashAlt} onClick={(event) => deleteContact(id)} />
       </div>
       <div className='contact-details'>
         <h3 className='contact-name'>{`${firstName} ${lastName}`}</h3>
@@ -16,7 +23,7 @@ const ContactCard = (props) => {
           </div>
           <div className='contact-link'>
             <p className='contact-label'>Phone:</p>
-            <a className='phone' href={`tel:${email}`}>{phone}</a>
+            <a className='phone' href={`tel:${phoneNumber}`}>{phoneNumber}</a>
           </div>
         </section>
       </div>
