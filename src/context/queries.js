@@ -26,7 +26,6 @@ export const TOURS_QUERY = gql`
   }
 `
 
-
 export const CONTACTS_QUERY = gql`
   query {
     contacts {
@@ -85,22 +84,48 @@ export const ORGANIZATION_QUERY = gql`
 `
 export const USER_QUERY = gql`
   query {
-    user(id: 1) {
+  user(id:1) {
+    contacts {
       id
       firstName
       lastName
       email
       phoneNumber
-      role
-      contacts {
+      note
+    }
+   	organizations {
+    	tours {
         id
-        firstName
-        lastName
-        email
-        phoneNumber
+        name
+        startDate
+        endDate
+        events {
+          id
+          name
+          startTime
+          endTime
+          subEvents {
+            id
+            name
+            description
+            startTime
+            endTime
+            completed
+          }
+          venue {
+            id
+            name
+            address
+            city
+            state
+            zip
+            capacity
+          }
+        }
       }
     }
   }
+}
 `
 
 // export const EVENT_BY_ID_QUERY = gql`
