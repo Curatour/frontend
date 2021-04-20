@@ -40,6 +40,7 @@ const AppProvider = ({children}) => {
   const [contacts, setContacts] = useState([])
   const [organization, setOrganization] = useState()
   const [user, setUser] = useState()
+  const [subEventParent, setSubEventParent] = useState()
 
   // GENERIC APP STATE
   const [appError, setError] = useState('')
@@ -65,16 +66,6 @@ const AppProvider = ({children}) => {
     }, 
     onError: error => setError(error)
   })
-
-  // const getEventById = (id) => useQuery(EVENT_BY_ID_QUERY, {
-  //   variables: {
-  //     id: id
-  //   },
-  //   onCompleted: data => {
-  //     setEvents([...events.filter(e => e.id === data.event.id), data.event])
-  //   },
-  //   onError: error => setError(error)
-  // })
 
   //MUTATIONS
   const [ createEvent ] = useMutation(CREATE_EVENT, {
@@ -106,11 +97,11 @@ const AppProvider = ({children}) => {
 
   const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
     onCompleted: data => {
-      console.log(data)
       setLoading(false)
       setError(false)
     },
-    onError: error => setError(error)
+    refetchQueries: [{query: EVENT_BY_ID_QUERY, variables: {id: subEventParent}}],
+    onError: error => setError(error),
   })
 
   const [destroyContact] = useMutation(DESTROY_CONTACT, {
@@ -151,6 +142,7 @@ const AppProvider = ({children}) => {
 
   const addNewVenue = (newVenue) => {
     const {name, address, city, state, zip} = newVenue
+    setLoading(true)
     createVenue({
       variables: {
         input: {
@@ -167,7 +159,6 @@ const AppProvider = ({children}) => {
   const createAgenda = (agendaItem) => {
     const {eventId, name, description, startTime, endTime} = agendaItem
     setLoading(true)
-    console.log('APP',startTime)
     createSubEvent({
       variables: {
         input: {
@@ -224,6 +215,8 @@ const AppProvider = ({children}) => {
   const value = {
     tours, 
     setTours,
+    subEventParent,
+    setSubEventParent,
     events,
     updateEvents,
     deleteEvent,

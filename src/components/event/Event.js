@@ -1,18 +1,35 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Agenda from '../agenda/Agenda'
-import {useHistory} from 'react-router-dom'
+import Loading from '../common/Loading'
+import { useHistory } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { client } from '../../index'
+import { EVENT_BY_ID_QUERY } from '../../context/queries'
+import { useQuery } from '@apollo/client'
 
 import './Event.css';
 
 const Event = (props) => {
   const [currentEvent] = useState(props.location.state.eventInfo)
-  const { deleteEvent } = useApp()
+  const { deleteEvent, subEventParent, setSubEventParent } = useApp()
   const [agenda, setAgenda] = useState(currentEvent.extendedProps.subEvents)
   const history = useHistory()
   
+  setSubEventParent(parseInt(currentEvent.publicId))
+  
+  const {loading, error} = useQuery(EVENT_BY_ID_QUERY, { 
+    variables: { id: subEventParent},
+    onCompleted: data => console.log(data),
+    onError: error => console.log(error)
+  })
+
+  const eventData = client.readQuery({
+    query: EVENT_BY_ID_QUERY,
+    variables: { id: parseInt(currentEvent.publicId)}
+  })
+
   const formatDate = (eventDate) => {
     let date = new Date(eventDate);
     let year = date.getFullYear();
@@ -36,8 +53,16 @@ const Event = (props) => {
     })
   }
 
+  // useEffect(() => {
+
+  // }, [eventData])
+
+  if(loading || !eventData){
+    return <Loading />
+  }
+
   return (
-    <section className="Event">
+      <section className="Event">
       <div className='event-info'>
         <h1>{ currentEvent.title }</h1>
         <div className='venue-info'>
@@ -50,7 +75,7 @@ const Event = (props) => {
         </div>
       </div>
       <div className='agenda-wrapper'>
-        <Agenda setAgenda={setAgenda} agenda={agenda} currentEvent={currentEvent}/>
+        <Agenda setAgenda={setAgenda} agenda={eventData.event.subEvents} currentEvent={currentEvent}/>
       </div>
     </section>
   );
