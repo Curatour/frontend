@@ -6,7 +6,7 @@ describe('Dashboard', () => {
         req.reply({ fixture: 'events.json'});
       } 
     })
-    cy.clock(new Date(2021, 4, 20).getTime());
+    cy.clock(Date.UTC(2021, 3, 20), ['Date']);
     cy.visit('http://localhost:3000/');
   });
 
