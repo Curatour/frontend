@@ -8,7 +8,7 @@ import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: 'https://curatour-be.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });

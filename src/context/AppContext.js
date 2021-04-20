@@ -1,29 +1,19 @@
-import React, {useContext, useMemo, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { useQuery, useMutation } from '@apollo/client';
 import { 
-  TOURS_QUERY, 
   EVENT_BY_ID_QUERY, 
-  CONTACTS_QUERY, 
   VENUE_QUERY, 
-  ORGANIZATION_QUERY,
-  USER_QUERY  
+  USER_QUERY,  
 } from './queries'
 
 import {
   CREATE_EVENT,
   CREATE_VENUE,
-  CREATE_ORGANIZATION,
-  CREATE_TOUR,
   CREATE_CONTACT,
-  UPDATE_EVENT,
-  UPDATE_ORGANIZATION,
-  UPDATE_TOUR,
-  UPDATE_CONTACT,
-  DESTROY_EVENT,
-  DESTROY_ORGANIZATION,
-  DESTROY_TOUR,
   DESTROY_CONTACT,
-  CREATE_SUB_EVENT
+  CREATE_SUB_EVENT,
+  UPDATE_SUB_EVENT,
+  DESTROY_EVENT
 } from './mutations'
 
 const Context = React.createContext();
@@ -40,6 +30,7 @@ const AppProvider = ({children}) => {
   const [contacts, setContacts] = useState([])
   const [organization, setOrganization] = useState()
   const [user, setUser] = useState()
+  const [subEventParent, setSubEventParent] = useState()
 
   // GENERIC APP STATE
   const [appError, setError] = useState('')
@@ -51,6 +42,8 @@ const AppProvider = ({children}) => {
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
+      setLoading(false)
+      setError(false)
     },
     onError: error => setError(error)
   })
@@ -62,19 +55,11 @@ const AppProvider = ({children}) => {
       setContacts(data.user.contacts)
       setTours(data.user.organizations[0].tours)
       setEvents(data.user.organizations[0].tours[0].events)
+      setLoading(false)
+      setError(false)
     }, 
     onError: error => setError(error)
   })
-
-  // const getEventById = (id) => useQuery(EVENT_BY_ID_QUERY, {
-  //   variables: {
-  //     id: id
-  //   },
-  //   onCompleted: data => {
-  //     setEvents([...events.filter(e => e.id === data.event.id), data.event])
-  //   },
-  //   onError: error => setError(error)
-  // })
 
   //MUTATIONS
   const [ createEvent ] = useMutation(CREATE_EVENT, {
@@ -88,7 +73,7 @@ const AppProvider = ({children}) => {
 
   const [createVenue] = useMutation(CREATE_VENUE, {
     onCompleted: data => {
-      console.log(data)
+      setVenues([...venues, data.createVenue])
       setLoading(false)
       setError(false)
     },
@@ -106,10 +91,20 @@ const AppProvider = ({children}) => {
 
   const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
     onCompleted: data => {
+      setLoading(false)
+      setError(false)
+    },
+    refetchQueries: [{query: EVENT_BY_ID_QUERY, variables: {id: subEventParent}}],
+    onError: error => setError(error),
+  })
+
+  const [updateSubEvent] = useMutation(UPDATE_SUB_EVENT, {
+    onCompleted: data => {
       console.log(data)
       setLoading(false)
       setError(false)
     },
+    refetchQueries: [{ query: EVENT_BY_ID_QUERY, variables: { id: subEventParent } }],
     onError: error => setError(error)
   })
 
@@ -151,6 +146,7 @@ const AppProvider = ({children}) => {
 
   const addNewVenue = (newVenue) => {
     const {name, address, city, state, zip} = newVenue
+    setLoading(true)
     createVenue({
       variables: {
         input: {
@@ -167,7 +163,6 @@ const AppProvider = ({children}) => {
   const createAgenda = (agendaItem) => {
     const {eventId, name, description, startTime, endTime} = agendaItem
     setLoading(true)
-    console.log('APP',startTime)
     createSubEvent({
       variables: {
         input: {
@@ -176,6 +171,19 @@ const AppProvider = ({children}) => {
           description,
           startTime, 
           endTime,
+        }
+      }
+    })
+  }
+
+  const updateAgenda = (id, completed) => {
+    console.log(id, completed)
+    setLoading(true)
+    updateSubEvent({
+      variables: {
+        input: {
+          id: id,
+          completed: completed
         }
       }
     })
@@ -202,18 +210,18 @@ const AppProvider = ({children}) => {
     destroyContact({
       variables: { 
         input: { 
-          id: parseInt(id)
+          id: id
         }
       }
     })
   }
 
-  const deleteEvent = (id) => {
+  const deleteEvent = () => {
     setLoading(true)
     destroyEvent({
       variables: {
         input: {
-          id: parseInt(id)
+          id: subEventParent
         }
       }
     })
@@ -224,10 +232,14 @@ const AppProvider = ({children}) => {
   const value = {
     tours, 
     setTours,
+    subEventParent,
+    setSubEventParent,
     events,
     updateEvents,
+    setEvents,
     deleteEvent,
     createAgenda,
+    updateAgenda,
     contacts,
     updateContacts,
     deleteContact,

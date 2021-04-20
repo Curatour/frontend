@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import {useApp} from '../../context/AppContext'
 
@@ -86,6 +86,15 @@ const Form = ({location}) => {
       pathname: '/calendar'
     })
   }
+
+  const determineSelectValue = () => {
+    const selectedId = selectedVenue === "NEW" ? venues.find(ven => ven.name === venueName).id : selectedVenue
+    setSelectedVenue(selectedId)
+  }
+
+  useEffect(() => {
+    determineSelectValue()
+  }, [venues])
   
   return (
     <section className='form-page'>

@@ -5,12 +5,12 @@ import listPlugin from '@fullcalendar/list'
 import {ListWrapper} from './ListWrapper'
 import TourDisplay from './TourDisplay'
 import ContactsPreview from './ContactsPreview'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
 
 const Dashboard = () => {
-  const { events, tours } = useApp()
+  const { events } = useApp()
   let history = useHistory();
 
   const renderEventContent = (clickInfo) => {

@@ -5,32 +5,6 @@ import { useHistory } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import './Contacts.css';
 
-export const contactData = [
-  {
-    id: 1,
-    firstName: 'Kevin',
-    lastName: 'Hartmann',
-    email: 'ilikeadasauce55@aim.com',
-    phone: '(203) 889-6969'
-  }, {
-    id: 2,
-    firstName: 'Drew',
-    lastName: 'Bradley',
-    email: 'drewbreezey420@hotmail.com',
-    phone: '(420) 123-4567'
-  }, {
-    id: 3,
-    firstName: 'Kristen',
-    lastName: 'Bair',
-    email: 'kristenbibbles@gamil.com',
-    phone: '(469) 109-8765'
-  }, {
-    id: 4,
-    firstName: 'Richard',
-    lastName: 'Tyler',
-    email: 'richardrhinosaurus@hotmail.com',
-    phone: '(897) 835-5947'
-  }];
 
 const Contacts = () => {
   let history = useHistory();
@@ -66,11 +40,7 @@ const Contacts = () => {
     }
     toggleIsAddingContact(!isAddingContact);
   }
-
-  useEffect(() => {
-    contactCards()
-  }, [ contacts.length, searchRef.current.value ])
-
+ 
   const contactCards = () => {
     if (searchRef.current.value.length > 0){
       setDisplay(filterContacts.map(contact => <ContactCard key={contact.id} contact={contact} />)) ;
@@ -79,6 +49,11 @@ const Contacts = () => {
     }
 
     }
+
+  useEffect(() => {
+    contactCards()
+  }, [ contacts.length, searchRef.current.value ])
+
 
   return (
     <div className='Contacts'>
