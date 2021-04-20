@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { client } from '../../index'
 import { EVENT_BY_ID_QUERY } from '../../context/queries'
-import { DESTROY_EVENT } from '../../context/mutations'
-import { useQuery, useMutation } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 import './Event.css';
 
@@ -17,7 +16,6 @@ const Event = (props) => {
   const [currentEvent] = useState(props.location.state.eventInfo)
   const { deleteEvent, setSubEventParent } = useApp()
   const history = useHistory()
-  console.log(parseInt(currentEvent.publicId))
   
   const {loading, error} = useQuery(EVENT_BY_ID_QUERY, { 
     variables: { id: parseInt(currentEvent.publicId)},

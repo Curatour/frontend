@@ -12,6 +12,7 @@ import {
   CREATE_CONTACT,
   DESTROY_CONTACT,
   CREATE_SUB_EVENT,
+  UPDATE_SUB_EVENT,
   DESTROY_EVENT
 } from './mutations'
 
@@ -41,6 +42,8 @@ const AppProvider = ({children}) => {
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
+      setLoading(false)
+      setError(false)
     },
     onError: error => setError(error)
   })
@@ -52,6 +55,8 @@ const AppProvider = ({children}) => {
       setContacts(data.user.contacts)
       setTours(data.user.organizations[0].tours)
       setEvents(data.user.organizations[0].tours[0].events)
+      setLoading(false)
+      setError(false)
     }, 
     onError: error => setError(error)
   })
@@ -86,12 +91,21 @@ const AppProvider = ({children}) => {
 
   const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
     onCompleted: data => {
-      console.log(data)
       setLoading(false)
       setError(false)
     },
     refetchQueries: [{query: EVENT_BY_ID_QUERY, variables: {id: subEventParent}}],
     onError: error => setError(error),
+  })
+
+  const [updateSubEvent] = useMutation(UPDATE_SUB_EVENT, {
+    onCompleted: data => {
+      console.log(data)
+      setLoading(false)
+      setError(false)
+    },
+    refetchQueries: [{ query: EVENT_BY_ID_QUERY, variables: { id: subEventParent } }],
+    onError: error => setError(error)
   })
 
   const [destroyContact] = useMutation(DESTROY_CONTACT, {
@@ -105,7 +119,6 @@ const AppProvider = ({children}) => {
 
   const [destroyEvent] = useMutation(DESTROY_EVENT, {
     onCompleted: data => {
-      console.log(data)
       setEvents(events.filter(event => event.id !== data.destroyEvent.id))
       setLoading(false)
       setError(false)
@@ -163,6 +176,19 @@ const AppProvider = ({children}) => {
     })
   }
 
+  const updateAgenda = (id, completed) => {
+    console.log(id, completed)
+    setLoading(true)
+    updateSubEvent({
+      variables: {
+        input: {
+          id: id,
+          completed: completed
+        }
+      }
+    })
+  }
+
   const updateContacts = (newContact) => {
     const { firstName, lastName, phoneNumber, email} = newContact
     setLoading(true)
@@ -213,6 +239,7 @@ const AppProvider = ({children}) => {
     setEvents,
     deleteEvent,
     createAgenda,
+    updateAgenda,
     contacts,
     updateContacts,
     deleteContact,
