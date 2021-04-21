@@ -28,7 +28,6 @@ const Form = ({location}) => {
       history.push({
         pathname: "/",
       })
-      console.log("offline bro")
       return
     }
     setFormCounter(formCounter + 1)
