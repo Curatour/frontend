@@ -1,22 +1,5 @@
 describe('Dashboard', () => {
   beforeEach(() => {
-       // cy.intercept('POST', '/graphql', (req) => {
-    //   const { body } = req
-    //   if (body.hasOwnProperty('query') && req.body.query.includes("venues")) {
-    //     console.log('venue query')
-   //     req.reply({fixture: 'venues.json'})
-   //   }
-    // })
-
-  //   cy.intercept('POST', '/graphql', (req) => {
-  //     const { body } = req
-  //      if (body.hasOwnProperty('query') && req.body.query.includes("user")) {
-  //       req.reply({fixture: 'login.json'})
-  //       console.log( req, 'user query')
-  //     } 
-  //   })
-
-  //  cy.clock(Date.UTC(2021, 3, 20), ['Date']);
     cy.visit('http://localhost:3000/');
   });
 

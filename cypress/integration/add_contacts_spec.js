@@ -1,11 +1,5 @@
 describe('AddContacts', () => {
   beforeEach(() => {
-    cy.intercept('POST', '/graphql', (req) => {
-      const { body } = req
-      if (body.hasOwnProperty('mutation') && req.body.query.includes('contact')) {
-        req.reply({ fixture: 'contacts.json'});
-      } 
-    })
     cy.visit('http://localhost:3000/contacts/');
   });
 
@@ -26,7 +20,7 @@ describe('AddContacts', () => {
   });
 
   it('should add a contact to the list', () => {
-    cy.get('.ContactCard').should('have.length', 2);
+    cy.get('.ContactCard').should('be.visible');
 
     cy.get('.add-contacts-button').click();
     cy.get('.add-contacts input:first').type('Gavin');
@@ -57,6 +51,6 @@ describe('AddContacts', () => {
     cy.get('.add-contacts input').eq(1).type('Belson');
     cy.get('.add-contacts input').eq(2).type('(303) 303-3030');
     cy.get('.module-buttons button:last').click();
-    cy.get('.ContactCard').should('have.length', 2);
+    cy.get('.ContactCard').should('be.visible');
   });
 })
