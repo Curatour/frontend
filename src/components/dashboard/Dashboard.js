@@ -28,6 +28,7 @@ const Dashboard = () => {
       </div>
       <ListWrapper>
         <FullCalendar
+              timeZone='UTC'
               plugins={[listPlugin]}
               headerToolbar={{
                 left: '',
