@@ -73,18 +73,17 @@ When a user selects the add event page, or clicks on a square in the Calendar, t
 - CSS
 
 ## Future Iterations
+More specifics about future work or refactoring can be found in this project's [GH issues](https://github.com/orgs/Curatour/projects/1).
 
-More specifics about future work or refactoring can be found in this projects [GH issues](https://github.com/orgs/Curatour/projects/1).
-
-## Design
-CuraTour was implement with the help of our backend team ([Phil McCarthy](https://github.com/philmccarthy) and [Robert Heath](https://github.com/kaiheiongaku)) and their repository and documentation can be found [here](https://github.com/Curatour/backend)
-
-#### To Contribute
+## To Contribute
 If you'd like to contribute to the code, please complete the following steps:
 - fork and clone this repo (for the backend code, please visit [the backend repo](https://github.com/Curatour/backend))
 - run `npm i` on the command line
 - run `npm start` to begin a local server 
 - make a pull request for your edits 
+
+## Additional Thanks
+CuraTour was developed with the help of our backend team ([Phil McCarthy](https://github.com/philmccarthy) and [Robert Heath](https://github.com/kaiheiongaku)) and their repository and documentation can be found [here](https://github.com/Curatour/backend)
 
 ## Authors
 <table>
