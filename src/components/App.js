@@ -5,7 +5,7 @@ import Dashboard from './dashboard/Dashboard'
 import Header from './header/Header'
 import Calendar from './calendar/Calendar'
 import Form from './form/Form'
-import NavBar from './navbar/NavBar'
+import NavBar from './header/navbar/NavBar'
 import Contacts from './contacts/Contacts'
 import Event from './event/Event'
 import Loading from './common/Loading';
