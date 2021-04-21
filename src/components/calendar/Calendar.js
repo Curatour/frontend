@@ -44,6 +44,7 @@ const Calendar = () => {
   return (
        <CalendarWrapper>
          <FullCalendar
+            timeZone= 'UTC'
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
               left: 'prev,next today',

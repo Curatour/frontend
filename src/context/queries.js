@@ -85,6 +85,7 @@ export const ORGANIZATION_QUERY = gql`
 export const USER_QUERY = gql`
   query {
   user(id:1) {
+      id
     contacts {
       id
       firstName
