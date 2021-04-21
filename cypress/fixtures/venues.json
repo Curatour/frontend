@@ -1,0 +1,22 @@
+{
+  "venue": [
+    {
+    "address": "390 Fredric Ports",
+    "capacity": 911,
+    "city": "Denver",
+    "id": "1",
+    "name": "Batura Sar Amphitheater",
+    "state": "CO",
+    "zip": "80203"
+    },
+    {
+    "address": "1423 Shania Way",
+    "capacity": 9111,
+    "city": "Denver",
+    "id": "2",
+    "name": "Kitty Cat Club",
+    "state": "CO",
+    "zip": "80213"
+    }
+  ]
+}

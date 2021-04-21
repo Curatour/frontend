@@ -108,7 +108,7 @@ const Form = ({location}) => {
       )}
       <h1>Create new event</h1>
       <form>
-        <section className='form-section'>
+        <section className='form-section location'>
           <div>
             <input
               type='text'
@@ -140,7 +140,7 @@ const Form = ({location}) => {
               {findVenues()}
             </select>
             {selectedVenue === 'newVenue' && (
-              <>
+              <section className='venue-add-section'>
                 <input
                   type='text'
                   placeholder='Venue Name'
@@ -165,7 +165,7 @@ const Form = ({location}) => {
                   onChange={event => setZipCode(event.target.value)}
                   required
                 />
-              </>
+              </section>
             )}
                 <button
                   className='form-button'
@@ -176,7 +176,7 @@ const Form = ({location}) => {
           </section>
         )}
         { formCounter > 1 && (
-          <section className='form-section'>
+          <section className='form-section date-time'>
             <input
               type='date'
               placeholder='Date'
