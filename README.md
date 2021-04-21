@@ -81,8 +81,10 @@ CuraTour was implement with the help of our backend team ([Phil McCarthy](https:
 
 #### To Contribute
 If you'd like to contribute to the code, please complete the following steps:
-- explanation of how to install this app
-
+- fork and clone this repo (for the backend code, please visit [the backend repo](https://github.com/Curatour/backend))
+- run `npm i` on the command line
+- run `npm start` to begin a local server 
+- make a pull request for your edits 
 
 ## Authors
 <table>
