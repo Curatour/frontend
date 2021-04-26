@@ -33,7 +33,7 @@ const AppProvider = ({children}) => {
   const [subEventParent, setSubEventParent] = useState()
 
   // GENERIC APP STATE
-  const [appError, setError] = useState('')
+  const [appError, setError] = useState(false)
   const [appLoading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
 
@@ -42,8 +42,6 @@ const AppProvider = ({children}) => {
   useQuery(VENUE_QUERY, {
     onCompleted: data => {
       setVenues(data.venues)
-      setLoading(false)
-      setError(false)
     },
     onError: error => setError(error)
   })
@@ -232,7 +230,7 @@ const AppProvider = ({children}) => {
     destroyContact({
       variables: { 
         input: { 
-          id: id
+          id: parseInt(id)
         }
       }
     })

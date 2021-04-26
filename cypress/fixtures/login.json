@@ -1,0 +1,64 @@
+{"data": {
+  "user": {
+    "contacts": [
+        {
+          "id": 1, 
+          "firstName": "Bobby", 
+          "lastName": "Schmurda", 
+          "email": "holla@example.com",
+          "phoneNumber": "5558458004"
+        },
+        {
+          "id": 2, 
+          "firstName": "Truman", 
+          "lastName": "Roberts", 
+          "email": "hollaback@example.com",
+          "phoneNumber": "5555345554"
+        },
+        {
+          "id": 3, 
+          "firstName": "Jackie", 
+          "lastName": "Kennedy", 
+          "email": "yagirl@example.com",
+          "phoneNumber": "5555399954"
+        }
+      ],
+    "organizations": [
+      {
+        "id": 1, 
+        "name": "TOUR", 
+        "startDate": "2021-02-23", 
+        "endDate":"2022-02-28", 
+        "events": [
+          {
+            "endTime": "2021-04-22T21:00:00Z",
+            "id": "1",
+            "name": "Flaming Lips",
+            "startTime": "2021-04-22T19:00:00Z",
+            "subEvents": [
+                {
+                  "id": "1", 
+                  "name": "Find the Ukelele", 
+                  "description": "value proposition", 
+                  "startTime": "2021-04-22T18:30:00Z", 
+                  "endTime": "2021-04-22T18:30:00Z", 
+                  "completed": false 
+                }
+             ],
+            "venue": {
+              "address": "390 Fredric Ports",
+              "capacity": 911,
+              "city": "Denver",
+              "id": "1",
+              "name": "Batura Sar Amphitheater",
+              "state": "CO",
+              "zip": "80203"
+            }
+          }
+        ]     
+      }
+    ]
+  }
+}
+
+}

@@ -5,25 +5,25 @@ import Dashboard from './dashboard/Dashboard'
 import Header from './header/Header'
 import Calendar from './calendar/Calendar'
 import Form from './form/Form'
-import NavBar from './navbar/NavBar'
+import NavBar from './header/navbar/NavBar'
 import Contacts from './contacts/Contacts'
 import Event from './event/Event'
 import Loading from './common/Loading';
 import NotFound from './error/NotFound';
-import { useApp } from '../context/AppContext';
+import {useApp} from '../context/AppContext'
 
 
 function App() {
-  const {appLoading, appError} = useApp();
-
+  const { appLoading, appError } = useApp();
+  
   return (
     <div className="App">
-      <Header/>
+      <Header />
       {appError && <NotFound />}
       {appLoading && !appError && <Loading />}
       {!appLoading && !appError &&
         <Switch>
-          <Route exact path="/" component={Dashboard}/>
+          <Route exact path="/" component={Dashboard} />
           <Route path="/calendar" component={Calendar} />
           <Route path="/new-event" component={Form} />
           <Route path="/contacts" component={Contacts} />
@@ -32,7 +32,7 @@ function App() {
           <Route component={NotFound} />
         </Switch>
       }
-      <NavBar/>
+      <NavBar />
     </div>
   );
 }
