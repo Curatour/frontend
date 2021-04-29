@@ -11,10 +11,12 @@ import Event from './event/Event'
 import Loading from './common/Loading';
 import NotFound from './error/NotFound';
 import {useApp} from '../context/AppContext'
+import {useAuth} from '../context/AuthContext'
 
 
 function App() {
   const { appLoading, appError } = useApp();
+  const { currentUser } = useAuth()
 
   return (
     <div className="App">
