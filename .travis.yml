@@ -20,4 +20,4 @@ deploy:
   provider: heroku
   app: curatour
   api_key:
-    secure: <your_secure_key>
+    secure: bd9acf8f-13fc-4cc9-b51d-481878716858
