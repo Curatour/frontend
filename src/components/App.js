@@ -15,13 +15,10 @@ import {useApp} from '../context/AppContext'
 
 function App() {
   const { appLoading, appError } = useApp();
-  
+
   return (
     <div className="App">
       <Header />
-      {appError && <NotFound />}
-      {appLoading && !appError && <Loading />}
-      {!appLoading && !appError &&
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/calendar" component={Calendar} />
@@ -31,7 +28,6 @@ function App() {
           {/* <Route path="/event/:name" render={blah blah match what not here} /> */}
           <Route component={NotFound} />
         </Switch>
-      }
       <NavBar />
     </div>
   );
