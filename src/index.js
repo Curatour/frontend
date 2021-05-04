@@ -22,37 +22,37 @@ ReactDOM.render(
           <App />
         </BrowserRouter>
       </AppProvider>
-    </ApolloProvider>
+    </ApolloProvider>,
   </AuthProvider>,
   document.getElementById('root')
 );
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('../../sw.js')
-      .then((registration) => {
-          console.log('SW Registered', registration);
-      });
-}
+// if (navigator.serviceWorker) {
+//   navigator.serviceWorker.register('../../sw.js')
+//       .then((registration) => {
+//           console.log('SW Registered', registration);
+//       });
+// }
 
-if (window.Cypress) {
-  serviceWorkerRegistration.unregister();
-} else {
-  serviceWorkerRegistration.register();
-}
+// if (window.Cypress) {
+//   serviceWorkerRegistration.unregister();
+// } else {
+//   serviceWorkerRegistration.register();
+// }
 
-window.addEventListener('load', function() {
-  var status = document.getElementById("status");
-  var log = document.getElementById("log");
+// window.addEventListener('load', function() {
+//   var status = document.getElementById("status");
+//   var log = document.getElementById("log");
 
-  function updateOnlineStatus(event) {
-    var condition = navigator.onLine ? "online" : "offline";
+//   function updateOnlineStatus(event) {
+//     var condition = navigator.onLine ? "online" : "offline";
 
-    status.className = condition;
-    status.innerHTML = condition.toUpperCase();
+//     status.className = condition;
+//     status.innerHTML = condition.toUpperCase();
 
-    log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
-  }
+//     log.insertAdjacentHTML("beforeend", "Event: " + event.type + "; Status: " + condition);
+//   }
 
-  window.addEventListener('online',  updateOnlineStatus);
-  window.addEventListener('offline', updateOnlineStatus);
-});
+//   window.addEventListener('online',  updateOnlineStatus);
+//   window.addEventListener('offline', updateOnlineStatus);
+// });
