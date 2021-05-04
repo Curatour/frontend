@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './components/App';
 import AppProvider from './context/AppContext'
+import AuthProvider from './context/AuthContext'
 import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
@@ -14,13 +15,15 @@ export const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <AppProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AppProvider>
-  </ApolloProvider>,
+  <AuthProvider>
+    <ApolloProvider client={client}>
+      <AppProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AppProvider>
+    </ApolloProvider>
+  </AuthProvider>,
   document.getElementById('root')
 );
 

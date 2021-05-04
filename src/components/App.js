@@ -11,17 +11,16 @@ import Event from './event/Event'
 import Loading from './common/Loading';
 import NotFound from './error/NotFound';
 import {useApp} from '../context/AppContext'
+import {useAuth} from '../context/AuthContext'
 
 
 function App() {
   const { appLoading, appError } = useApp();
-  
+  const { currentUser } = useAuth()
+
   return (
     <div className="App">
       <Header />
-      {appError && <NotFound />}
-      {appLoading && !appError && <Loading />}
-      {!appLoading && !appError &&
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path="/calendar" component={Calendar} />
@@ -31,7 +30,6 @@ function App() {
           {/* <Route path="/event/:name" render={blah blah match what not here} /> */}
           <Route component={NotFound} />
         </Switch>
-      }
       <NavBar />
     </div>
   );
