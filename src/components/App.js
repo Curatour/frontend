@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import './App.css';
 import Dashboard from './dashboard/Dashboard'
 import Header from './header/Header'
@@ -8,11 +8,11 @@ import Form from './form/Form'
 import NavBar from './header/navbar/NavBar'
 import Contacts from './contacts/Contacts'
 import Event from './event/Event'
-import Loading from './common/Loading';
-import NotFound from './error/NotFound';
+import Loading from './common/Loading'
+import NotFound from './error/NotFound'
+import Login from './login/Login'
 import {useApp} from '../context/AppContext'
 import {useAuth} from '../context/AuthContext'
-
 
 function App() {
   const { appLoading, appError } = useApp();
@@ -21,8 +21,10 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {!currentUser && <Redirect to='/login'/>}
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route path='/login' component={Login}/>
           <Route path="/calendar" component={Calendar} />
           <Route path="/new-event" component={Form} />
           <Route path="/contacts" component={Contacts} />
