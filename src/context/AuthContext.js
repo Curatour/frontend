@@ -20,6 +20,7 @@ export default function AuthProvider({children}) {
   }
 
   function signOut() {
+    console.log('inside sign out')
     setCurrentUser()
     return auth.signOut()
   }
