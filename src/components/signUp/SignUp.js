@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { Link, Redirect } from 'react-router-dom';
-import './Signup.css'
+import './SignUp.css'
 
 const Signup = () => {
   const [emailText, setEmail] = useState('')
@@ -49,7 +49,7 @@ const Signup = () => {
 
   return (
     <>
-      {currentUser && <Redirect to='/' />}
+      {/* {currentUser && <Redirect to='/' />} */}
       <h1>sign up</h1>
     </>
   )

@@ -13,6 +13,7 @@ import NotFound from './error/NotFound'
 import Login from './login/Login'
 import {useApp} from '../context/AppContext'
 import {useAuth} from '../context/AuthContext'
+import SignUp from './signUp/SignUp';
 
 function App() {
   const { appLoading, appError } = useApp();
@@ -25,6 +26,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route path='/login' component={Login}/>
+          <Route path='/signup' component={SignUp} />
           <Route path="/calendar" component={Calendar} />
           <Route path="/new-event" component={Form} />
           <Route path="/contacts" component={Contacts} />
