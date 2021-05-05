@@ -30,8 +30,8 @@ const Login = () => {
     }
   }
 
-  function handleSignInWithPopup(event) {
-    signInWithPopup(event.target.id)
+  function handleSignInWithPopup() {
+    signInWithPopup()
   }
 
   return (
@@ -65,6 +65,23 @@ const Login = () => {
           Login
         </button>
       </form>
+      {/* <p>Or Sign In Using: </p>
+        <button 
+          className='google-button'
+          id='google'
+          onClick={handleSignInWithPopup}
+        >
+          <img 
+            src="" 
+            alt='google login'
+            style={{ height: '1.5rem', marginRight: '.25rem' }} 
+            />
+            Continue With Google
+        </button> */}
+      <p>New to CuraTour?</p> 
+      <Link to="/signup">
+        Sign Up Now
+      </Link>
     </>
   )
 }
