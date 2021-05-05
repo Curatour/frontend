@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, Redirect } from 'react-router-dom';
 import './Login.css'
+import { googleProvider } from '../../context/firebase';
 
 const Login = () => {
   const [emailText, setEmail] = useState('')
@@ -31,7 +32,7 @@ const Login = () => {
   }
 
   function handleSignInWithPopup() {
-    signInWithPopup()
+    signInWithPopup(googleProvider)
   }
 
   return (
@@ -65,7 +66,7 @@ const Login = () => {
           Login
         </button>
       </form>
-      {/* <p>Or Sign In Using: </p>
+      <p>Or Sign In Using: </p>
         <button
           className='google-button'
           id='google'
@@ -77,7 +78,7 @@ const Login = () => {
             style={{ height: '1.5rem', marginRight: '.25rem' }}
             />
             Continue With Google
-        </button> */}
+        </button>
       <p>New to CuraTour?</p>
       <Link to="/signup">
         Sign Up Now
