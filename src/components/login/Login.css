@@ -1,0 +1,25 @@
+h1 {
+  color: #fab856;
+  font-style: italic;
+}
+
+input {
+  height: 1.5rem;
+  width: 10rem;
+  background-color: #cacaca;
+  border-radius: .5rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.login-btn {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: 8rem;
+  margin-bottom: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #fab856;
+}
