@@ -4,7 +4,7 @@ CuraTour is an organizational scheduling app designed for Tour Managers of trave
 
 ## Features
 
-Please find the delpoyed app [here](https://curatour.vercel.app/)
+Please find the delpoyed app [here](https://curatour.herokuapp.com/)
 
 ### Categories:
 - [Home Page](#Home-Page)
