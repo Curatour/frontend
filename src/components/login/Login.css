@@ -1,6 +1,16 @@
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
 h1 {
   color: #fab856;
   font-style: italic;
+  margin: 0;
 }
 
 input {
@@ -17,9 +27,35 @@ input {
   border-radius: .5rem;
   height: 1.7rem;
   width: 8rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .login-btn:hover {
   background-color: #fab856;
+}
+
+.small-logo {
+  width: 15rem;
+}
+
+.google-button {
+  display: flex;
+}
+
+.google-button p {
+  margin: 0
+}
+
+.sign-up a {
+  margin-left: .5rem
+}
+
+@media screen and (max-width: 800px) {
+  
+}
+
+@media screen and (max-width: 600px) {
+  .small-logo {
+    width: 10rem;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, Redirect } from 'react-router-dom';
+import logo from '../../assets/CTicon.png'
 import './SignUp.css'
 
 const SignUp = () => {
@@ -57,60 +58,74 @@ const SignUp = () => {
   return (
     <>
       {currentUser && <Redirect to='/' />}
-      {error && <p>{error}</p>}
-      <form className='signup-form'>
-        <label for='first-name'>First Name</label>
-        <input
-          className='first-name'
-          id="first-name"
-          type='text'
-          value={firstName}
-          onChange={handleChange}
-          required
+      <section className='sign-up-section'>
+        <img
+          src={logo}
+          alt='CuraTour logo - yellow butterfly'
+          className='small-logo-signup'
         />
-         <label for='last-name'>Last Name</label>
+        <h1 className="new-account">Create a new account</h1>
+        {error && <p>{error}</p>}
+        <form className='signup-form'>
+          <label for='first-name'>First Name</label>
           <input
-            className='last-name'
-            id="last-name"
+            className='first-name'
+            id="first-name"
             type='text'
-            value={lastName}
+            value={firstName}
             onChange={handleChange}
             required
           />
-          <label for='email'>Email</label>
-          <input
-            className='email'
-            id='email'
-            type='email'
-            value={emailText}
-            onChange={handleChange}
-            required
-          />
-          <label for='password'>Password</label>
-          <input
-            className='password'
-            id='password'
-            type='new-password'
-            value={passwordText}
-            onChange={handleChange}
-            required
-          />
-          <label for='confirm'>Confirm Password</label>
-          <input
-            className='password'
-            id="confirm"
-            type='new-password'
-            value={confirmText}
-            onChange={handleChange}
-            required
-          />
-        <button
-          type='submit'
-          className='form-submit-button'
-          onClick={validatePasswords}>
-        Sign Up
-        </button>
-      </form>
+          <label for='last-name'>Last Name</label>
+            <input
+              className='last-name'
+              id="last-name"
+              type='text'
+              value={lastName}
+              onChange={handleChange}
+              required
+            />
+            <label for='email'>Email</label>
+            <input
+              className='email'
+              id='email'
+              type='email'
+              value={emailText}
+              onChange={handleChange}
+              required
+            />
+            <label for='password'>Password</label>
+            <input
+              className='password'
+              id='password'
+              type='new-password'
+              value={passwordText}
+              onChange={handleChange}
+              required
+            />
+            <label for='confirm'>Confirm Password</label>
+            <input
+              className='password'
+              id="confirm"
+              type='new-password'
+              value={confirmText}
+              onChange={handleChange}
+              required
+            />
+          <button
+            type='submit'
+            className='form-submit-button'
+            onClick={validatePasswords}>
+          Sign Up
+          </button>
+        </form>
+        <p className='sign-up'>
+          Have an account? 
+        <Link to="/login">
+          Log In
+        </Link>
+        </p>
+      </section>
     </>
   )
 }

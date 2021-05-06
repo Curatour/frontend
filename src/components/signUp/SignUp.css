@@ -1,4 +1,47 @@
+.sign-up-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
 .signup-form {
   display: flex;
   flex-direction: column;
+}
+
+label {
+  font-size: smaller;
+}
+
+.small-logo-signup {
+  width: 10rem;
+}
+
+.new-account {
+  font-size: larger;
+  margin: .75rem
+}
+
+input {
+  height: 1.5rem;
+  width: 10rem;
+  background-color: #cacaca;
+  border-radius: .5rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.form-submit-button {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: 8rem;
+  margin-bottom: .5rem;
+}
+
+.form-submit-button:hover {
+  background-color: #fab856;
 }
