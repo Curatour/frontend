@@ -1,0 +1,25 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tour-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+  height: 15vh;
+  border: 1px solid #b3b3b3;
+  padding: 0 .4rem;
+  margin: 1rem;
+}
+
+.tour-name {
+  margin-bottom: 0;
+}
+
+.tour-dates {
+  margin-top: .5rem
+}
