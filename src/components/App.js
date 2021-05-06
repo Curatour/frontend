@@ -31,7 +31,6 @@ function App() {
           <Route path="/new-event" component={Form} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/event-details" component={Event} />
-          {/* <Route path="/event/:name" render={blah blah match what not here} /> */}
           <Route component={NotFound} />
         </Switch>
       <NavBar />
