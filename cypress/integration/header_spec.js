@@ -5,6 +5,7 @@ describe('Header', () => {
     cy.get('form input[type=password]').type('password')
     cy.get('form button').click()
     cy.wait(500)
+    cy.get('.tour-card').eq(0).click()
   });
 
   it('should have a header', () => {
@@ -16,7 +17,7 @@ describe('Header', () => {
   });
 
   it('should have a link to the dashboard', () => {
-    cy.get('header a').should('have.attr', 'href', '/');
+    cy.get('header a').should('have.attr', 'href', '/dashboard');
   });
 
   after('Logout', () => {

@@ -1,10 +1,12 @@
 describe('New Event', () => {
   before(() => {
     cy.visit('http://localhost:3000/')
-     cy.get('form input[type=email]').type(`testing@example.com`)
+    cy.get('form input[type=email]').type(`testing@example.com`)
     cy.get('form input[type=password]').type('password')
     cy.get('form button').click()
     cy.wait(500)
+    cy.get('.tour-card').eq(0).click()
+
     cy.get('.NavBar').find('a').eq(1).click()
   });
 

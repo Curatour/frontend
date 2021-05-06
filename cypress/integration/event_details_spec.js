@@ -5,6 +5,7 @@ describe('Event Details', () => {
     cy.get('form input[type=password]').type('password')
     cy.get('form button').click()
     cy.wait(500)
+    cy.get('.tour-card').eq(0).click()
 
     cy.get('.NavBar a').eq(0).click()
     cy.get('.fc').find('.fc-daygrid-event')

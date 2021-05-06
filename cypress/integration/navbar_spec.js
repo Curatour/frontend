@@ -5,6 +5,9 @@ describe('NavBar', () => {
     cy.get('form input[type=password]').type('password')
     cy.get('form button').click()
     cy.wait(500)
+    cy.get('.tour-card').eq(0).click()
+
+
   });
 
   it('should have three links', () => {
