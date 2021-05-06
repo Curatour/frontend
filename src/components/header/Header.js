@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <header className="Header">
-      <Link to="/">
+      <Link to="/dashboard">
       <img className="logo" src={logo} alt="CuraTour Logo"/>
       </Link>
       {currentUser && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
