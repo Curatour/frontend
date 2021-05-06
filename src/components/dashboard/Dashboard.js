@@ -21,7 +21,9 @@ const Dashboard = () => {
       state: { eventInfo: clickInfo.event._def }
     })
   }
-
+  if (currentUser) {
+    console.log(currentUser.getIdToken())
+  }
   return (
     <>
       {!currentUser && <Redirect to="/login" />}
