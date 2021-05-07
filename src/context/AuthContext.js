@@ -20,13 +20,15 @@ export default function AuthProvider({children}) {
   }
 
   function signOut() {
+    console.log('inside sign out')
     setCurrentUser()
     return auth.signOut()
   }
 
-  async function signInWithPopup() {
+  async function signInWithPopup(googleProvider) {
     try {
       const result = await auth.signInWithPopup(googleProvider)
+      console.log(result)
       const credential = await result.credential
       await credential.accessToken
       await setCurrentUser(auth.currentUser)

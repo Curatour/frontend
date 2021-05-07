@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -8,9 +8,11 @@ import {CalendarWrapper} from './CalendarWrapper'
 import { useApp } from '../../context/AppContext'
 import { formatEvents } from '../calendar/event-utils'
 import './Calendar.css';
+import { useAuth } from '../../context/AuthContext'
 
 
 const Calendar = () => {
+  const { currentUser } = useAuth()
   const { events } = useApp()
   let history = useHistory();
 
@@ -42,27 +44,30 @@ const Calendar = () => {
 
 
   return (
-       <CalendarWrapper>
-         <FullCalendar
-            timeZone= 'UTC'
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }}
-            initialView='dayGridMonth'
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            initialEvents={[]}
-            dateClick={(event) => handleDateSelect(event) }
-            events={ events ? formatEvents(events) : []}
-            eventClick={renderEventContent}
-            // eventsSet={handleEvents}
-         />
-       </CalendarWrapper>
+    <>
+      {!currentUser && <Redirect to="/login" />}
+      <CalendarWrapper>
+        <FullCalendar
+          timeZone= 'UTC'
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          }}
+          initialView='dayGridMonth'
+          editable={true}
+          selectable={true}
+          selectMirror={true}
+          dayMaxEvents={true}
+          initialEvents={[]}
+          dateClick={(event) => handleDateSelect(event) }
+          events={ events ? formatEvents(events) : []}
+          eventClick={renderEventContent}
+          // eventsSet={handleEvents}
+        />
+      </CalendarWrapper>
+    </>
   );
 }
 

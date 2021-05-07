@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import {useApp} from '../../context/AppContext'
+import { useAuth } from '../../context/AuthContext';
 
 import './Form.css';
 
 const Form = ({location}) => {
+  const { currentUser } = useAuth()
   const history = useHistory()
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -96,135 +98,138 @@ const Form = ({location}) => {
   }, [venues])
   
   return (
-    <section className='form-page'>
-      {confirmed && (
-        <>
-          <div className='confirm-event-layer'></div>
-          <div className='confirm-event'>
-            <p>Your event has been added!</p>
-            <button onClick={(event) => confirmEvent(event)} className='confirm-event-button'>Go to my Calendar!</button>
-          </div>
-        </>
-      )}
-      <h1>Create new event</h1>
-      <form>
-        <section className='form-section location'>
-          <div>
-            <input
-              type='text'
-              placeholder='City'
-              name='city'
-              value={city}
-              onChange={event => setCity(event.target.value)}
-            />
-            <input
-              type='text'
-              placeholder='State'
-              name='state'
-              value={state}
-              onChange={event => setState(event.target.value)}
-            />
-          </div>
-          <button
-            className='form-button'
-            onClick={event => incrementForm(event)}
-          >
-            Find Venues
-          </button>
-        </section>
-        { formCounter > 0 && (
-          <section className='form-section'>
-            <select value={selectedVenue} onChange={(event) => handleVenueSelect(event)}>
-              <option value={''}>Please Select A Venue</option>
-              <option value={'newVenue'}>Add New Venue</option>
-              {findVenues()}
-            </select>
-            {selectedVenue === 'newVenue' && (
-              <section className='venue-add-section'>
-                <input
-                  type='text'
-                  placeholder='Venue Name'
-                  name='venueName'
-                  value={venueName}
-                  onChange={event => setVenueName(event.target.value)}
-                  required
-                />
-                <input
-                  type='text'
-                  placeholder='Address (street and number)'
-                  name='address'
-                  value={address}
-                  onChange={event => setAddress(event.target.value)}
-                  required
-                />
-                <input
-                  type='text'
-                  placeholder='Zip Code'
-                  name='zip-code'
-                  value={zipCode}
-                  onChange={event => setZipCode(event.target.value)}
-                  required
-                />
-              </section>
-            )}
-                <button
-                  className='form-button'
-                  onClick={event => validateVenueSelection(event)}
-                >
-                  {selectedVenue === 'newVenue' ? 'Add Venue' : 'Next'}
-                </button>
-          </section>
+    <>
+      {!currentUser && <Redirect to='/login' />}
+      <section className='form-page'>
+        {confirmed && (
+          <>
+            <div className='confirm-event-layer'></div>
+            <div className='confirm-event'>
+              <p>Your event has been added!</p>
+              <button onClick={(event) => confirmEvent(event)} className='confirm-event-button'>Go to my Calendar!</button>
+            </div>
+          </>
         )}
-        { formCounter > 1 && (
-          <section className='form-section date-time'>
-            <input
-              type='date'
-              placeholder='Date'
-              name='date'
-              value={date}
-              onChange={event => setEventDate(event.target.value)}
-            />
-            <input
-              type='time'
-              name='start-time'
-              value={startTime}
-              disabled={allDayEvent ? true : false}
-              onChange={event => setStartTime(event.target.value)}
-            />
-            <input
-              type='time'
-              name='end-time'
-              value={endTime}
-              disabled={allDayEvent ? true : false}
-              onChange={event => setEndTime(event.target.value)}
-            />
-            <label>
+        <h1>Create new event</h1>
+        <form>
+          <section className='form-section location'>
+            <div>
               <input
-                className='all-day'
-                type='checkbox'
-                name='time'
-                value={allDayEvent}
-                onChange={event => setAllDayEvent(!allDayEvent)}
+                type='text'
+                placeholder='City'
+                name='city'
+                value={city}
+                onChange={event => setCity(event.target.value)}
               />
-            All Day
-            </label>
-            <input
-              type='text'
-              placeholder='Event Name'
-              name='eventName'
-              value={eventName}
-              onChange={event => setEventName(event.target.value)}
-            />
+              <input
+                type='text'
+                placeholder='State'
+                name='state'
+                value={state}
+                onChange={event => setState(event.target.value)}
+              />
+            </div>
             <button
               className='form-button'
-              onClick={event => validateForm(event)}
+              onClick={event => incrementForm(event)}
             >
-              Create Event
+              Find Venues
             </button>
           </section>
-        )}
-      </form>
-    </section>
+          { formCounter > 0 && (
+            <section className='form-section'>
+              <select value={selectedVenue} onChange={(event) => handleVenueSelect(event)}>
+                <option value={''}>Please Select A Venue</option>
+                <option value={'newVenue'}>Add New Venue</option>
+                {findVenues()}
+              </select>
+              {selectedVenue === 'newVenue' && (
+                <section className='venue-add-section'>
+                  <input
+                    type='text'
+                    placeholder='Venue Name'
+                    name='venueName'
+                    value={venueName}
+                    onChange={event => setVenueName(event.target.value)}
+                    required
+                  />
+                  <input
+                    type='text'
+                    placeholder='Address (street and number)'
+                    name='address'
+                    value={address}
+                    onChange={event => setAddress(event.target.value)}
+                    required
+                  />
+                  <input
+                    type='text'
+                    placeholder='Zip Code'
+                    name='zip-code'
+                    value={zipCode}
+                    onChange={event => setZipCode(event.target.value)}
+                    required
+                  />
+                </section>
+              )}
+                  <button
+                    className='form-button'
+                    onClick={event => validateVenueSelection(event)}
+                  >
+                    {selectedVenue === 'newVenue' ? 'Add Venue' : 'Next'}
+                  </button>
+            </section>
+          )}
+          { formCounter > 1 && (
+            <section className='form-section date-time'>
+              <input
+                type='date'
+                placeholder='Date'
+                name='date'
+                value={date}
+                onChange={event => setEventDate(event.target.value)}
+              />
+              <input
+                type='time'
+                name='start-time'
+                value={startTime}
+                disabled={allDayEvent ? true : false}
+                onChange={event => setStartTime(event.target.value)}
+              />
+              <input
+                type='time'
+                name='end-time'
+                value={endTime}
+                disabled={allDayEvent ? true : false}
+                onChange={event => setEndTime(event.target.value)}
+              />
+              <label>
+                <input
+                  className='all-day'
+                  type='checkbox'
+                  name='time'
+                  value={allDayEvent}
+                  onChange={event => setAllDayEvent(!allDayEvent)}
+                />
+              All Day
+              </label>
+              <input
+                type='text'
+                placeholder='Event Name'
+                name='eventName'
+                value={eventName}
+                onChange={event => setEventName(event.target.value)}
+              />
+              <button
+                className='form-button'
+                onClick={event => validateForm(event)}
+              >
+                Create Event
+              </button>
+            </section>
+          )}
+        </form>
+      </section>
+    </>
   );
 }
 
