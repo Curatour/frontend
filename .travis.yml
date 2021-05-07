@@ -14,10 +14,11 @@ before_script:
   - npm start -- --silent &
 script:
   # - npm run start:ci &
-  - $(npm bin)/cypress run --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
+  - $(npm bin)/cypress run 
+  # --record --key 86ce623b-9bbc-4993-8dca-f3535c528333
   # - kill $(jobs -p) || true
-deploy:
-  provider: heroku
-  app: curatour
-  api_key:
-    secure: bd9acf8f-13fc-4cc9-b51d-481878716858
+# deploy:
+#   provider: heroku
+#   app: curatour
+#   api_key:
+#     secure: bd9acf8f-13fc-4cc9-b51d-481878716858
