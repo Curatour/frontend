@@ -11,6 +11,7 @@
 .ContactCard {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 35vw;
   height: 15vh;
   border: 1px solid #b3b3b3;
@@ -25,6 +26,7 @@
   width: 100vw;
   height: auto;
   justify-content: space-around;
+  margin-bottom: 5rem;
 }
 
 .contact-name {
@@ -167,6 +169,24 @@
 
 .module-buttons button:hover {
   background-color: #fab856;
+}
+
+.invite {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  margin: 0;
+}
+
+.invite-btn {
+  background-color: transparent;
+  border: none;
+  margin-top: .25rem;
+  color: #b3b3b3;
+}
+
+.invite-btn:hover {
+  color: #fab856
 }
 
 @media screen and (max-width: 800px) {
