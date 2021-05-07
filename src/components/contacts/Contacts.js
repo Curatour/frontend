@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ContactCard from './ContactCard';
 import AddContacts from './AddContacts';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { useApp } from '../../context/AppContext'
 import './Contacts.css';
+import { useAuth } from '../../context/AuthContext';
 
 
 const Contacts = () => {
+  const { currentUser } = useAuth()
   let history = useHistory();
   const { contacts } = useApp()
   const [filterContacts, setFilterContacts] = useState([]);
@@ -56,27 +58,30 @@ const Contacts = () => {
 
 
   return (
-    <div className='Contacts'>
-      <section className='handle-contacts-options'>
-        <input 
-          className='search-bar'
-          type='text'
-          placeholder='Search Contacts'
-          ref={searchRef}
-          onChange={event => searchContacts(event)}
-        />
-        <button className='add-contacts-button'
-        onClick={event => toggleAddContactModule(event)}>Add Contact</button>
-      </section>
-      <section className='contact-cards'>
-        {display}
-      </section>
+    <>
+      {!currentUser && <Redirect to="/login" />}
+      <div className='Contacts'>
+        <section className='handle-contacts-options'>
+          <input 
+            className='search-bar'
+            type='text'
+            placeholder='Search Contacts'
+            ref={searchRef}
+            onChange={event => searchContacts(event)}
+          />
+          <button className='add-contacts-button'
+          onClick={event => toggleAddContactModule(event)}>Add Contact</button>
+        </section>
+        <section className='contact-cards'>
+          {display}
+        </section>
 
-      {isAddingContact &&
-        <AddContacts 
-        closeAddContact={toggleAddContactModule}
-      />}
-    </div>
+        {isAddingContact &&
+          <AddContacts 
+          closeAddContact={toggleAddContactModule}
+        />}
+      </div>
+    </>
   )
 }
 
