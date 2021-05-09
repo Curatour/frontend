@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, useLazyQuery } from '@apollo/client';
 import { 
   EVENT_BY_ID_QUERY, 
   VENUE_QUERY, 
@@ -46,7 +46,20 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
-  useQuery(USER_QUERY, {
+  // useQuery(USER_QUERY, {
+  //   onCompleted: data => {
+  //     setUser(data.user)
+  //     setOrganization(data.user.organizations[0])
+  //     setContacts(data.user.contacts)
+  //     setTours(data.user.organizations[0].tours)
+  //     setEvents(data.user.organizations[0].tours[0].events)
+  //     setLoading(false)
+  //     setError(false)
+  //   }, 
+  //   onError: error => setError(error)
+  // })
+
+  const [getUser] = useLazyQuery(USER_QUERY, {
     onCompleted: data => {
       setUser(data.user)
       setOrganization(data.user.organizations[0])
@@ -126,6 +139,21 @@ const AppProvider = ({children}) => {
 
 
   // FUNCTIONS
+  // const getUser = () => {
+  //   useQuery(USER_QUERY, {
+  //     onCompleted: data => {
+  //       setUser(data.user)
+  //       setOrganization(data.user.organizations[0])
+  //       setContacts(data.user.contacts)
+  //       setTours(data.user.organizations[0].tours)
+  //       setEvents(data.user.organizations[0].tours[0].events)
+  //       setLoading(false)
+  //       setError(false)
+  //     }, 
+  //     onError: error => setError(error)
+  //   })
+  // }
+
   const updateEvents = (newEvent) => {
     const { tourId, name, venueId, startTime, endTime } = newEvent
     setLoading(true)
@@ -228,7 +256,8 @@ const AppProvider = ({children}) => {
   // VALUES
 
   const value = {
-    tours, 
+    tours,
+    getUser,
     setTours,
     subEventParent,
     setSubEventParent,

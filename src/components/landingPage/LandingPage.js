@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { useApp } from '../../context/AppContext'
 import './LandingPage.css'
 
 const LandingPage = () => {
   const { currentUser } = useAuth()
+  const { getUser } = useApp()
+  
+  useEffect(() => {
+    getUser()
+  }, [])
   return (
     <>
       {!currentUser && <Redirect to="/login" />}

@@ -82,6 +82,17 @@ export const ORGANIZATION_QUERY = gql`
     }
   }
 `
+
+// query userByEmail($email: String!) { 
+//   userByEmail(email: $email) {
+//     id
+//     firstName
+//     lastName
+//     email
+//     phoneNumber
+//     role
+//   }
+// }
 export const USER_QUERY = gql`
   query {
   user(id:1) {

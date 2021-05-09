@@ -7,7 +7,7 @@ import AppProvider from './context/AppContext'
 import AuthProvider from './context/AuthContext'
 import {ApolloClient, InMemoryCache} from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
+// import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 
 export const client = new ApolloClient({
   uri: 'https://curatour-be.herokuapp.com/graphql',

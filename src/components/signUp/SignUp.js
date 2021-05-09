@@ -50,11 +50,6 @@ const SignUp = () => {
     }
   }
 
-  function handleSignInWithPopup(event) {
-    signInWithPopup(event.target.id)
-    //change to google provider
-  }
-
   return (
     <>
       {currentUser && <Redirect to='/' />}
