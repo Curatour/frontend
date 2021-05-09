@@ -21,9 +21,9 @@ const LandingPage = () => {
         <button className='new-tour-btn'>Add New Tour</button>
         <Link to='/dashboard'>
           <div className='tour-card'>
-          <h2 className='tour-name'>{tours[0].name}</h2>
-          <p className='tour-dates'>{tours.length > 0 ? `${formatDate(tours[0]["startDate"])} - ${formatDate(tours[0]["endDate"])}` : ''}</p>
-        </div>
+            <h2 className='tour-name'>{tours.length > 0 ? tours[0].name : ''}</h2>
+            <p className='tour-dates'>{tours.length > 0 ? `${formatDate(tours[0]["startDate"])} - ${formatDate(tours[0]["endDate"])}` : ''}</p>
+          </div>
         </Link>
         <div className='tour-card'>
           <h2 className='tour-name'>SRP Tour</h2>

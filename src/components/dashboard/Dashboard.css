@@ -25,6 +25,14 @@
   font-style: italic;
 }
 
+.tour-card:hover {
+  cursor: pointer;
+}
+
+.tour-dates {
+  color: #b3b3b3;
+}
+
 .tour-duration {
   color: #b3b3b3;
   margin-top: .5rem;
