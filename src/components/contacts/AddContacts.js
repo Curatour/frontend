@@ -16,6 +16,7 @@ const AddContacts = ({ closeAddContact }) => {
       && phoneRef.current.value 
       && emailRef.current.value) {
       const newContact = {
+        userId: Date.now(),
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         phoneNumber: phoneRef.current.value,
