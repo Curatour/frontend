@@ -7,6 +7,7 @@ import {
 } from './queries'
 
 import {
+  CREATE_USER,
   CREATE_EVENT,
   CREATE_VENUE,
   CREATE_CONTACT,
@@ -73,6 +74,20 @@ const AppProvider = ({children}) => {
   })
 
   //MUTATIONS
+  const [ createNewUser ] = useMutation(CREATE_USER, {
+    onCompleted: data => {
+      console.log(data.user)
+      setUser(data.user)
+      setOrganization(data.user.organizations[0])
+      setContacts(data.user.contacts)
+      setTours(data.user.organizations[0].tours)
+      setEvents(data.user.organizations[0].tours[0].events)
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
   const [ createEvent ] = useMutation(CREATE_EVENT, {
     onCompleted: data => {
       setEvents([...events, data.createEvent])
@@ -153,6 +168,22 @@ const AppProvider = ({children}) => {
   //     onError: error => setError(error)
   //   })
   // }
+  const createUser = (newUser) => {
+    const { firstName, lastName, phoneNumber, email, role } = newUser
+    setLoading(true)
+    createNewUser({
+      variables: {
+        input: {
+          firstName,
+          lastName,
+          phoneNumber,
+          email,
+          role
+        }
+      }
+    })
+    console.log('im inside the create user function')
+  }
 
   const updateEvents = (newEvent) => {
     const { tourId, name, venueId, startTime, endTime } = newEvent
@@ -258,6 +289,7 @@ const AppProvider = ({children}) => {
   const value = {
     tours,
     getUser,
+    createUser,
     setTours,
     subEventParent,
     setSubEventParent,
