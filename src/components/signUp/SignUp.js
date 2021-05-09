@@ -67,7 +67,7 @@ const SignUp = () => {
         <h1 className="new-account">Create a new account</h1>
         {error && <p>{error}</p>}
         <form className='signup-form'>
-          <label for='first-name'>First Name</label>
+          <label htmlFor='first-name'>First Name</label>
           <input
             className='first-name'
             id="first-name"
@@ -76,7 +76,7 @@ const SignUp = () => {
             onChange={handleChange}
             required
           />
-          <label for='last-name'>Last Name</label>
+          <label htmlFor='last-name'>Last Name</label>
             <input
               className='last-name'
               id="last-name"
@@ -85,7 +85,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-            <label for='email'>Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               className='email'
               id='email'
@@ -94,7 +94,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-            <label for='password'>Password</label>
+            <label htmlFor='password'>Password</label>
             <input
               className='password'
               id='password'
@@ -103,7 +103,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-            <label for='confirm'>Confirm Password</label>
+            <label htmlFor='confirm'>Confirm Password</label>
             <input
               className='password'
               id="confirm"

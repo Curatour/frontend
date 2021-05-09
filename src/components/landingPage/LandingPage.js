@@ -9,7 +9,7 @@ const LandingPage = () => {
     <>
       {!currentUser && <Redirect to="/login" />}
       <section className='landing-page'>
-        <h1>Landing Page</h1>
+        <button className='new-tour-btn'>Add New Tour</button>
         <Link to='/dashboard'>
           <div className='tour-card'>
           <h2 className='tour-name'>Tour 1</h2>
