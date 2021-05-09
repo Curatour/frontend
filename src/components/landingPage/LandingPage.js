@@ -6,13 +6,15 @@ import './LandingPage.css'
 
 const LandingPage = () => {
   const { currentUser } = useAuth()
-  const { getUser } = useApp()
-  
+  const { getUser, createUser, user } = useApp()
+
   useEffect(() => {
     getUser()
   }, [])
+
   return (
     <>
+      {console.log(currentUser)}
       {!currentUser && <Redirect to="/login" />}
       <section className='landing-page'>
         <button className='new-tour-btn'>Add New Tour</button>

@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
+// import { useAuth } from './AuthContext'
 
+// const { currentUser } = useAuth()
 
 export const TOURS_QUERY = gql`
   query {
