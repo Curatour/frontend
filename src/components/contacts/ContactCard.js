@@ -27,6 +27,9 @@ const ContactCard = (props) => {
           </div>
         </section>
       </div>
+      <div className='invite'>
+        <button className='invite-btn'>Invite</button>
+      </div>
     </article>
   );
 };

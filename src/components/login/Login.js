@@ -29,7 +29,7 @@ const Login = () => {
       await login(emailText, passwordText)
       setError('')
     } catch (error) {
-      setError(error.message)
+      setError('Email or Password is incorrect, please try again.')
     }
   }
 
@@ -41,12 +41,12 @@ const Login = () => {
     <>
       {currentUser && <Redirect to='/' />}
       <section className='login-section'>
-        {/* <h1>Welcome to CuraTour</h1> */}
         <img
           src={logo}
           alt='CuraTour logo - yellow butterfly'
           className='small-logo'
         />
+        {error && <p>{error}</p>}
         <p>Please Log In</p>
         <form>
           <input

@@ -23,3 +23,16 @@
 .tour-dates {
   margin-top: .5rem
 }
+
+.new-tour-btn {
+  background-color: #b3b3b3;
+  border-radius: .5rem;
+  height: 1.7rem;
+  width: 8rem;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.new-tour-btn:hover {
+  background-color: #fab856;
+}
