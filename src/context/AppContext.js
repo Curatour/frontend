@@ -89,6 +89,9 @@ const AppProvider = ({children}) => {
   })
 
   const [ createEvent ] = useMutation(CREATE_EVENT, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setEvents([...events, data.createEvent])
       setLoading(false)
@@ -98,6 +101,9 @@ const AppProvider = ({children}) => {
   })
 
   const [createVenue] = useMutation(CREATE_VENUE, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setVenues([...venues, data.createVenue])
       setLoading(false)
@@ -107,15 +113,25 @@ const AppProvider = ({children}) => {
   })
 
   const [createContact] = useMutation(CREATE_CONTACT, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setContacts([...contacts, data.createContact])
+      console.log('pls work')
       setLoading(false)
       setError(false)
     },
-    onError: error => setError(error)
+    onError: error => {
+      console.log(error) 
+      setError(error)
+    }
   })
 
   const [createSubEvent] = useMutation(CREATE_SUB_EVENT, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setLoading(false)
       setError(false)
@@ -135,6 +151,9 @@ const AppProvider = ({children}) => {
   })
 
   const [destroyContact] = useMutation(DESTROY_CONTACT, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setContacts(contacts.filter(contact => contact.id !== data.destroyContact.id))
       setLoading(false)
@@ -144,6 +163,9 @@ const AppProvider = ({children}) => {
   })
 
   const [destroyEvent] = useMutation(DESTROY_EVENT, {
+    onStart: () => {
+      setLoading(true)
+    },
     onCompleted: data => {
       setEvents(events.filter(event => event.id !== data.destroyEvent.id))
       setLoading(false)

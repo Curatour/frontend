@@ -6,35 +6,36 @@ import './LandingPage.css'
 
 const LandingPage = () => {
   const { currentUser } = useAuth()
-  const { getUser, createUser, user } = useApp()
+  const { getUser, createUser, user, tours } = useApp()
 
   useEffect(() => {
     getUser()
   }, [])
 
+  const formatDate = (date) => {
+    const dateDetails = date.split('-')
+    return `${dateDetails[1]}/${dateDetails[2]}/${dateDetails[0]}`
+  }
+
   return (
     <>
-      {console.log(currentUser)}
+      {console.log(tours)}
       {!currentUser && <Redirect to="/login" />}
       <section className='landing-page'>
         <button className='new-tour-btn'>Add New Tour</button>
         <Link to='/dashboard'>
           <div className='tour-card'>
-          <h2 className='tour-name'>Tour 1</h2>
-          <p className='tour-dates'>dd/mm/yyyy - dd/mm/yyyy</p>
-        </div>
+            <h2 className='tour-name'>{tours.length > 0 ? tours[0].name : ''}</h2>
+            <p className='tour-dates'>{tours.length > 0 ? `${formatDate(tours[0]["startDate"])} - ${formatDate(tours[0]["endDate"])}` : ''}</p>
+          </div>
         </Link>
         <div className='tour-card'>
-          <h2 className='tour-name'>Tour 2</h2>
-          <p className='tour-dates'>dd/mm/yyyy - dd/mm/yyyy</p>
+          <h2 className='tour-name'>SRP Tour</h2>
+          <p className='tour-dates'>05/02/2022 - 07/30/2022</p>
         </div>
         <div className='tour-card'>
-          <h2 className='tour-name'>Tour 3</h2>
-          <p className='tour-dates'>dd/mm/yyyy - dd/mm/yyyy</p>
-        </div>
-        <div className='tour-card'>
-          <h2 className='tour-name'>Tour 4</h2>
-          <p className='tour-dates'>dd/mm/yyyy - dd/mm/yyyy</p>
+          <h2 className='tour-name'>GLAAT Tour</h2>
+          <p className='tour-dates'>08/28/2022 - 10/05/2022</p>
         </div>
       </section>
     </>
