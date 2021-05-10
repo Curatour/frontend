@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
+// import { useAuth } from './AuthContext'
 
+// const { currentUser } = useAuth()
 
 export const TOURS_QUERY = gql`
   query {
@@ -82,6 +84,17 @@ export const ORGANIZATION_QUERY = gql`
     }
   }
 `
+
+// query userByEmail($email: String!) { 
+//   userByEmail(email: $email) {
+//     id
+//     firstName
+//     lastName
+//     email
+//     phoneNumber
+//     role
+//   }
+// }
 export const USER_QUERY = gql`
   query {
   user(id:1) {

@@ -10,13 +10,13 @@ import Contacts from './contacts/Contacts'
 import Event from './event/Event'
 import NotFound from './error/NotFound'
 import Login from './login/Login'
-import {useApp} from '../context/AppContext'
+// import {useApp} from '../context/AppContext'
 import {useAuth} from '../context/AuthContext'
 import SignUp from './signUp/SignUp';
 import LandingPage from './landingPage/LandingPage';
 
 function App() {
-  const { appLoading, appError } = useApp();
+  // const { appLoading, appError } = useApp();
   const { currentUser } = useAuth()
 
   return (

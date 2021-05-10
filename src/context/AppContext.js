@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, useLazyQuery } from '@apollo/client';
 import { 
   EVENT_BY_ID_QUERY, 
   VENUE_QUERY, 
@@ -7,6 +7,7 @@ import {
 } from './queries'
 
 import {
+  CREATE_USER,
   CREATE_EVENT,
   CREATE_VENUE,
   CREATE_CONTACT,
@@ -46,7 +47,20 @@ const AppProvider = ({children}) => {
     onError: error => setError(error)
   })
 
-  useQuery(USER_QUERY, {
+  // useQuery(USER_QUERY, {
+  //   onCompleted: data => {
+  //     setUser(data.user)
+  //     setOrganization(data.user.organizations[0])
+  //     setContacts(data.user.contacts)
+  //     setTours(data.user.organizations[0].tours)
+  //     setEvents(data.user.organizations[0].tours[0].events)
+  //     setLoading(false)
+  //     setError(false)
+  //   }, 
+  //   onError: error => setError(error)
+  // })
+
+  const [getUser] = useLazyQuery(USER_QUERY, {
     onCompleted: data => {
       setUser(data.user)
       setOrganization(data.user.organizations[0])
@@ -60,6 +74,20 @@ const AppProvider = ({children}) => {
   })
 
   //MUTATIONS
+  const [ createNewUser ] = useMutation(CREATE_USER, {
+    onCompleted: data => {
+      console.log(data.user)
+      setUser(data.user)
+      setOrganization(data.user.organizations[0])
+      setContacts(data.user.contacts)
+      setTours(data.user.organizations[0].tours)
+      setEvents(data.user.organizations[0].tours[0].events)
+      setLoading(false)
+      setError(false)
+    },
+    onError: error => setError(error)
+  })
+
   const [ createEvent ] = useMutation(CREATE_EVENT, {
     onStart: () => {
       setLoading(true)
@@ -148,6 +176,37 @@ const AppProvider = ({children}) => {
 
 
   // FUNCTIONS
+  // const getUser = () => {
+  //   useQuery(USER_QUERY, {
+  //     onCompleted: data => {
+  //       setUser(data.user)
+  //       setOrganization(data.user.organizations[0])
+  //       setContacts(data.user.contacts)
+  //       setTours(data.user.organizations[0].tours)
+  //       setEvents(data.user.organizations[0].tours[0].events)
+  //       setLoading(false)
+  //       setError(false)
+  //     }, 
+  //     onError: error => setError(error)
+  //   })
+  // }
+  const createUser = (newUser) => {
+    const { firstName, lastName, phoneNumber, email, role } = newUser
+    setLoading(true)
+    createNewUser({
+      variables: {
+        input: {
+          firstName,
+          lastName,
+          phoneNumber,
+          email,
+          role
+        }
+      }
+    })
+    console.log('im inside the create user function')
+  }
+
   const updateEvents = (newEvent) => {
     const { tourId, name, venueId, startTime, endTime } = newEvent
     setLoading(true)
@@ -250,7 +309,9 @@ const AppProvider = ({children}) => {
   // VALUES
 
   const value = {
-    tours, 
+    tours,
+    getUser,
+    createUser,
     setTours,
     subEventParent,
     setSubEventParent,
