@@ -10,7 +10,7 @@ const SignUp = () => {
   const [confirmText, setConfirm] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const { signUp, currentUser, signInWithPopup } = useAuth()
+  const { signUp, currentUser } = useAuth()
 
   const [error, setError] = useState('')
 

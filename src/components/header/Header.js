@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import logo from '../../assets/CuratourLogo.png'
 import './Header.css';
 import { Link } from 'react-router-dom'

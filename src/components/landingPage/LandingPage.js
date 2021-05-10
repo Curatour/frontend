@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { useApp } from '../../context/AppContext'
 import './LandingPage.css'
+import AddTour from './AddTour'
 
 const LandingPage = () => {
   const { currentUser } = useAuth()
-  const { getUser, createUser, user, tours } = useApp()
+  const { getUser, tours } = useApp()
+  const [isAddingTour, toggleIsAddingTour] = useState(false);
+
 
   useEffect(() => {
     getUser()
