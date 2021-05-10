@@ -20,26 +20,48 @@ const LandingPage = () => {
     return `${dateDetails[1]}/${dateDetails[2]}/${dateDetails[0]}`
   }
 
+  const toggleAddTourModule = (event) => {
+    event.preventDefault();
+    
+    toggleIsAddingTour(!isAddingTour);
+  }
+
   return (
     <>
-      {console.log(tours)}
       {!currentUser && <Redirect to="/login" />}
       <section className='landing-page'>
-        <button className='new-tour-btn'>Add New Tour</button>
-        <Link to='/dashboard'>
-          <div className='tour-card'>
-            <h2 className='tour-name'>{tours.length > 0 ? tours[0].name : ''}</h2>
-            <p className='tour-dates'>{tours.length > 0 ? `${formatDate(tours[0]["startDate"])} - ${formatDate(tours[0]["endDate"])}` : ''}</p>
-          </div>
-        </Link>
-        <div className='tour-card'>
-          <h2 className='tour-name'>SRP Tour</h2>
-          <p className='tour-dates'>05/02/2022 - 07/30/2022</p>
+        <button className='new-tour-btn' onClick={toggleIsAddingTour}>Add New Tour</button>
+        <div className='tour-card-container'>
+          <Link to='/dashboard'>
+            <div className='tour-card'>
+              <h2 className='tour-name'>{tours.length > 0 ? tours[0].name : ''}</h2>
+              <p className='tour-dates'>{tours.length > 0 ? `${formatDate(tours[0]["startDate"])} - ${formatDate(tours[0]["endDate"])}` : ''}</p>
+            </div>
+          </Link>
+          <Link>
+            <div className='tour-card'>
+              <h2 className='tour-name'>SRP Tour</h2>
+              <p className='tour-dates'>05/02/2022 - 07/30/2022</p>
+            </div>
+          </Link>
+          <Link>
+            <div className='tour-card'>
+              <h2 className='tour-name'>GLAAT Tour</h2>
+              <p className='tour-dates'>08/28/2022 - 10/05/2022</p>
+            </div>
+          </Link>
+           <Link>
+            <div className='tour-card'>
+              <h2 className='tour-name'>Iteration Tour</h2>
+              <p className='tour-dates'>01/17/2023 - 05/24/2023</p>
+            </div>
+          </Link>
         </div>
-        <div className='tour-card'>
-          <h2 className='tour-name'>GLAAT Tour</h2>
-          <p className='tour-dates'>08/28/2022 - 10/05/2022</p>
-        </div>
+
+        {isAddingTour &&
+          <AddTour
+          closeAddTour={toggleAddTourModule}
+        />}
       </section>
     </>
   )

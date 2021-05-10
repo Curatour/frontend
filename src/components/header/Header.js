@@ -22,7 +22,11 @@ const Header = () => {
       <Link to="/dashboard">
       <img className="logo" src={logo} alt="CuraTour Logo"/>
       </Link>
-      {currentUser && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
+      <article className='user-display'>
+          <p>{`${currentUser.displayName}` || 'User'}</p>
+          <p>Turing Graduate Inc.</p>
+        {currentUser && <button className='logout-btn' onClick={handleLogout}>Logout</button>}
+      </article>
     </header>
   );
 }
